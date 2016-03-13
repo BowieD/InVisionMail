@@ -39,5 +39,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Inbox-->
+        <scene sceneID="lCk-jn-yeU">
+            <objects>
+                <viewController storyboardIdentifier="InboxVC" title="Inbox" id="KAo-aR-njN" customClass="InboxVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kny-fW-Ugc"/>
+                        <viewControllerLayoutGuide type="bottom" id="H2h-lW-jJf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hTv-Q9-KYI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kEf-7v-5LN">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kEf-7v-5LN" secondAttribute="trailing" id="56r-ZG-CZt"/>
+                            <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="JhF-lu-j7n"/>
+                            <constraint firstItem="kEf-7v-5LN" firstAttribute="leading" secondItem="hTv-Q9-KYI" secondAttribute="leading" id="bpb-NB-xyu"/>
+                            <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="kEf-7v-5LN" secondAttribute="bottom" id="qPJ-41-VMc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="kEf-7v-5LN" id="B1p-lT-bVE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SgO-Md-jmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="324"/>
+        </scene>
     </scenes>
 </document>
