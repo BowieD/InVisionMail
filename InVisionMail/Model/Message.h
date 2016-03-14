@@ -11,4 +11,11 @@
 
 @interface Message : NSManagedObject <JSONLoadable>
 
+@property (nonatomic) NSTimeInterval timestamp;
+
+@property (nullable, nonatomic, copy) NSString *customId;
+@property (nullable, nonatomic, retain) NSString *threadId;
+@property (nullable, nonatomic, retain) NSString *historyId;
+@property (nullable, nonatomic, retain) NSString *snippet;
+
 @end

@@ -11,7 +11,7 @@
 
 @protocol JSONLoadable <NSObject>
 
-- (NSString *) objectId;
+@property (nonatomic, copy) NSString* customId;
 - (void) loadData: (NSDictionary*)jsonData;
 
 @end

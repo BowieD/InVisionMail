@@ -34,10 +34,15 @@
 		A5B9C3841C960E0400C976D4 /* InboxVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3831C960E0400C976D4 /* InboxVC.m */; };
 		A5B9C3871C96125700C976D4 /* MessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3861C96125700C976D4 /* MessageTests.m */; };
 		A5B9C38A1C96164400C976D4 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3891C96164400C976D4 /* Message.m */; };
-		A5B9C38D1C96168000C976D4 /* Message+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C38C1C96168000C976D4 /* Message+CoreDataProperties.m */; };
 		A5B9C3951C961B5E00C976D4 /* NSManagedObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3941C961B5E00C976D4 /* NSManagedObject+Helpers.m */; };
 		A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3971C961C2D00C976D4 /* CoreDataHelpersTests.m */; };
 		A5B9C39C1C961FD400C976D4 /* TestCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C39B1C961FD400C976D4 /* TestCoreDataStack.m */; };
+		A5B9C3A21C973F0600C976D4 /* AppStateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3A11C973F0600C976D4 /* AppStateTests.m */; };
+		A5B9C3A61C9742A900C976D4 /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3A51C9742A900C976D4 /* AppState.m */; };
+		A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3A81C9742E100C976D4 /* AccessTokenProvider.m */; };
+		A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3AB1C974DE800C976D4 /* NetworkCommunicator.m */; };
+		A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3AF1C9756B000C976D4 /* NetworkCommunicatorTests.m */; };
+		A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3B11C9759AD00C976D4 /* APICommunicatorTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,14 +124,22 @@
 		A5B9C3861C96125700C976D4 /* MessageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTests.m; sourceTree = "<group>"; };
 		A5B9C3881C96164400C976D4 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		A5B9C3891C96164400C976D4 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		A5B9C38B1C96168000C976D4 /* Message+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+CoreDataProperties.h"; sourceTree = "<group>"; };
-		A5B9C38C1C96168000C976D4 /* Message+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+CoreDataProperties.m"; sourceTree = "<group>"; };
 		A5B9C3911C9617C900C976D4 /* JSONLoadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONLoadable.h; sourceTree = "<group>"; };
 		A5B9C3931C961B5E00C976D4 /* NSManagedObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Helpers.h"; sourceTree = "<group>"; };
 		A5B9C3941C961B5E00C976D4 /* NSManagedObject+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Helpers.m"; sourceTree = "<group>"; };
 		A5B9C3971C961C2D00C976D4 /* CoreDataHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelpersTests.m; sourceTree = "<group>"; };
 		A5B9C39A1C961FD400C976D4 /* TestCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCoreDataStack.h; sourceTree = "<group>"; };
 		A5B9C39B1C961FD400C976D4 /* TestCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCoreDataStack.m; sourceTree = "<group>"; };
+		A5B9C3A11C973F0600C976D4 /* AppStateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStateTests.m; sourceTree = "<group>"; };
+		A5B9C3A41C9742A900C976D4 /* AppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppState.h; sourceTree = "<group>"; };
+		A5B9C3A51C9742A900C976D4 /* AppState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppState.m; sourceTree = "<group>"; };
+		A5B9C3A71C9742E100C976D4 /* AccessTokenProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessTokenProvider.h; sourceTree = "<group>"; };
+		A5B9C3A81C9742E100C976D4 /* AccessTokenProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessTokenProvider.m; sourceTree = "<group>"; };
+		A5B9C3AA1C974DE800C976D4 /* NetworkCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkCommunicator.h; sourceTree = "<group>"; };
+		A5B9C3AB1C974DE800C976D4 /* NetworkCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkCommunicator.m; sourceTree = "<group>"; };
+		A5B9C3AD1C974FDC00C976D4 /* GmailAPISpecification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GmailAPISpecification.h; sourceTree = "<group>"; };
+		A5B9C3AF1C9756B000C976D4 /* NetworkCommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkCommunicatorTests.m; sourceTree = "<group>"; };
+		A5B9C3B11C9759AD00C976D4 /* APICommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICommunicatorTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +189,7 @@
 		A5850BEC1C94689C00527CD8 /* InVisionMail */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3A31C97429700C976D4 /* AppState */,
 				A5B9C3701C95FD7800C976D4 /* Controllers */,
 				A5B9C3711C95FD7800C976D4 /* Helpers */,
 				A5B9C3721C95FD7800C976D4 /* Model */,
@@ -208,10 +222,12 @@
 		A5850C061C94689C00527CD8 /* InVisionMailTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3A11C973F0600C976D4 /* AppStateTests.m */,
 				A5B9C3991C961F9100C976D4 /* Mocks */,
 				A5B9C3961C961C0C00C976D4 /* Helpers */,
 				A5B9C3851C96124100C976D4 /* Model */,
 				A5B9C37F1C96091500C976D4 /* Controllers */,
+				A5B9C3AE1C97569C00C976D4 /* Netwroking */,
 				A5B9C3761C95FEC900C976D4 /* Services */,
 				A5850C091C94689C00527CD8 /* Info.plist */,
 				A5850C2E1C9471BF00527CD8 /* InVisionMailTests-Bridging-Header.h */,
@@ -258,8 +274,6 @@
 			children = (
 				A5B9C37C1C96033100C976D4 /* InVisionMail.xcdatamodeld */,
 				A5B9C3911C9617C900C976D4 /* JSONLoadable.h */,
-				A5B9C38B1C96168000C976D4 /* Message+CoreDataProperties.h */,
-				A5B9C38C1C96168000C976D4 /* Message+CoreDataProperties.m */,
 				A5B9C3881C96164400C976D4 /* Message.h */,
 				A5B9C3891C96164400C976D4 /* Message.m */,
 			);
@@ -269,8 +283,11 @@
 		A5B9C3731C95FD7800C976D4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3AD1C974FDC00C976D4 /* GmailAPISpecification.h */,
 				A5B9C36D1C94B97300C976D4 /* APICommunicator.h */,
 				A5B9C36E1C94B97300C976D4 /* APICommunicator.m */,
+				A5B9C3AA1C974DE800C976D4 /* NetworkCommunicator.h */,
+				A5B9C3AB1C974DE800C976D4 /* NetworkCommunicator.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -330,6 +347,26 @@
 				A5B9C39B1C961FD400C976D4 /* TestCoreDataStack.m */,
 			);
 			name = Mocks;
+			sourceTree = "<group>";
+		};
+		A5B9C3A31C97429700C976D4 /* AppState */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3A41C9742A900C976D4 /* AppState.h */,
+				A5B9C3A51C9742A900C976D4 /* AppState.m */,
+				A5B9C3A71C9742E100C976D4 /* AccessTokenProvider.h */,
+				A5B9C3A81C9742E100C976D4 /* AccessTokenProvider.m */,
+			);
+			path = AppState;
+			sourceTree = "<group>";
+		};
+		A5B9C3AE1C97569C00C976D4 /* Netwroking */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3AF1C9756B000C976D4 /* NetworkCommunicatorTests.m */,
+				A5B9C3B11C9759AD00C976D4 /* APICommunicatorTests.m */,
+			);
+			name = Netwroking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,14 +477,16 @@
 			files = (
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
 				A5B9C38A1C96164400C976D4 /* Message.m in Sources */,
+				A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */,
 				A5850BF51C94689C00527CD8 /* ViewController.m in Sources */,
-				A5B9C38D1C96168000C976D4 /* Message+CoreDataProperties.m in Sources */,
 				A5850BF21C94689C00527CD8 /* AppDelegate.m in Sources */,
 				A5B9C3951C961B5E00C976D4 /* NSManagedObject+Helpers.m in Sources */,
 				A5B9C37E1C96033100C976D4 /* InVisionMail.xcdatamodeld in Sources */,
 				A5850BEF1C94689C00527CD8 /* main.m in Sources */,
+				A5B9C3A61C9742A900C976D4 /* AppState.m in Sources */,
 				A5B9C3841C960E0400C976D4 /* InboxVC.m in Sources */,
 				A5B9C36F1C94B97300C976D4 /* APICommunicator.m in Sources */,
+				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,9 +496,12 @@
 			files = (
 				A5B9C3871C96125700C976D4 /* MessageTests.m in Sources */,
 				A5B9C3781C95FEEF00C976D4 /* CoreDataStackTests.m in Sources */,
+				A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */,
 				A5B9C39C1C961FD400C976D4 /* TestCoreDataStack.m in Sources */,
+				A5B9C3A21C973F0600C976D4 /* AppStateTests.m in Sources */,
 				A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */,
 				A5B9C3811C960D0D00C976D4 /* InboxVCTests.m in Sources */,
+				A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

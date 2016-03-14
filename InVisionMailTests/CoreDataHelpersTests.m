@@ -21,11 +21,15 @@ describe(@"Managed object", ^{
     
     beforeEach(^{
         dataStack = [TestCoreDataStack new];
+        message = [Message findOrCreateElementWithId:@"some id" context: dataStack.mainContext];
     });
     
     it(@"should create new entity", ^{
-        message = (Message*)[Message findOrCreateElementWithName:@"Message" objectId:@"some id" context: dataStack.mainContext];
         [[message shouldNot] beNil];
+    });
+
+    it(@"should assign correct id", ^{
+        [[message.customId should] equal:@"some id"];
     });
 });
 

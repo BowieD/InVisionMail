@@ -11,6 +11,6 @@
 @interface NSManagedObject (Helpers)
 
 + (NSString*) entityName;
-+ (NSManagedObject*) findOrCreateElementWithName: (NSString *)name objectId:(NSString*) objectId context: (NSManagedObjectContext*)context;
++ (instancetype) findOrCreateElementWithId: (NSString*) objectId context: (NSManagedObjectContext*)context;
 
 @end
