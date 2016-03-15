@@ -16,9 +16,7 @@
 		A5850C2A1C94707700527CD8 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5850C251C94707700527CD8 /* AFNetworking.framework */; };
 		A5850C2B1C94707700527CD8 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5850C251C94707700527CD8 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A590EBA71C95847600CB28AF /* cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A590EBA61C95847600CB28AF /* cartfile */; };
-		A590EBA91C9585C700CB28AF /* Kiwi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A590EBA81C9585C700CB28AF /* Kiwi.framework */; };
 		A590EBAB1C9585CF00CB28AF /* Kiwi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A590EBA81C9585C700CB28AF /* Kiwi.framework */; };
-		A590EBAD1C9585F700CB28AF /* Kiwi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A590EBA81C9585C700CB28AF /* Kiwi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5B9C3621C94967400C976D4 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B9C3531C9494C000C976D4 /* GoogleSignIn.framework */; };
 		A5B9C3631C94967D00C976D4 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5B9C3571C9494DF00C976D4 /* GoogleSignIn.bundle */; };
 		A5B9C3651C9496A200C976D4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B9C3641C9496A200C976D4 /* AddressBook.framework */; };
@@ -43,6 +41,7 @@
 		A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3AB1C974DE800C976D4 /* NetworkCommunicator.m */; };
 		A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3AF1C9756B000C976D4 /* NetworkCommunicatorTests.m */; };
 		A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3B11C9759AD00C976D4 /* APICommunicatorTests.m */; };
+		A5B9C3B41C97641D00C976D4 /* Kiwi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A590EBA81C9585C700CB28AF /* Kiwi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +81,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A590EBAD1C9585F700CB28AF /* Kiwi.framework in CopyFiles */,
+				A5B9C3B41C97641D00C976D4 /* Kiwi.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +148,6 @@
 			files = (
 				A5B9C36B1C9496B300C976D4 /* SystemConfiguration.framework in Frameworks */,
 				A5B9C3691C9496AD00C976D4 /* StoreKit.framework in Frameworks */,
-				A590EBA91C9585C700CB28AF /* Kiwi.framework in Frameworks */,
 				A5B9C3671C9496A700C976D4 /* SafariServices.framework in Frameworks */,
 				A5B9C3651C9496A200C976D4 /* AddressBook.framework in Frameworks */,
 				A5B9C3621C94967400C976D4 /* GoogleSignIn.framework in Frameworks */,

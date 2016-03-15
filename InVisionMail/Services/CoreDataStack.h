@@ -14,5 +14,6 @@
 + (CoreDataStack*) sharedInstance;
 
 @property NSManagedObjectContext* mainContext;
+@property NSManagedObjectContext* syncContext;
 
 @end

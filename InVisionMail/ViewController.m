@@ -11,7 +11,7 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet GIDSignInButton *signInButton;
-
+@property (nonatomic, strong) AFHTTPSessionManager* manager;
 @end
 
 @implementation ViewController
@@ -21,12 +21,14 @@
     [GIDSignIn sharedInstance].delegate = self;
     [GIDSignIn sharedInstance].uiDelegate = self;
     [GIDSignIn sharedInstance].scopes = @[@"https://www.googleapis.com/auth/gmail.readonly"];
+    
+    self.manager = [AFHTTPSessionManager manager];
 }
 
 - (void) signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
     if (user != nil && error == nil) {
         NSLog(@"User token: %@", user.authentication.accessToken);
-//        [APICommunicator test:user.authentication.accessToken];
+        [[APICommunicator sharedCommunicator] getMyMessages];
     }
 }
 

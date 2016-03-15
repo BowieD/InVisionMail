@@ -25,4 +25,22 @@
                                        success: (nullable void (^)(NSURLSessionDataTask* _Nonnull task, id _Nullable responseObject))success
                                        failure: (nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError* _Nonnull error))failure;
 
+
+#pragma mark - Gmail requests
+
+/**
+ Get list of all user's messages. It currently returns only 100 newest messages.
+ */
+- (nullable NSURLSessionDataTask*) getMyMessages;
+
+/**
+ Get metadata for the message. This call doesn't download message's body.
+ */
+- (nullable NSURLSessionDataTask*) getMessageMetadata: (NSString * _Nonnull) messageId;
+
+/**
+ Get all data for the message including the message body.
+ */
+- (nullable NSURLSessionDataTask*) getMessageDetail: (NSString * _Nonnull) messageId;
+
 @end

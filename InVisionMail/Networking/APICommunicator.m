@@ -9,6 +9,9 @@
 #import "APICommunicator.h"
 #import "AppState.h"
 #import "GmailAPISpecification.h"
+#import "Message.h"
+#import "NSManagedObject+Helpers.h"
+#import "CoreDataStack.h"
 
 @interface APICommunicator ()
 @property (nonatomic, strong, readwrite) NSObject<NetworkCommunicator>* _Nonnull networkCommunicator;
@@ -62,16 +65,52 @@
 }
 
 
-//
-//+ (NSURLSessionDataTask *) test: (NSString *) token {
-//    AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
-//    
-//    return [manager GET:@"https://www.googleapis.com/gmail/v1/users/me/threads" parameters:@{@"access_token": token} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"%@", responseObject);
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"%@", error);
-//    }];
-//}
-//
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Gmail calls
+- (nullable NSURLSessionDataTask*) getMyMessages {
+    return [self authorizedGETRequest:MY_MESSAGES parameters:@{LABELS_KEY: INBOX_LABEL_VALUE} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary* d = (NSDictionary*)responseObject;
+        NSLog(d.description);
+        
+        NSArray* ma = (NSArray*)[d objectForKey:@"messages"];
+        
+        for (NSDictionary* message in ma) {
+            NSString* messageID = [message objectForKey:@"id"];
+            [self getMessageMetadata:messageID];
+        }
+        
+        NSLog(d.description);
+//        [self getMessageMetadata:@"153568797e6f2bb2"];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(error);
+    }];
+}
+
+- (nullable NSURLSessionDataTask*) getMessageMetadata:(NSString *)messageId {
+    return [self getMessageDetail:messageId withParameters:@{FORMAT_KEY: METADATA_VALUE}];
+}
+
+- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId {
+    return [self getMessageDetail:messageId withParameters:nil];
+}
+
+- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId withParameters: (NSDictionary*)parameters {
+    return [self authorizedGETRequest:[MY_MESSAGES stringByAppendingString:messageId] parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSObject* d = (NSObject*)responseObject;
+//        NSLog(d.description);
+        
+        if ([d isKindOfClass:[NSDictionary class]]) {
+            NSDictionary* jsonData = (NSDictionary*)d;
+            
+            [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:[CoreDataStack sharedInstance].syncContext completionBlock:^(NSManagedObject * _Nullable element) {
+                NSLog(element.description);
+            }];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(error);
+    }];
+}
+
 
 @end
