@@ -21,7 +21,7 @@ describe(@"Managed object", ^{
     
     beforeEach(^{
         dataStack = [TestCoreDataStack new];
-        message = [Message findOrCreateElementWithId:@"some id" context: dataStack.mainContext];
+        message = [Message findOrCreateElementWithId:@"LukeLeia" context: dataStack.mainContext];
     });
     
     it(@"should create new entity", ^{
@@ -29,7 +29,64 @@ describe(@"Managed object", ^{
     });
 
     it(@"should assign correct id", ^{
-        [[message.customId should] equal:@"some id"];
+        [[message.customId should] equal:@"LukeLeia"];
+    });
+    
+    it(@"should fetch existing entity by customId", ^{
+        assert(message != nil);
+        [[[Message withCustomId:@"LukeLeia" fromContext:dataStack.mainContext] shouldNot] beNil];
+    });
+    
+    context(@"when entity doesn't exist", ^{
+        it(@"should create it and load data from JSON to it", ^{
+            NSDictionary* dummyMessageJSONData = @{
+                                                   @"internalDate": @"1234",
+                                                   @"threadId": @"EpisodeIV",
+                                                   @"historyId": @"1997",
+                                                   @"snippet": @"When 900 years old, you reach… Look as good, you will not."
+                                                   };
+            
+            [Message loadFromJSON:dummyMessageJSONData customId:@"HanSolo" context:dataStack.mainContext completionBlock:nil];
+
+            // Because loadFromJSON is asynchronous, we have to use async testing
+            [[expectFutureValue(theValue([Message withCustomId:@"HanSolo" fromContext:dataStack.mainContext].timestamp))
+              shouldEventually] equal:theValue(1234)];
+            
+            [[expectFutureValue([Message withCustomId:@"HanSolo" fromContext:dataStack.mainContext].threadId)
+              shouldEventually] equal:@"EpisodeIV"];
+            
+            [[expectFutureValue([Message withCustomId:@"HanSolo" fromContext:dataStack.mainContext].historyId)
+              shouldEventually] equal:@"1997"];
+            
+            [[expectFutureValue([Message withCustomId:@"HanSolo" fromContext:dataStack.mainContext].snippet)
+              shouldEventually] equal:@"When 900 years old, you reach… Look as good, you will not."];
+        });
+    });
+    
+    context(@"when entity exist", ^{
+        it(@"should update it by the data from JSON", ^{
+            NSDictionary* dummyMessageJSONData = @{
+                                                   @"internalDate": @"1234",
+                                                   @"threadId": @"EpisodeIV",
+                                                   @"historyId": @"1997",
+                                                   @"snippet": @"When 900 years old, you reach… Look as good, you will not."
+                                                   };
+            
+            [Message loadFromJSON:dummyMessageJSONData customId:@"LukeLeia" context:dataStack.mainContext completionBlock:nil];
+            
+            // Because loadFromJSON is asynchronous, we have to use async testing
+            [[expectFutureValue(theValue([Message withCustomId:@"LukeLeia" fromContext:dataStack.mainContext].timestamp))
+              shouldEventually] equal:theValue(1234)];
+            
+            [[expectFutureValue([Message withCustomId:@"LukeLeia" fromContext:dataStack.mainContext].threadId)
+              shouldEventually] equal:@"EpisodeIV"];
+            
+            [[expectFutureValue([Message withCustomId:@"LukeLeia" fromContext:dataStack.mainContext].historyId)
+              shouldEventually] equal:@"1997"];
+            
+            [[expectFutureValue([Message withCustomId:@"LukeLeia" fromContext:dataStack.mainContext].snippet)
+              shouldEventually] equal:@"When 900 years old, you reach… Look as good, you will not."];
+        });
     });
 });
 
