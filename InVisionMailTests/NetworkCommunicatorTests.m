@@ -23,6 +23,10 @@ describe(@"Gmail network communicator", ^{
         [[communicator.manager should] receive:@selector(GET: parameters: progress: success: failure:)];
         [communicator GET:@"Death Star" parameters:nil progress:nil success:nil failure:nil];
     });
+    
+    it(@"should use JSON response serializer", ^{
+        [[communicator.manager.responseSerializer should] beKindOfClass:[AFJSONResponseSerializer class]];
+    });
  });
 
 SPEC_END

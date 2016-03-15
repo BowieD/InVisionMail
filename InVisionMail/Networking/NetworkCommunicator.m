@@ -18,6 +18,7 @@
 - (instancetype) init {
     if (self = [super init]) {
         self.manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:GMAIL_BASE_ADDRESS]];
+        self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     return self;
 }
