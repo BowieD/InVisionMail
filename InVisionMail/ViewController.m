@@ -28,7 +28,7 @@
 - (void) signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
     if (user != nil && error == nil) {
         NSLog(@"User token: %@", user.authentication.accessToken);
-        [[APICommunicator sharedCommunicator] getMyMessages];
+//        [[APICommunicator sharedCommunicator] getMyMessages];
     }
 }
 

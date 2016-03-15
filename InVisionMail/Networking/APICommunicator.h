@@ -10,6 +10,7 @@
 #import "NetworkCommunicator.h"
 #import <AFNetworking/AFNetworking.h>
 #import "AccessTokenProvider.h"
+#import <CoreData/CoreData.h>
 
 @interface APICommunicator : NSObject
 
@@ -29,18 +30,20 @@
 #pragma mark - Gmail requests
 
 /**
- Get list of all user's messages. It currently returns only 100 newest messages.
+ Get list of user's INBOX messages. It currently returns only 100 newest messages. If the message is new, getMessageMetadata for it is called automatically.
  */
-- (nullable NSURLSessionDataTask*) getMyMessages;
+- (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context;
 
 /**
- Get metadata for the message. This call doesn't download message's body.
+ Get metadata for the message. This call doesn't download message's body. You usually don't call this function directly. It's called automatically for all new messages from the getMyMessagesIntoContext call.
  */
-- (nullable NSURLSessionDataTask*) getMessageMetadata: (NSString * _Nonnull) messageId;
+- (nullable NSURLSessionDataTask*) getMessageMetadata: (NSString * _Nonnull) messageId
+                                            toContext: (NSManagedObjectContext* _Nonnull)context;
 
 /**
  Get all data for the message including the message body.
  */
-- (nullable NSURLSessionDataTask*) getMessageDetail: (NSString * _Nonnull) messageId;
+- (nullable NSURLSessionDataTask*) getMessageDetail: (NSString * _Nonnull) messageId
+                                          toContext: (NSManagedObjectContext* _Nonnull)context;
 
 @end

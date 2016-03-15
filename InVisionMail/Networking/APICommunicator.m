@@ -67,43 +67,48 @@
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Gmail calls
-- (nullable NSURLSessionDataTask*) getMyMessages {
-    return [self authorizedGETRequest:MY_MESSAGES parameters:@{LABELS_KEY: INBOX_LABEL_VALUE} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary* d = (NSDictionary*)responseObject;
-        NSLog(d.description);
-        
-        NSArray* ma = (NSArray*)[d objectForKey:@"messages"];
-        
-        for (NSDictionary* message in ma) {
-            NSString* messageID = [message objectForKey:@"id"];
-            [self getMessageMetadata:messageID];
+- (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context {
+    return [self authorizedGETRequest:MY_MESSAGES
+                           parameters:@{LABELS_KEY: INBOX_LABEL_VALUE}
+                              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                  
+        if (NO == [responseObject isKindOfClass:[NSDictionary class]]) {
+            // TODO: error log
+            return;
         }
+        NSDictionary* responseDictionary = (NSDictionary*)responseObject;
+        NSArray* messagesArray = (NSArray*)[responseDictionary objectForKey:@"messages"];
         
-        NSLog(d.description);
-//        [self getMessageMetadata:@"153568797e6f2bb2"];
+        for (NSDictionary* message in messagesArray) {
+            NSString* messageID = [message objectForKey:@"id"];
+            // Let's check if message this ID exist in the context.
+            // If not, we should get metadata for it
+            if ([Message withCustomId:messageID fromContext:context] == nil) {
+                NSLog(@"Getting meta data for message: %@", messageID);
+                [self getMessageMetadata:messageID toContext:context];
+            }
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(error);
     }];
 }
 
-- (nullable NSURLSessionDataTask*) getMessageMetadata:(NSString *)messageId {
-    return [self getMessageDetail:messageId withParameters:@{FORMAT_KEY: METADATA_VALUE}];
+- (nullable NSURLSessionDataTask*) getMessageMetadata:(NSString *)messageId toContext: (NSManagedObjectContext* _Nonnull)context {
+    return [self getMessageDetail:messageId withParameters:@{FORMAT_KEY: METADATA_VALUE} toContext:context];
 }
 
-- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId {
-    return [self getMessageDetail:messageId withParameters:nil];
+- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId toContext: (NSManagedObjectContext* _Nonnull)context {
+    return [self getMessageDetail:messageId withParameters:nil toContext:context];
 }
 
-- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId withParameters: (NSDictionary*)parameters {
+- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId withParameters: (NSDictionary*)parameters toContext: (NSManagedObjectContext* _Nonnull)context {
     return [self authorizedGETRequest:[MY_MESSAGES stringByAppendingString:messageId] parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSObject* d = (NSObject*)responseObject;
-//        NSLog(d.description);
         
-        if ([d isKindOfClass:[NSDictionary class]]) {
-            NSDictionary* jsonData = (NSDictionary*)d;
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary* jsonData = (NSDictionary*)responseObject;
             
-            [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:[CoreDataStack sharedInstance].syncContext completionBlock:^(NSManagedObject * _Nullable element) {
-                NSLog(element.description);
+            [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:context completionBlock:^(NSManagedObject * _Nullable element) {
+                NSLog(@"New message saved to the context: %@", element.description);
             }];
         }
         

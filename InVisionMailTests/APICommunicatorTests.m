@@ -9,6 +9,9 @@
 #import <XCTest/XCTest.h>
 #import <Kiwi/Kiwi.h>
 #import "APICommunicator.h"
+#import "TestCoreDataStack.h"
+#import "Message.h"
+#import "NSManagedObject+Helpers.h"
 
 SPEC_BEGIN(APICommunicatorTests)
 
@@ -16,13 +19,16 @@ describe(@"API Communicator", ^{
     __block NSObject<AccessTokenProvider>* tokenProvider;
     __block NSObject<NetworkCommunicator>* networkCommunicator;
     __block APICommunicator* communicator;
-
+    __block TestCoreDataStack* coreDataStack;
+    
     beforeEach(^{
         tokenProvider = [KWMock mockForProtocol:@protocol(AccessTokenProvider)];
         [tokenProvider stub:@selector(accessToken) andReturn:@"May the Force be with you"];
         
         networkCommunicator = [KWMock mockForProtocol:@protocol(NetworkCommunicator)];
         communicator = [[APICommunicator alloc] initWithNetworkCommunicator:networkCommunicator accessTokenProvider:tokenProvider];
+        
+        coreDataStack = [TestCoreDataStack new];
     });
     
     it(@"should add access_token parameter to authorized GET requests", ^{
@@ -57,7 +63,7 @@ describe(@"API Communicator", ^{
             
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMyMessages];
+            [communicator getMyMessagesToContext:coreDataStack.mainContext];
         });
         
         it(@"should have labelIds:INBOX in parameters", ^{
@@ -72,7 +78,7 @@ describe(@"API Communicator", ^{
             
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMyMessages];
+            [communicator getMyMessagesToContext:coreDataStack.mainContext];
         });
         
         it(@"shoud call me/messages/ endpoint", ^{
@@ -83,7 +89,27 @@ describe(@"API Communicator", ^{
             }];
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMyMessages];
+            [communicator getMyMessagesToContext:coreDataStack.mainContext];
+        });
+        
+        it(@"should call getMessageMetada for new message", ^{
+            // Prepare fake response
+            [networkCommunicator stub:@selector(GET:parameters:progress:success:failure:) withBlock:^id(NSArray *params) {
+                void (^success)(NSURLSessionDataTask*, id) = params[3];
+                // We simulate server response for getMyMessages with the array of one message with id "LukeAndLeia"
+                success(nil, @{ @"messages": @[ @{@"id": @"LukeAndLeia"} ] });
+                return nil; // needed because of compiler
+            }];
+
+            __block NSString* newMessageId = nil;
+            [communicator stub:@selector(getMessageMetadata:toContext:) withBlock:^id(NSArray *params) {
+                newMessageId = (NSString *)params[0];
+                return nil; // just to make compiler happy
+            }];
+            
+            [communicator getMyMessagesToContext:coreDataStack.mainContext];
+            
+            [[expectFutureValue(newMessageId) shouldEventually] equal:@"LukeAndLeia"];
         });
     });
 
@@ -100,7 +126,7 @@ describe(@"API Communicator", ^{
             
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMessageDetail: @"EpisodeIV"];
+            [communicator getMessageDetail: @"EpisodeIV" toContext:coreDataStack.mainContext];
         });
         
         it(@"shoud call me/messages/episodeIV endpoint", ^{
@@ -111,7 +137,7 @@ describe(@"API Communicator", ^{
             }];
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMessageDetail: @"EpisodeIV"];
+            [communicator getMessageDetail: @"EpisodeIV" toContext:coreDataStack.mainContext];
         });
     });
     
@@ -128,7 +154,7 @@ describe(@"API Communicator", ^{
             
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMessageMetadata: @"EpisodeIV"];
+            [communicator getMessageMetadata: @"EpisodeIV" toContext:coreDataStack.mainContext];
         });
 
         it(@"should have format:metadata in parameters", ^{
@@ -143,7 +169,7 @@ describe(@"API Communicator", ^{
             
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMessageMetadata: @"EpisodeIV"];
+            [communicator getMessageMetadata: @"EpisodeIV" toContext:coreDataStack.mainContext];
         });
         
         it(@"shoud call me/messages/episodeIV endpoint", ^{
@@ -154,7 +180,38 @@ describe(@"API Communicator", ^{
             }];
             [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
             
-            [communicator getMessageMetadata: @"EpisodeIV"];
+            [communicator getMessageMetadata: @"EpisodeIV" toContext:coreDataStack.mainContext];
+        });
+        
+        it(@"should add the received message to the context", ^{
+            // Prepare fake response
+            [networkCommunicator stub:@selector(GET:parameters:progress:success:failure:) withBlock:^id(NSArray *params) {
+                void (^success)(NSURLSessionDataTask*, id) = params[3];
+                NSDictionary* dummyData = @{
+                                            @"id": @"BobaFett",
+                                            @"internalDate": @"1234",
+                                            @"threadId": @"EpisodeIV",
+                                            @"historyId": @"1997",
+                                            @"snippet": @"When 900 years old, you reach… Look as good, you will not."
+                                            };
+                // We simulate server response with message with id "BobaFett"
+                success(nil, dummyData);
+                return nil; // needed because of compiler
+            }];
+
+            [communicator getMessageMetadata:@"BobaFett" toContext:coreDataStack.mainContext];
+            
+            [[expectFutureValue(theValue([Message withCustomId:@"BobaFett" fromContext:coreDataStack.mainContext].timestamp))
+              shouldEventually] equal:theValue(1234)];
+            
+            [[expectFutureValue([Message withCustomId:@"BobaFett" fromContext:coreDataStack.mainContext].threadId)
+              shouldEventually] equal:@"EpisodeIV"];
+            
+            [[expectFutureValue([Message withCustomId:@"BobaFett" fromContext:coreDataStack.mainContext].historyId)
+              shouldEventually] equal:@"1997"];
+            
+            [[expectFutureValue([Message withCustomId:@"BobaFett" fromContext:coreDataStack.mainContext].snippet)
+              shouldEventually] equal:@"When 900 years old, you reach… Look as good, you will not."];
         });
     });
 
