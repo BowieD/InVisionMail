@@ -22,6 +22,12 @@ describe(@"Core Data Stack", ^{
     it(@"should create managed object context", ^{
         [[stack.mainContext shouldNot] beNil];
     });
+
+    it(@"should create sync managed object context", ^{
+        [[stack.syncContext shouldNot] beNil];
+        [[stack.syncContext.parentContext should] equal:stack.mainContext];
+    });
+
 });
 
 SPEC_END

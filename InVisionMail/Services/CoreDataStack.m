@@ -34,9 +34,11 @@
     NSAssert(mom != nil, @"Error initializing Managed Object Model");
     
     NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    [moc setPersistentStoreCoordinator:psc];
-    self.mainContext = moc;
+    self.mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    [self.mainContext setPersistentStoreCoordinator:psc];
+
+    self.syncContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    self.syncContext.parentContext = self.mainContext;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentsURL = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
@@ -45,12 +47,12 @@
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         NSError *error = nil;
         // We will use InMemoryStore during the heavy development
-        NSPersistentStore *store = [moc.persistentStoreCoordinator
-                                        addPersistentStoreWithType:NSInMemoryStoreType
-                                        configuration:nil
-                                        URL:storeURL
-                                        options:nil
-                                        error:&error];
+        NSPersistentStore *store = [self.mainContext.persistentStoreCoordinator
+                                                    addPersistentStoreWithType:NSInMemoryStoreType
+                                                    configuration:nil
+                                                    URL:storeURL
+                                                    options:nil
+                                                    error:&error];
         NSAssert(store != nil, @"Error initializing PSC: %@\n%@", [error localizedDescription], [error userInfo]);
     });
 }
