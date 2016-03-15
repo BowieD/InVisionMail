@@ -41,9 +41,12 @@
     }
     
     id timestamp = [jsonData objectForKey:TIMESTAMP_KEY];
-    if ([timestamp isKindOfClass:[NSNumber class]]) {
-        self.timestamp = [(NSNumber*)timestamp doubleValue];
+    if ([timestamp isKindOfClass:[NSString class]]) {
+        NSString* timestampString = (NSString *)timestamp;
+        self.timestamp = timestampString.doubleValue;
     }
+    
+    NSLog(jsonData.description);
 }
 
 @end
