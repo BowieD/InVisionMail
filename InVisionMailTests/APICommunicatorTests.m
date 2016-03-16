@@ -92,12 +92,16 @@ describe(@"API Communicator", ^{
             [communicator getMyMessagesToContext:coreDataStack.mainContext];
         });
         
-        it(@"should call getMessageMetada for new message", ^{
+        it(@"should call getMessageMetada for messages without HistoryId", ^{
+            // Simulate existing message
+            Message* message = [Message findOrCreateElementWithId:@"HanAndLeia" context:coreDataStack.mainContext];
+            message.historyId = @"EPISODE_IV_VII";
+            
             // Prepare fake response
             [networkCommunicator stub:@selector(GET:parameters:progress:success:failure:) withBlock:^id(NSArray *params) {
                 void (^success)(NSURLSessionDataTask*, id) = params[3];
-                // We simulate server response for getMyMessages with the array of one message with id "LukeAndLeia"
-                success(nil, @{ @"messages": @[ @{@"id": @"LukeAndLeia"} ] });
+                // We simulate server response for getMyMessages with the array of 2 messages
+                success(nil, @{ @"messages": @[ @{@"id": @"LukeAndLeia"}, @{@"id": @"HanAndLeia"} ] });
                 return nil; // needed because of compiler
             }];
 
@@ -110,6 +114,7 @@ describe(@"API Communicator", ^{
             [communicator getMyMessagesToContext:coreDataStack.mainContext];
             
             [[expectFutureValue(newMessageId) shouldEventually] equal:@"LukeAndLeia"];
+            [[expectFutureValue(newMessageId) shouldNotEventually] equal:@"HanAndLeia"];
         });
     });
 

@@ -77,13 +77,24 @@
             return;
         }
         NSDictionary* responseDictionary = (NSDictionary*)responseObject;
-        NSArray* messagesArray = (NSArray*)[responseDictionary objectForKey:@"messages"];
+        NSArray* messagesArray = (NSArray*)[responseDictionary objectForKey:MESSAGES_KEY];
         
         for (NSDictionary* message in messagesArray) {
-            NSString* messageID = [message objectForKey:@"id"];
-            // Let's check if message this ID exist in the context.
-            // If not, we should get metadata for it
-            if ([Message withCustomId:messageID fromContext:context] == nil) {
+            NSString* messageID = [message objectForKey:ID_KEY];
+            
+            // Let's check if message this ID exist in the context and
+            // if we have metadata downloaded
+            BOOL messageNotExists = [Message withCustomId:messageID fromContext:context] == nil;
+            BOOL messageWithoutMetadata = [Message withCustomId:messageID fromContext:context].historyId == nil;
+            
+            if (messageNotExists || messageWithoutMetadata) {
+                // Prepare message object in the context.
+                // We use these empty objects to indicate
+                // pending data loading in the InboxVC.
+                // Nothing will change, if the message already
+                // exists in the context.
+                [Message loadFromJSON:nil customId:messageID context:context completionBlock:nil];
+
                 NSLog(@"Getting meta data for message: %@", messageID);
                 [self getMessageMetadata:messageID toContext:context];
             }
