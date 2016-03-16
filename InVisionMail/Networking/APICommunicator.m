@@ -82,7 +82,7 @@
         for (NSDictionary* message in messagesArray) {
             NSString* messageID = [message objectForKey:ID_KEY];
             
-            // Let's check if message this ID exist in the context and
+            // Let's check if message with this ID exist in the context and
             // if we have metadata downloaded
             Message* m = [Message withCustomId:messageID fromContext:context];
             BOOL messageNotExists = m == nil;

@@ -52,6 +52,9 @@
 		A5B9C3BF1C99F04800C976D4 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5850C251C94707700527CD8 /* AFNetworking.framework */; };
 		A5B9C3C01C99F04C00C976D4 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5B9C3571C9494DF00C976D4 /* GoogleSignIn.bundle */; };
 		A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3C31C99F87A00C976D4 /* TestingAppDelegate.m */; };
+		A5B9C3C81C9A06EC00C976D4 /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */; };
+		A5B9C3CA1C9A06FC00C976D4 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */; };
+		A5B9C3CC1C9A079100C976D4 /* MessageListCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +156,10 @@
 		A5B9C3C11C99F6F400C976D4 /* Segues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Segues.h; path = ../Helpers/Segues.h; sourceTree = "<group>"; };
 		A5B9C3C21C99F87A00C976D4 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestingAppDelegate.h; path = InVisionMail/TestingAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		A5B9C3C31C99F87A00C976D4 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestingAppDelegate.m; path = InVisionMail/TestingAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		A5B9C3C61C9A06EC00C976D4 /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCell.h; sourceTree = "<group>"; };
+		A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCell.m; sourceTree = "<group>"; };
+		A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
+		A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCellTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +333,9 @@
 		A5B9C3751C95FD7800C976D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3C61C9A06EC00C976D4 /* MessageListCell.h */,
+				A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */,
+				A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,6 +405,7 @@
 		A5B9C3C51C9A05C300C976D4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -486,6 +497,7 @@
 				A5850BFD1C94689C00527CD8 /* LaunchScreen.storyboard in Resources */,
 				A590EBA71C95847600CB28AF /* cartfile in Resources */,
 				A5B9C36C1C94976100C976D4 /* GoogleService-Info.plist in Resources */,
+				A5B9C3CA1C9A06FC00C976D4 /* MessageListCell.xib in Resources */,
 				A5850BFA1C94689C00527CD8 /* Assets.xcassets in Resources */,
 				A5850BF81C94689C00527CD8 /* Main.storyboard in Resources */,
 			);
@@ -508,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */,
+				A5B9C3C81C9A06EC00C976D4 /* MessageListCell.m in Sources */,
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
 				A5B9C38A1C96164400C976D4 /* Message.m in Sources */,
 				A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */,
@@ -536,6 +549,7 @@
 				A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */,
 				A5B9C3811C960D0D00C976D4 /* InboxVCTests.m in Sources */,
 				A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */,
+				A5B9C3CC1C9A079100C976D4 /* MessageListCellTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
