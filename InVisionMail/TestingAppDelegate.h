@@ -6,8 +6,9 @@
 //  Copyright © 2016 Vojta Stavik. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface TestingAppDelegate : NSObject
+// AppDelegate used while running unit tests
+@interface TestingAppDelegate : UIResponder <UIApplicationDelegate>
 
 @end

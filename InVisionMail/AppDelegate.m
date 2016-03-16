@@ -20,7 +20,6 @@
 
     NSString* googleClientID = [googleServicePlist valueForKey:@"CLIENT_ID"];
     [GIDSignIn sharedInstance].clientID = googleClientID;
-    NSLog(@"%@", googleClientID);
 
     return YES;
 }
@@ -32,7 +31,7 @@
 }
 
 - (void) applicationWillEnterForeground:(UIApplication *)application {
-    [[GIDSignIn sharedInstance] signOut];
+    [[GIDSignIn sharedInstance] signOut]; // for testing purposes
 }
 
 @end

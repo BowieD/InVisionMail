@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import <Kiwi/Kiwi.h>
 #import "InboxVC.h"
+#import "APICommunicator.h"
+#import "TestCoreDataStack.h"
 
 @interface InboxVC (Private)
 @property (nonatomic, weak) UITableView* tableView;
@@ -19,10 +21,17 @@ SPEC_BEGIN(InboxVCTests)
 
 describe(@"InboxVC", ^{
     __block InboxVC* inboxVC;
+    __block CoreDataStack* testCoreDataStack;
     
     beforeEach(^{
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         inboxVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"InboxVC"];
+        
+        // Set dependencies
+        testCoreDataStack = [TestCoreDataStack new];
+        inboxVC.context = testCoreDataStack.mainContext;
+        inboxVC.communicator = [APICommunicator mock];
+        
         UIView* view __unused = inboxVC.view; // load view
     });
     
@@ -32,6 +41,11 @@ describe(@"InboxVC", ^{
     
     it(@"should have table view initialized", ^{
         [inboxVC.tableView shouldNotBeNil];
+    });
+    
+    it(@"should ask APICommunicator to update inbox messages when view appears", ^{
+        [[inboxVC.communicator should] receive:@selector(getMyMessagesToContext:)];
+        [inboxVC beginAppearanceTransition:YES animated:NO];
     });
 });
 

@@ -6,8 +6,6 @@
 //  Copyright © 2016 Vojta Stavik. All rights reserved.
 //
 
-#ifndef Segues_h
-#define Segues_h
+#import <Foundation/Foundation.h>
 
-
-#endif /* Segues_h */
+static NSString* const SHOW_INBOX = @"ShowInboxSegue";

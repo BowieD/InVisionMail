@@ -84,8 +84,9 @@
             
             // Let's check if message this ID exist in the context and
             // if we have metadata downloaded
-            BOOL messageNotExists = [Message withCustomId:messageID fromContext:context] == nil;
-            BOOL messageWithoutMetadata = [Message withCustomId:messageID fromContext:context].historyId == nil;
+            Message* m = [Message withCustomId:messageID fromContext:context];
+            BOOL messageNotExists = m == nil;
+            BOOL messageWithoutMetadata = m.historyId == nil && m.snippet == nil && m.timestamp == 0;
             
             if (messageNotExists || messageWithoutMetadata) {
                 // Prepare message object in the context.

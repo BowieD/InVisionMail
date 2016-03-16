@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A5850BEF1C94689C00527CD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5850BEE1C94689C00527CD8 /* main.m */; };
 		A5850BF21C94689C00527CD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5850BF11C94689C00527CD8 /* AppDelegate.m */; };
-		A5850BF51C94689C00527CD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5850BF41C94689C00527CD8 /* ViewController.m */; };
+		A5850BF51C94689C00527CD8 /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5850BF41C94689C00527CD8 /* SignInVC.m */; };
 		A5850BF81C94689C00527CD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5850BF61C94689C00527CD8 /* Main.storyboard */; };
 		A5850BFA1C94689C00527CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5850BF91C94689C00527CD8 /* Assets.xcassets */; };
 		A5850BFD1C94689C00527CD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5850BFB1C94689C00527CD8 /* LaunchScreen.storyboard */; };
@@ -42,6 +42,16 @@
 		A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3AF1C9756B000C976D4 /* NetworkCommunicatorTests.m */; };
 		A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3B11C9759AD00C976D4 /* APICommunicatorTests.m */; };
 		A5B9C3B41C97641D00C976D4 /* Kiwi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A590EBA81C9585C700CB28AF /* Kiwi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5B9C3B61C99EEA300C976D4 /* SignInVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3B51C99EEA300C976D4 /* SignInVCTests.m */; };
+		A5B9C3B91C99EF6600C976D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5B9C3561C9494DF00C976D4 /* GoogleService-Info.plist */; };
+		A5B9C3BA1C99F04800C976D4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B9C36A1C9496B300C976D4 /* SystemConfiguration.framework */; };
+		A5B9C3BB1C99F04800C976D4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B9C3681C9496AD00C976D4 /* StoreKit.framework */; };
+		A5B9C3BC1C99F04800C976D4 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B9C3661C9496A700C976D4 /* SafariServices.framework */; };
+		A5B9C3BD1C99F04800C976D4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B9C3641C9496A200C976D4 /* AddressBook.framework */; };
+		A5B9C3BE1C99F04800C976D4 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B9C3531C9494C000C976D4 /* GoogleSignIn.framework */; };
+		A5B9C3BF1C99F04800C976D4 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5850C251C94707700527CD8 /* AFNetworking.framework */; };
+		A5B9C3C01C99F04C00C976D4 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5B9C3571C9494DF00C976D4 /* GoogleSignIn.bundle */; };
+		A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3C31C99F87A00C976D4 /* TestingAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,8 +102,8 @@
 		A5850BEE1C94689C00527CD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5850BF01C94689C00527CD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A5850BF11C94689C00527CD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A5850BF31C94689C00527CD8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A5850BF41C94689C00527CD8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A5850BF31C94689C00527CD8 /* SignInVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
+		A5850BF41C94689C00527CD8 /* SignInVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
 		A5850BF71C94689C00527CD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5850BF91C94689C00527CD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5850BFC1C94689C00527CD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,6 +149,10 @@
 		A5B9C3AD1C974FDC00C976D4 /* GmailAPISpecification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GmailAPISpecification.h; sourceTree = "<group>"; };
 		A5B9C3AF1C9756B000C976D4 /* NetworkCommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkCommunicatorTests.m; sourceTree = "<group>"; };
 		A5B9C3B11C9759AD00C976D4 /* APICommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APICommunicatorTests.m; sourceTree = "<group>"; };
+		A5B9C3B51C99EEA300C976D4 /* SignInVCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVCTests.m; sourceTree = "<group>"; };
+		A5B9C3C11C99F6F400C976D4 /* Segues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Segues.h; path = ../Helpers/Segues.h; sourceTree = "<group>"; };
+		A5B9C3C21C99F87A00C976D4 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestingAppDelegate.h; path = InVisionMail/TestingAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		A5B9C3C31C99F87A00C976D4 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestingAppDelegate.m; path = InVisionMail/TestingAppDelegate.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +173,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B9C3BD1C99F04800C976D4 /* AddressBook.framework in Frameworks */,
+				A5B9C3BE1C99F04800C976D4 /* GoogleSignIn.framework in Frameworks */,
+				A5B9C3BF1C99F04800C976D4 /* AFNetworking.framework in Frameworks */,
+				A5B9C3BB1C99F04800C976D4 /* StoreKit.framework in Frameworks */,
+				A5B9C3BA1C99F04800C976D4 /* SystemConfiguration.framework in Frameworks */,
+				A5B9C3BC1C99F04800C976D4 /* SafariServices.framework in Frameworks */,
 				A590EBAB1C9585CF00CB28AF /* Kiwi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,10 +214,6 @@
 				A5B9C3731C95FD7800C976D4 /* Networking */,
 				A5B9C3741C95FD7800C976D4 /* Services */,
 				A5B9C3751C95FD7800C976D4 /* Views */,
-				A5850BF01C94689C00527CD8 /* AppDelegate.h */,
-				A5850BF11C94689C00527CD8 /* AppDelegate.m */,
-				A5850BF31C94689C00527CD8 /* ViewController.h */,
-				A5850BF41C94689C00527CD8 /* ViewController.m */,
 				A5850BF61C94689C00527CD8 /* Main.storyboard */,
 				A5850BF91C94689C00527CD8 /* Assets.xcassets */,
 				A5850BFB1C94689C00527CD8 /* LaunchScreen.storyboard */,
@@ -211,6 +227,10 @@
 		A5850BED1C94689C00527CD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A5850BF01C94689C00527CD8 /* AppDelegate.h */,
+				A5850BF11C94689C00527CD8 /* AppDelegate.m */,
+				A5B9C3C21C99F87A00C976D4 /* TestingAppDelegate.h */,
+				A5B9C3C31C99F87A00C976D4 /* TestingAppDelegate.m */,
 				A590EBA61C95847600CB28AF /* cartfile */,
 				A5850BEE1C94689C00527CD8 /* main.m */,
 			);
@@ -220,6 +240,7 @@
 		A5850C061C94689C00527CD8 /* InVisionMailTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3C51C9A05C300C976D4 /* View */,
 				A5B9C3A11C973F0600C976D4 /* AppStateTests.m */,
 				A5B9C3991C961F9100C976D4 /* Mocks */,
 				A5B9C3961C961C0C00C976D4 /* Helpers */,
@@ -252,6 +273,9 @@
 		A5B9C3701C95FD7800C976D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3C11C99F6F400C976D4 /* Segues.h */,
+				A5850BF31C94689C00527CD8 /* SignInVC.h */,
+				A5850BF41C94689C00527CD8 /* SignInVC.m */,
 				A5B9C3821C960E0400C976D4 /* InboxVC.h */,
 				A5B9C3831C960E0400C976D4 /* InboxVC.m */,
 			);
@@ -318,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				A5B9C3801C960D0D00C976D4 /* InboxVCTests.m */,
+				A5B9C3B51C99EEA300C976D4 /* SignInVCTests.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +390,13 @@
 				A5B9C3B11C9759AD00C976D4 /* APICommunicatorTests.m */,
 			);
 			name = Netwroking;
+			sourceTree = "<group>";
+		};
+		A5B9C3C51C9A05C300C976D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +495,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B9C3C01C99F04C00C976D4 /* GoogleSignIn.bundle in Resources */,
+				A5B9C3B91C99EF6600C976D4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,10 +507,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */,
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
 				A5B9C38A1C96164400C976D4 /* Message.m in Sources */,
 				A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */,
-				A5850BF51C94689C00527CD8 /* ViewController.m in Sources */,
+				A5850BF51C94689C00527CD8 /* SignInVC.m in Sources */,
 				A5850BF21C94689C00527CD8 /* AppDelegate.m in Sources */,
 				A5B9C3951C961B5E00C976D4 /* NSManagedObject+Helpers.m in Sources */,
 				A5B9C37E1C96033100C976D4 /* InVisionMail.xcdatamodeld in Sources */,
@@ -492,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B9C3B61C99EEA300C976D4 /* SignInVCTests.m in Sources */,
 				A5B9C3871C96125700C976D4 /* MessageTests.m in Sources */,
 				A5B9C3781C95FEEF00C976D4 /* CoreDataStackTests.m in Sources */,
 				A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */,
@@ -669,6 +705,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/InVisionMail",
 				);
 				INFOPLIST_FILE = InVisionMailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -688,6 +725,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/InVisionMail",
 				);
 				INFOPLIST_FILE = InVisionMailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

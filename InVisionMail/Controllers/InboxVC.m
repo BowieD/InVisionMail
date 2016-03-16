@@ -9,31 +9,43 @@
 #import "InboxVC.h"
 
 @interface InboxVC ()
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @end
 
 @implementation InboxVC
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Life cycle
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.communicator getMyMessagesToContext:self.context];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Dependencies
+
+- (APICommunicator *) communicator {
+    if (_communicator) {
+        // Dependency not set, use default communicator
+        _communicator = [APICommunicator sharedCommunicator];
+    }
+    return _communicator;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSManagedObjectContext *) context {
+    if (_context) {
+        // Dependency not set, use default context
+        _context = [CoreDataStack sharedInstance].mainContext;
+    }
+    return _context;
 }
-*/
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Setters & Getters
+
+
 
 @end

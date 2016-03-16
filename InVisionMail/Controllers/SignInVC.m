@@ -1,34 +1,40 @@
 //
-//  ViewController.m
+//  SignInVC.m
 //  InVisionMail
 //
 //  Created by Vojta Stavik on 12/03/16.
 //  Copyright © 2016 Vojta Stavik. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SignInVC.h"
 #import "APICommunicator.h"
+#import "GmailAPISpecification.h"
+#import "Segues.h"
 
-@interface ViewController ()
+@interface SignInVC ()
 @property (weak, nonatomic) IBOutlet GIDSignInButton *signInButton;
-@property (nonatomic, strong) AFHTTPSessionManager* manager;
 @end
 
-@implementation ViewController
+@implementation SignInVC
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [GIDSignIn sharedInstance].delegate = self;
     [GIDSignIn sharedInstance].uiDelegate = self;
-    [GIDSignIn sharedInstance].scopes = @[@"https://www.googleapis.com/auth/gmail.readonly"];
-    
-    self.manager = [AFHTTPSessionManager manager];
+    [GIDSignIn sharedInstance].scopes = @[GMAIL_READONLY_SCOPE];
 }
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - GoogleSignIn delegate
 
 - (void) signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
     if (user != nil && error == nil) {
         NSLog(@"User token: %@", user.authentication.accessToken);
-//        [[APICommunicator sharedCommunicator] getMyMessages];
+        [self performSegueWithIdentifier:SHOW_INBOX sender:self];
     }
 }
 

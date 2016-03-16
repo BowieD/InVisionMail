@@ -7,33 +7,43 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <Kiwi/Kiwi.h>
+#import "SignInVC.h"
+#import "InboxVC.h"
 
-@interface SignInVCTests : XCTestCase
+SPEC_BEGIN(SignInVCTests)
 
-@end
+describe(@"SignIn controller", ^{
+    __block SignInVC* signInVC;
+    
+    beforeEach(^{
+        UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        signInVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"SignInVC"];
+        UIView* view __unused = signInVC.view; // load view
+    });
+    
+//    it(@"should be embeded in NavigationController", ^{
+//        UINavigationController* v = signInVC.navigationController;
+//        [[signInVC.navigationController shouldNot] beNil];
+//    });
+    
+    it(@"shoud show InboxVC when SignIn is successfull", ^{
+        __block UIViewController* destinationVC = nil;
+        [signInVC stub:@selector(prepareForSegue:sender:) withBlock:^id(NSArray *params) {
+            UIStoryboardSegue* segue = (UIStoryboardSegue*)params[0];
+            destinationVC = segue.destinationViewController;
+            return nil; // because of compiler
+        }];
+        
+        GIDGoogleUser* mockUser = [GIDGoogleUser mock];
+        GIDGoogleUser* mockAuthenticaton = [GIDGoogleUser mock];
+        [mockUser stub:@selector(authentication) andReturn:mockAuthenticaton];
+        [mockAuthenticaton stub:@selector(accessToken) andReturn:@"LukeAndLeia"];
+        
+        [signInVC signIn:nil didSignInForUser:mockUser withError:nil];
+        
+        [[expectFutureValue(theValue([destinationVC isKindOfClass:[InboxVC class]])) shouldEventually] beTrue];
+    });
+});
 
-@implementation SignInVCTests
-
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
-
-@end
+SPEC_END
