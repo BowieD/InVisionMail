@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 #import <Kiwi/Kiwi.h>
 #import "MessageListCell.h"
-#import "CellFactoryTableView.h"
 
 SPEC_BEGIN(MessageListCellTests)
 
@@ -75,15 +74,15 @@ describe(@"MessageListCell", ^{
     });
 
     
-    describe(@"unread icon", ^{
-        __block UIImageView* icon;
+    describe(@"unread mark", ^{
+        __block UIView* mark;
         
         beforeEach(^{
-            icon = cell.unreadIcon;
+            mark = cell.unreadMark;
         });
         
         it(@"should exist", ^{
-            [[icon shouldNot] beNil];
+            [[mark shouldNot] beNil];
         });
     });
 
@@ -97,6 +96,21 @@ describe(@"MessageListCell", ^{
         it(@"should exist", ^{
             [[icon shouldNot] beNil];
         });
+
+        it(@"should shave 'attachment' icon image", ^{
+            UIImage* image = icon.image;
+            [[image should] equal:[UIImage imageNamed:@"attachment"]];
+        });
+    });
+    
+    it(@"should reset all outlets to the default state when prepareForReuse is called", ^{
+        [cell prepareForReuse];
+        
+        [[cell.nameLabel.text should] beNil];
+        [[cell.subjectLabel.text should] beNil];
+        [[cell.timestampLabel.text should] beNil];
+        [[theValue(cell.unreadMark.hidden) should] beYes];
+        [[theValue(cell.attachmentIcon.hidden) should] beYes];
     });
 });
 

@@ -45,8 +45,6 @@
         NSString* timestampString = (NSString *)timestamp;
         self.timestamp = timestampString.doubleValue;
     }
-    
-    NSLog(jsonData.description);
 }
 
 @end

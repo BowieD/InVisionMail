@@ -7,15 +7,23 @@
 //
 
 #import "InboxVC.h"
+#import "InboxTableViewDataSource.h"
 
-@interface InboxVC ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface InboxVC () <UITableViewDelegate>
+@property (nonatomic, weak) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) InboxTableViewDataSource* dataSource;
 @end
 
 @implementation InboxVC
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Life cycle
+
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    self.dataSource = [[InboxTableViewDataSource alloc] initWithTableView:self.tableView context:self.context];
+    self.tableView.delegate = self;
+}
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -27,7 +35,7 @@
 #pragma mark - Dependencies
 
 - (APICommunicator *) communicator {
-    if (_communicator) {
+    if (_communicator == nil) {
         // Dependency not set, use default communicator
         _communicator = [APICommunicator sharedCommunicator];
     }
@@ -35,7 +43,7 @@
 }
 
 - (NSManagedObjectContext *) context {
-    if (_context) {
+    if (_context == nil) {
         // Dependency not set, use default context
         _context = [CoreDataStack sharedInstance].mainContext;
     }
@@ -44,7 +52,11 @@
 
 
 // ------------  ------------  ------------  ------------  ------------  ------------
-#pragma mark - Setters & Getters
+#pragma mark - TableView delegate
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
 
 
 

@@ -12,9 +12,13 @@
 #import "InboxVC.h"
 #import "APICommunicator.h"
 #import "TestCoreDataStack.h"
+#import "InboxTableViewDataSource.h"
 
+// Expose private properties and functions needed for testing
 @interface InboxVC (Private)
 @property (nonatomic, weak) UITableView* tableView;
+@property (nonatomic, strong) InboxTableViewDataSource* dataSource;
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 SPEC_BEGIN(InboxVCTests)
@@ -46,6 +50,18 @@ describe(@"InboxVC", ^{
     it(@"should ask APICommunicator to update inbox messages when view appears", ^{
         [[inboxVC.communicator should] receive:@selector(getMyMessagesToContext:)];
         [inboxVC beginAppearanceTransition:YES animated:NO];
+    });
+    
+    describe(@"tableView", ^{
+        it(@"should have InboxTableViewDatasource as a datasource", ^{
+            [[inboxVC.dataSource should] beIdenticalTo:inboxVC.tableView.dataSource];
+        });
+        
+        it(@"should have row hight 100", ^{
+            [[inboxVC should] beIdenticalTo:inboxVC.tableView.delegate];
+            CGFloat height = [inboxVC tableView:inboxVC.tableView heightForRowAtIndexPath:[NSIndexPath new]];
+            [[theValue(height) should] equal:theValue(100)];
+        });
     });
 });
 

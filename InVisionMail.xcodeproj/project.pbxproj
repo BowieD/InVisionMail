@@ -55,6 +55,13 @@
 		A5B9C3C81C9A06EC00C976D4 /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */; };
 		A5B9C3CA1C9A06FC00C976D4 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */; };
 		A5B9C3CC1C9A079100C976D4 /* MessageListCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */; };
+		A5B9C3D31C9B383200C976D4 /* InboxTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3D21C9B383200C976D4 /* InboxTableViewDataSource.m */; };
+		A5B9C3D51C9B384600C976D4 /* InboxTableViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3D41C9B384600C976D4 /* InboxTableViewDataSourceTests.m */; };
+		A5B9C3D71C9B4C3C00C976D4 /* UITableViewCell+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3D61C9B4C3C00C976D4 /* UITableViewCell+Helpers.m */; };
+		A5B9C3DA1C9B4C5700C976D4 /* UITableViewCell+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3D91C9B4C5700C976D4 /* UITableViewCell+Helpers.m */; };
+		A5B9C3DD1C9B4CBA00C976D4 /* DummyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3DC1C9B4CBA00C976D4 /* DummyCell.m */; };
+		A5B9C3DF1C9B4E3A00C976D4 /* DummyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5B9C3DE1C9B4E3A00C976D4 /* DummyCell.xib */; };
+		A5B9C3E21C9B538800C976D4 /* Message+MessageListCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3E11C9B538800C976D4 /* Message+MessageListCellDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +167,17 @@
 		A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCell.m; sourceTree = "<group>"; };
 		A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
 		A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCellTests.m; sourceTree = "<group>"; };
+		A5B9C3D11C9B383200C976D4 /* InboxTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxTableViewDataSource.h; sourceTree = "<group>"; };
+		A5B9C3D21C9B383200C976D4 /* InboxTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxTableViewDataSource.m; sourceTree = "<group>"; };
+		A5B9C3D41C9B384600C976D4 /* InboxTableViewDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxTableViewDataSourceTests.m; sourceTree = "<group>"; };
+		A5B9C3D61C9B4C3C00C976D4 /* UITableViewCell+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Helpers.m"; sourceTree = "<group>"; };
+		A5B9C3D81C9B4C5700C976D4 /* UITableViewCell+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Helpers.h"; sourceTree = "<group>"; };
+		A5B9C3D91C9B4C5700C976D4 /* UITableViewCell+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Helpers.m"; sourceTree = "<group>"; };
+		A5B9C3DB1C9B4CBA00C976D4 /* DummyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyCell.h; sourceTree = "<group>"; };
+		A5B9C3DC1C9B4CBA00C976D4 /* DummyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyCell.m; sourceTree = "<group>"; };
+		A5B9C3DE1C9B4E3A00C976D4 /* DummyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyCell.xib; sourceTree = "<group>"; };
+		A5B9C3E01C9B538800C976D4 /* Message+MessageListCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+MessageListCellDataSource.h"; sourceTree = "<group>"; };
+		A5B9C3E11C9B538800C976D4 /* Message+MessageListCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+MessageListCellDataSource.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +232,7 @@
 		A5850BEC1C94689C00527CD8 /* InVisionMail */ = {
 			isa = PBXGroup;
 			children = (
+				A5850BF91C94689C00527CD8 /* Assets.xcassets */,
 				A5B9C3A31C97429700C976D4 /* AppState */,
 				A5B9C3701C95FD7800C976D4 /* Controllers */,
 				A5B9C3711C95FD7800C976D4 /* Helpers */,
@@ -222,7 +241,6 @@
 				A5B9C3741C95FD7800C976D4 /* Services */,
 				A5B9C3751C95FD7800C976D4 /* Views */,
 				A5850BF61C94689C00527CD8 /* Main.storyboard */,
-				A5850BF91C94689C00527CD8 /* Assets.xcassets */,
 				A5850BFB1C94689C00527CD8 /* LaunchScreen.storyboard */,
 				A5850BFE1C94689C00527CD8 /* Info.plist */,
 				A5850BED1C94689C00527CD8 /* Supporting Files */,
@@ -280,11 +298,10 @@
 		A5B9C3701C95FD7800C976D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5B9C3D01C9B380600C976D4 /* Inbox */,
 				A5B9C3C11C99F6F400C976D4 /* Segues.h */,
 				A5850BF31C94689C00527CD8 /* SignInVC.h */,
 				A5850BF41C94689C00527CD8 /* SignInVC.m */,
-				A5B9C3821C960E0400C976D4 /* InboxVC.h */,
-				A5B9C3831C960E0400C976D4 /* InboxVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -294,6 +311,8 @@
 			children = (
 				A5B9C3931C961B5E00C976D4 /* NSManagedObject+Helpers.h */,
 				A5B9C3941C961B5E00C976D4 /* NSManagedObject+Helpers.m */,
+				A5B9C3D81C9B4C5700C976D4 /* UITableViewCell+Helpers.h */,
+				A5B9C3D91C9B4C5700C976D4 /* UITableViewCell+Helpers.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,6 +324,7 @@
 				A5B9C3911C9617C900C976D4 /* JSONLoadable.h */,
 				A5B9C3881C96164400C976D4 /* Message.h */,
 				A5B9C3891C96164400C976D4 /* Message.m */,
+				A5B9C3E31C9B53AD00C976D4 /* ViewModels (pseudo) */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,6 +373,7 @@
 			children = (
 				A5B9C3801C960D0D00C976D4 /* InboxVCTests.m */,
 				A5B9C3B51C99EEA300C976D4 /* SignInVCTests.m */,
+				A5B9C3D41C9B384600C976D4 /* InboxTableViewDataSourceTests.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -369,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				A5B9C3971C961C2D00C976D4 /* CoreDataHelpersTests.m */,
+				A5B9C3D61C9B4C3C00C976D4 /* UITableViewCell+Helpers.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -378,6 +400,9 @@
 			children = (
 				A5B9C39A1C961FD400C976D4 /* TestCoreDataStack.h */,
 				A5B9C39B1C961FD400C976D4 /* TestCoreDataStack.m */,
+				A5B9C3DB1C9B4CBA00C976D4 /* DummyCell.h */,
+				A5B9C3DC1C9B4CBA00C976D4 /* DummyCell.m */,
+				A5B9C3DE1C9B4E3A00C976D4 /* DummyCell.xib */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -408,6 +433,26 @@
 				A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		A5B9C3D01C9B380600C976D4 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3821C960E0400C976D4 /* InboxVC.h */,
+				A5B9C3831C960E0400C976D4 /* InboxVC.m */,
+				A5B9C3D11C9B383200C976D4 /* InboxTableViewDataSource.h */,
+				A5B9C3D21C9B383200C976D4 /* InboxTableViewDataSource.m */,
+			);
+			name = Inbox;
+			sourceTree = "<group>";
+		};
+		A5B9C3E31C9B53AD00C976D4 /* ViewModels (pseudo) */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3E01C9B538800C976D4 /* Message+MessageListCellDataSource.h */,
+				A5B9C3E11C9B538800C976D4 /* Message+MessageListCellDataSource.m */,
+			);
+			name = "ViewModels (pseudo)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +554,7 @@
 			files = (
 				A5B9C3C01C99F04C00C976D4 /* GoogleSignIn.bundle in Resources */,
 				A5B9C3B91C99EF6600C976D4 /* GoogleService-Info.plist in Resources */,
+				A5B9C3DF1C9B4E3A00C976D4 /* DummyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,8 +566,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */,
+				A5B9C3E21C9B538800C976D4 /* Message+MessageListCellDataSource.m in Sources */,
 				A5B9C3C81C9A06EC00C976D4 /* MessageListCell.m in Sources */,
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
+				A5B9C3DA1C9B4C5700C976D4 /* UITableViewCell+Helpers.m in Sources */,
 				A5B9C38A1C96164400C976D4 /* Message.m in Sources */,
 				A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */,
 				A5850BF51C94689C00527CD8 /* SignInVC.m in Sources */,
@@ -533,6 +581,7 @@
 				A5B9C3841C960E0400C976D4 /* InboxVC.m in Sources */,
 				A5B9C36F1C94B97300C976D4 /* APICommunicator.m in Sources */,
 				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
+				A5B9C3D31C9B383200C976D4 /* InboxTableViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,7 +591,10 @@
 			files = (
 				A5B9C3B61C99EEA300C976D4 /* SignInVCTests.m in Sources */,
 				A5B9C3871C96125700C976D4 /* MessageTests.m in Sources */,
+				A5B9C3DD1C9B4CBA00C976D4 /* DummyCell.m in Sources */,
 				A5B9C3781C95FEEF00C976D4 /* CoreDataStackTests.m in Sources */,
+				A5B9C3D71C9B4C3C00C976D4 /* UITableViewCell+Helpers.m in Sources */,
+				A5B9C3D51C9B384600C976D4 /* InboxTableViewDataSourceTests.m in Sources */,
 				A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */,
 				A5B9C39C1C961FD400C976D4 /* TestCoreDataStack.m in Sources */,
 				A5B9C3A21C973F0600C976D4 /* AppStateTests.m in Sources */,
