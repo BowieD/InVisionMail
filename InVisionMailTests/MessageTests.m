@@ -25,17 +25,33 @@ describe(@"Message", ^{
     
     it(@"should load all data from JSON", ^{
         NSDictionary* json = @{
-                               @"internalDate": @"1234",
-                               @"threadId": @"EpisodeIV",
-                               @"historyId": @"1997",
-                               @"snippet": @"When 900 years old, you reach… Look as good, you will not."
-                               };
+           @"internalDate": @"1234",
+           @"threadId": @"EpisodeIV",
+           @"historyId": @"1997",
+           @"snippet": @"Don't you call me a mindless philosopher you overweight glob of grease!",
+           @"payload": @{
+                   @"headers":
+                      @[
+                          @{
+                            @"name": @"Subject",
+                            @"value": @"He’s holding a thermal detonator!"
+                            },
+                           @{
+                           @"name": @"From",
+                           @"value": @"C-3PO"
+                           }
+                      ]
+                   }
+           };
+        
         [message loadData:json];
         
         [[theValue(message.timestamp) should] equal:theValue(1234)];
         [[message.threadId should] equal:@"EpisodeIV"];
         [[message.historyId should] equal:@"1997"];
-        [[message.snippet should] equal:@"When 900 years old, you reach… Look as good, you will not."];
+        [[message.snippet should] equal:@"Don't you call me a mindless philosopher you overweight glob of grease!"];
+        [[message.subject should] equal:@"He’s holding a thermal detonator!"];
+        [[message.sender should] equal:@"C-3PO"];
     });
 });
 

@@ -14,8 +14,10 @@
 @property (nonatomic) NSTimeInterval timestamp;
 
 @property (nullable, nonatomic, copy) NSString *customId;
-@property (nullable, nonatomic, retain) NSString *threadId;
-@property (nullable, nonatomic, retain) NSString *historyId;
-@property (nullable, nonatomic, retain) NSString *snippet;
+@property (nullable, nonatomic, copy) NSString *threadId;
+@property (nullable, nonatomic, copy) NSString *historyId;
+@property (nullable, nonatomic, copy) NSString *snippet;
+@property (nullable, nonatomic, copy) NSString *subject;
+@property (nullable, nonatomic, copy) NSString *sender;
 
 @end

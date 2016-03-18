@@ -16,6 +16,8 @@
 @dynamic threadId;
 @dynamic historyId;
 @dynamic snippet;
+@dynamic subject;
+@dynamic sender;
 
 - (void) loadData: (NSDictionary *)jsonData {
     
@@ -24,6 +26,12 @@
     static NSString* const SNIPPET_KEY      = @"snippet";
     static NSString* const TIMESTAMP_KEY    = @"internalDate";
     static NSString* const HISTORY_ID_KEY   = @"historyId";
+    static NSString* const PAYLOAD_KEY      = @"payload";
+    static NSString* const HEADERS_KEY      = @"headers";
+    static NSString* const HEADER_NAME_KEY  = @"name";
+    static NSString* const HEADER_VALUE_KEY = @"value";
+    static NSString* const FROM_KEY         = @"From";
+    static NSString* const SUBJECT_KEY      = @"Subject";
     
     id threadId = [jsonData objectForKey:THREAD_ID_KEY];
     if ([threadId isKindOfClass:[NSString class]]) {
@@ -44,6 +52,38 @@
     if ([timestamp isKindOfClass:[NSString class]]) {
         NSString* timestampString = (NSString *)timestamp;
         self.timestamp = timestampString.doubleValue;
+    }
+    
+    id payload = [jsonData objectForKey:PAYLOAD_KEY];
+    if ([payload isKindOfClass:[NSDictionary class]]) {
+        NSArray* headersArray = [payload objectForKey:HEADERS_KEY];
+        if ([headersArray isKindOfClass:[NSArray class]]) {
+
+            // We have to iterate through headers and find the relevant ones
+            for (NSDictionary* headerDic in headersArray) {
+                if ([headerDic isKindOfClass:[NSDictionary class]]) {
+                    NSString* headerName = [headerDic valueForKey:HEADER_NAME_KEY];
+                    if ([headerName isKindOfClass:[NSString class]]) {
+
+                        // Sender info header
+                        if ([headerName isEqualToString:FROM_KEY]) {
+                            NSString* from = [headerDic objectForKey:HEADER_VALUE_KEY];
+                            if ([from isKindOfClass:[NSString class]]) {
+                                self.sender = from;
+                            }
+                        }
+                        
+                        // Subject info header
+                        if ([headerName isEqualToString:SUBJECT_KEY]) {
+                            NSString* subject = [headerDic objectForKey:HEADER_VALUE_KEY];
+                            if ([subject isKindOfClass:[NSString class]]) {
+                                self.subject = subject;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

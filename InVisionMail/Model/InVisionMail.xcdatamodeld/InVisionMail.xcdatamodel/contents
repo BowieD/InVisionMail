@@ -3,11 +3,13 @@
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="customId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="historyId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="snippet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="threadId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Message" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Message" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

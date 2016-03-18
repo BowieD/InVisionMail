@@ -7,15 +7,21 @@
 //
 
 #import "Message+MessageListCellDataSource.h"
+#import "NSString+RemoveSubstring.h"
 
 @implementation Message (MessageListCellDataSource)
 
 - (NSString*) name {
-    return @"Name unknown";
-}
-
-- (NSString*) subject {
-    return @"Subject unknown";
+    // Remove raw email address <email>
+    NSString* name = [self.sender removeSubstringBetweenStartString:@"<" andEndString:@">" includeBoundaries:YES];
+    
+    // Remove "
+    name = [name stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    
+    // Remove leading and trailing whitespace
+    name = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    return name;
 }
 
 - (NSString*) timestampString {

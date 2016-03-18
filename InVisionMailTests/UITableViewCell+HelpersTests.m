@@ -1,5 +1,5 @@
 //
-//  UITableViewCell+Helpers.m
+//  UITableViewCell+HelpersTests.m
 //  InVisionMail
 //
 //  Created by Vojta Stavik on 17/03/16.
