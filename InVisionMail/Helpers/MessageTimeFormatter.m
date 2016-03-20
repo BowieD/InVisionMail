@@ -16,8 +16,7 @@
 }
 
 + (NSString*) timestampStringForDate: (NSDate*)date referenceDate: (NSDate*)today timeZone:(NSTimeZone*) timeZone locale: (NSLocale*)locale {
-    NSLog(@"%@ %@", date.description, today.description);
-    
+
     if ([self datesAreTheSameDate:date date2:today timeZone:timeZone]) {
         // return time
         return [NSString stringWithFormat:@"%02ld:%02ld", (long)[date hoursForTimezone:timeZone], (long)[date minutesForTimezone:timeZone]];

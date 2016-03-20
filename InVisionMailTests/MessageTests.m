@@ -28,6 +28,7 @@ describe(@"Message", ^{
            @"internalDate": @"1234000",
            @"threadId": @"EpisodeIV",
            @"historyId": @"1997",
+           @"labelIds": @[@"UNREAD"],
            @"snippet": @"Don't you call me a mindless philosopher you overweight glob of grease!",
            @"payload": @{
                    @"headers":
@@ -52,6 +53,7 @@ describe(@"Message", ^{
         [[message.snippet should] equal:@"Don't you call me a mindless philosopher you overweight glob of grease!"];
         [[message.subject should] equal:@"He’s holding a thermal detonator!"];
         [[message.sender should] equal:@"C-3PO"];
+        [[theValue(message.unread) should] beTrue];
     });
 });
 

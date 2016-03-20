@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CoreDataStack.h"
 
 @interface AppDelegate ()
 
@@ -30,8 +31,9 @@
                                        annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
 }
 
-- (void) applicationWillEnterForeground:(UIApplication *)application {
-    [[GIDSignIn sharedInstance] signOut]; // for testing purposes
+- (void) applicationDidEnterBackground:(UIApplication *)application {
+    [[CoreDataStack sharedInstance].mainContext save:nil];
+    // TODO: error handling
 }
 
 @end

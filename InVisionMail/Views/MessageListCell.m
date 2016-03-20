@@ -25,6 +25,7 @@
     self.subjectLabel.text = dataSource.subject;
     self.timestampLabel.text = dataSource.timestampString;
     self.snippetLabel.text = dataSource.snippet;
+    self.unreadMark.hidden = NO == dataSource.unread;
 }
 
 @end

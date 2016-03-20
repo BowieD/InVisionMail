@@ -14,6 +14,7 @@
 - (NSString*) subject;
 - (NSString*) snippet;
 - (NSString*) timestampString;
+- (BOOL) unread;
 
 @end
 

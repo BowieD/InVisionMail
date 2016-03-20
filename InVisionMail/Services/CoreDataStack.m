@@ -53,6 +53,14 @@
                                                     URL:storeURL
                                                     options:nil
                                                     error:&error];
+
+//        NSPersistentStore *store = [self.mainContext.persistentStoreCoordinator
+//                                                    addPersistentStoreWithType:NSSQLiteStoreType
+//                                                    configuration:nil
+//                                                    URL:storeURL
+//                                                    options:nil
+//                                                    error:&error];
+
         NSAssert(store != nil, @"Error initializing PSC: %@\n%@", [error localizedDescription], [error userInfo]);
     });
 }

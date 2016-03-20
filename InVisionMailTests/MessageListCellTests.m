@@ -84,6 +84,19 @@ describe(@"MessageListCell", ^{
         it(@"should exist", ^{
             [[mark shouldNot] beNil];
         });
+        
+        it(@"should be visible when message is unread", ^{
+            NSObject<MessageListCellDataSource>* dataSource = [KWMock mockForProtocol:@protocol(MessageListCellDataSource)];
+            [dataSource stub:@selector(unread) andReturn:theValue(YES)];
+            [dataSource stub:@selector(name) andReturn:@"The Emperor"];
+            [dataSource stub:@selector(subject) andReturn:@"Return of the Jedi"];
+            [dataSource stub:@selector(snippet) andReturn:@"Now, young Skywalker… you will die."];
+            [dataSource stub:@selector(timestampString) andReturn:@"1977000"];
+            
+            [cell loadData:dataSource];
+            
+            [[theValue(mark.hidden) should] beFalse];
+        });
     });
 
     describe(@"attachment icon", ^{

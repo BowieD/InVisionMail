@@ -18,6 +18,7 @@
 @dynamic snippet;
 @dynamic subject;
 @dynamic sender;
+@dynamic unread;
 
 - (void) loadData: (NSDictionary *)jsonData {
     
@@ -32,6 +33,8 @@
     static NSString* const HEADER_VALUE_KEY = @"value";
     static NSString* const FROM_KEY         = @"From";
     static NSString* const SUBJECT_KEY      = @"Subject";
+    static NSString* const LABELS_KEY       = @"labelIds";
+    static NSString* const UNREAD_LABEL     = @"UNREAD";
     
     id threadId = [jsonData objectForKey:THREAD_ID_KEY];
     if ([threadId isKindOfClass:[NSString class]]) {
@@ -53,6 +56,16 @@
         NSString* timestampString = (NSString *)timestamp;
         self.timestamp = timestampString.doubleValue / 1000.f; // Google returns timestamp in miliseconds
     }
+
+    id labels = [jsonData objectForKey:LABELS_KEY];
+    if ([labels isKindOfClass:[NSArray class]]) {
+        for (NSString* label in (NSArray*)labels) {
+            if ([label isEqualToString:UNREAD_LABEL]) {
+                self.unread = YES;
+            }
+        }
+    }
+
     
     id payload = [jsonData objectForKey:PAYLOAD_KEY];
     if ([payload isKindOfClass:[NSDictionary class]]) {
