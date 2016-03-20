@@ -119,10 +119,10 @@
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary* jsonData = (NSDictionary*)responseObject;
             
-            NSLog(jsonData.description);
+//            NSLog(jsonData.description);
             
             [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:context completionBlock:^(NSManagedObject * _Nullable element) {
-                NSLog(@"New message saved to the context: %@", element.description);
+//                NSLog(@"New message saved to the context: %@", element.description);
             }];
         }
         

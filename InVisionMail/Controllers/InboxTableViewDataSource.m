@@ -60,7 +60,7 @@
 - (NSFetchedResultsController*) frc {
     if (_frc == nil && self.context != nil) {
         NSFetchRequest* request = [[NSFetchRequest alloc] initWithEntityName:[Message entityName]];
-        request.sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES] ];
+        request.sortDescriptors = @[ [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO] ];
         
         _frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
 
@@ -79,6 +79,7 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MessageListCell* cell = (MessageListCell*)[tableView dequeueReusableCellWithIdentifier:[MessageListCell reuseIdentifier] forIndexPath:indexPath];
     
+    Message* m = [self.frc objectAtIndexPath:indexPath];
     [cell loadData: [self.frc objectAtIndexPath:indexPath]];
     
     return cell;
@@ -99,7 +100,17 @@
     if (type == NSFetchedResultsChangeInsert && newIndexPath != nil) {
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+    
+    if (type == NSFetchedResultsChangeUpdate && newIndexPath == nil) {
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 
+    if (type == NSFetchedResultsChangeMove && indexPath != nil && newIndexPath != nil) {
+        // if cell is visible, update it
+        MessageListCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [cell loadData:anObject];
+        [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+    }
 }
 
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {

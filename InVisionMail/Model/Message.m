@@ -51,7 +51,7 @@
     id timestamp = [jsonData objectForKey:TIMESTAMP_KEY];
     if ([timestamp isKindOfClass:[NSString class]]) {
         NSString* timestampString = (NSString *)timestamp;
-        self.timestamp = timestampString.doubleValue;
+        self.timestamp = timestampString.doubleValue / 1000.f; // Google returns timestamp in miliseconds
     }
     
     id payload = [jsonData objectForKey:PAYLOAD_KEY];

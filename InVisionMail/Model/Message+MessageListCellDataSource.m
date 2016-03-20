@@ -8,6 +8,7 @@
 
 #import "Message+MessageListCellDataSource.h"
 #import "NSString+RemoveSubstring.h"
+#import "MessageTimeFormatter.h"
 
 @implementation Message (MessageListCellDataSource)
 
@@ -25,7 +26,13 @@
 }
 
 - (NSString*) timestampString {
-    return [NSString stringWithFormat:@"%.0f", self.timestamp];
+    return [self timestampStringWithTodaysDate:[NSDate date]];
+}
+
+- (NSString*) timestampStringWithTodaysDate: (NSDate*)date {
+    return [MessageTimeFormatter timestampStringForDate:[NSDate dateWithTimeIntervalSince1970:self.timestamp]
+                                          referenceDate:date
+                                               timeZone:[NSTimeZone localTimeZone]];
 }
 
 @end

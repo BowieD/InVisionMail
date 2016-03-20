@@ -55,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kEf-7v-5LN">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -65,11 +65,13 @@
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="BOL-gf-WKJ"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="JhF-lu-j7n"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="leading" secondItem="hTv-Q9-KYI" secondAttribute="leading" id="bpb-NB-xyu"/>
+                            <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="hTv-Q9-KYI" secondAttribute="top" id="cAU-Dw-nFa"/>
                             <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="kEf-7v-5LN" secondAttribute="bottom" id="gio-pN-Plo"/>
                             <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="kEf-7v-5LN" secondAttribute="bottom" id="qPJ-41-VMc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="BOL-gf-WKJ"/>
                                 <exclude reference="JhF-lu-j7n"/>
                                 <exclude reference="qPJ-41-VMc"/>
                             </mask>

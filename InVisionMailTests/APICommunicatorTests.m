@@ -194,7 +194,7 @@ describe(@"API Communicator", ^{
                 void (^success)(NSURLSessionDataTask*, id) = params[3];
                 NSDictionary* dummyData = @{
                                             @"id": @"BobaFett",
-                                            @"internalDate": @"1234",
+                                            @"internalDate": @"1234000",
                                             @"threadId": @"EpisodeIV",
                                             @"historyId": @"1997",
                                             @"snippet": @"When 900 years old, you reach… Look as good, you will not."

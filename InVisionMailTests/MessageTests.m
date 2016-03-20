@@ -25,7 +25,7 @@ describe(@"Message", ^{
     
     it(@"should load all data from JSON", ^{
         NSDictionary* json = @{
-           @"internalDate": @"1234",
+           @"internalDate": @"1234000",
            @"threadId": @"EpisodeIV",
            @"historyId": @"1997",
            @"snippet": @"Don't you call me a mindless philosopher you overweight glob of grease!",

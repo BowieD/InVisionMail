@@ -65,6 +65,10 @@
 		A5B9C3E51C9BD6B200C976D4 /* Message+MessageListCellDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3E41C9BD6B200C976D4 /* Message+MessageListCellDataSourceTests.m */; };
 		A5B9C3E81C9BD92D00C976D4 /* NSString+RemoveSubstring.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3E71C9BD92D00C976D4 /* NSString+RemoveSubstring.m */; };
 		A5B9C3EA1C9BD95400C976D4 /* NSString+RemoveSubstringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3E91C9BD95400C976D4 /* NSString+RemoveSubstringTests.m */; };
+		A5B9C3ED1C9DC58200C976D4 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3EC1C9DC58200C976D4 /* NSDate+Helpers.m */; };
+		A5B9C3EF1C9DC5FB00C976D4 /* NSDateHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3EE1C9DC5FB00C976D4 /* NSDateHelpersTests.m */; };
+		A5B9C3F21C9DCAAA00C976D4 /* MessageTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F11C9DCAAA00C976D4 /* MessageTimeFormatter.m */; };
+		A5B9C3F41C9DCB9C00C976D4 /* MessageTimeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F31C9DCB9C00C976D4 /* MessageTimeFormatterTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +189,12 @@
 		A5B9C3E61C9BD92D00C976D4 /* NSString+RemoveSubstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RemoveSubstring.h"; sourceTree = "<group>"; };
 		A5B9C3E71C9BD92D00C976D4 /* NSString+RemoveSubstring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RemoveSubstring.m"; sourceTree = "<group>"; };
 		A5B9C3E91C9BD95400C976D4 /* NSString+RemoveSubstringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RemoveSubstringTests.m"; sourceTree = "<group>"; };
+		A5B9C3EB1C9DC58200C976D4 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
+		A5B9C3EC1C9DC58200C976D4 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
+		A5B9C3EE1C9DC5FB00C976D4 /* NSDateHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateHelpersTests.m; sourceTree = "<group>"; };
+		A5B9C3F01C9DCAAA00C976D4 /* MessageTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTimeFormatter.h; sourceTree = "<group>"; };
+		A5B9C3F11C9DCAAA00C976D4 /* MessageTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTimeFormatter.m; sourceTree = "<group>"; };
+		A5B9C3F31C9DCB9C00C976D4 /* MessageTimeFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTimeFormatterTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +332,10 @@
 				A5B9C3D91C9B4C5700C976D4 /* UITableViewCell+Helpers.m */,
 				A5B9C3E61C9BD92D00C976D4 /* NSString+RemoveSubstring.h */,
 				A5B9C3E71C9BD92D00C976D4 /* NSString+RemoveSubstring.m */,
+				A5B9C3EB1C9DC58200C976D4 /* NSDate+Helpers.h */,
+				A5B9C3EC1C9DC58200C976D4 /* NSDate+Helpers.m */,
+				A5B9C3F01C9DCAAA00C976D4 /* MessageTimeFormatter.h */,
+				A5B9C3F11C9DCAAA00C976D4 /* MessageTimeFormatter.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -402,6 +416,8 @@
 				A5B9C3971C961C2D00C976D4 /* CoreDataHelpersTests.m */,
 				A5B9C3D61C9B4C3C00C976D4 /* UITableViewCell+HelpersTests.m */,
 				A5B9C3E91C9BD95400C976D4 /* NSString+RemoveSubstringTests.m */,
+				A5B9C3EE1C9DC5FB00C976D4 /* NSDateHelpersTests.m */,
+				A5B9C3F31C9DCB9C00C976D4 /* MessageTimeFormatterTests.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -579,6 +595,7 @@
 				A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */,
 				A5B9C3E81C9BD92D00C976D4 /* NSString+RemoveSubstring.m in Sources */,
 				A5B9C3E21C9B538800C976D4 /* Message+MessageListCellDataSource.m in Sources */,
+				A5B9C3ED1C9DC58200C976D4 /* NSDate+Helpers.m in Sources */,
 				A5B9C3C81C9A06EC00C976D4 /* MessageListCell.m in Sources */,
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
 				A5B9C3DA1C9B4C5700C976D4 /* UITableViewCell+Helpers.m in Sources */,
@@ -594,6 +611,7 @@
 				A5B9C36F1C94B97300C976D4 /* APICommunicator.m in Sources */,
 				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
 				A5B9C3D31C9B383200C976D4 /* InboxTableViewDataSource.m in Sources */,
+				A5B9C3F21C9DCAAA00C976D4 /* MessageTimeFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +623,7 @@
 				A5B9C3871C96125700C976D4 /* MessageTests.m in Sources */,
 				A5B9C3DD1C9B4CBA00C976D4 /* DummyCell.m in Sources */,
 				A5B9C3781C95FEEF00C976D4 /* CoreDataStackTests.m in Sources */,
+				A5B9C3EF1C9DC5FB00C976D4 /* NSDateHelpersTests.m in Sources */,
 				A5B9C3EA1C9BD95400C976D4 /* NSString+RemoveSubstringTests.m in Sources */,
 				A5B9C3D71C9B4C3C00C976D4 /* UITableViewCell+HelpersTests.m in Sources */,
 				A5B9C3D51C9B384600C976D4 /* InboxTableViewDataSourceTests.m in Sources */,
@@ -614,6 +633,7 @@
 				A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */,
 				A5B9C3E51C9BD6B200C976D4 /* Message+MessageListCellDataSourceTests.m in Sources */,
 				A5B9C3811C960D0D00C976D4 /* InboxVCTests.m in Sources */,
+				A5B9C3F41C9DCB9C00C976D4 /* MessageTimeFormatterTests.m in Sources */,
 				A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */,
 				A5B9C3CC1C9A079100C976D4 /* MessageListCellTests.m in Sources */,
 			);
