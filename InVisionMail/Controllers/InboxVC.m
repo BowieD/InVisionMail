@@ -37,6 +37,8 @@
 #pragma mark - Setup
 
 - (void) setupNavigationItems {
+    self.navigationItem.title = @"Inbox";
+    
     [self.navigationItem.leftBarButtonItem setTarget:self];
     [self.navigationItem.leftBarButtonItem setAction:@selector(hamburgerButtonPressed)];
 }

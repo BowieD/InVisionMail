@@ -21,13 +21,14 @@
 
 // Dependencies
 
-// We have to provide custom subclass of recognizer for testing. The original implementation
-// doesn't expose values we needed. It's almost imposible to test it properly.
+// We have to provide custom subclass of recognizers for testing. The original implementation
+// doesn't expose values we need. It's almost imposible to test it properly with it.
 @property (nonatomic, strong) Class _Nonnull TapGestureRecognizerClass;
+@property (nonatomic, strong) Class _Nonnull PanGestureRecognizerClass;
 
 @end
 
-// We create Cathegory for easy access to DrawerVC from child VCs
+// We create cathegory for easy access to DrawerVC from child VCs
 @interface UIViewController (DrawerAccess)
 
 - ( DrawerVC* _Nullable ) drawerVC;

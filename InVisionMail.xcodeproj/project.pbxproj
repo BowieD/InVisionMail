@@ -69,11 +69,13 @@
 		A5B9C3EF1C9DC5FB00C976D4 /* NSDateHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3EE1C9DC5FB00C976D4 /* NSDateHelpersTests.m */; };
 		A5B9C3F21C9DCAAA00C976D4 /* MessageTimeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F11C9DCAAA00C976D4 /* MessageTimeFormatter.m */; };
 		A5B9C3F41C9DCB9C00C976D4 /* MessageTimeFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F31C9DCB9C00C976D4 /* MessageTimeFormatterTests.m */; };
-		A5B9C3F71CA03FF300C976D4 /* DrawerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F61CA03FF300C976D4 /* DrawerViewControllerTests.m */; };
+		A5B9C3F71CA03FF300C976D4 /* DrawerVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F61CA03FF300C976D4 /* DrawerVCTests.m */; };
 		A5B9C3FA1CA040D100C976D4 /* DrawerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F91CA040D100C976D4 /* DrawerVC.m */; };
 		A5B9C3FD1CA0482000C976D4 /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3FC1CA0482000C976D4 /* MenuVC.m */; };
 		A5EBDFD71CA16E32009AEB4D /* UIViewController+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFD61CA16E32009AEB4D /* UIViewController+Animations.m */; };
 		A5EBDFDA1CA18187009AEB4D /* TestTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFD91CA18187009AEB4D /* TestTapGestureRecognizer.m */; };
+		A5EBDFDD1CA18F46009AEB4D /* TestPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFDC1CA18F46009AEB4D /* TestPanGestureRecognizer.m */; };
+		A5EBDFE01CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFDF1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,7 +202,7 @@
 		A5B9C3F01C9DCAAA00C976D4 /* MessageTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTimeFormatter.h; sourceTree = "<group>"; };
 		A5B9C3F11C9DCAAA00C976D4 /* MessageTimeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTimeFormatter.m; sourceTree = "<group>"; };
 		A5B9C3F31C9DCB9C00C976D4 /* MessageTimeFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTimeFormatterTests.m; sourceTree = "<group>"; };
-		A5B9C3F61CA03FF300C976D4 /* DrawerViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawerViewControllerTests.m; path = ../InVisionMail/Controllers/DrawerViewControllerTests.m; sourceTree = "<group>"; };
+		A5B9C3F61CA03FF300C976D4 /* DrawerVCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawerVCTests.m; path = ../InVisionMail/Controllers/DrawerVCTests.m; sourceTree = "<group>"; };
 		A5B9C3F81CA040D100C976D4 /* DrawerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerVC.h; sourceTree = "<group>"; };
 		A5B9C3F91CA040D100C976D4 /* DrawerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerVC.m; sourceTree = "<group>"; };
 		A5B9C3FB1CA0482000C976D4 /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
@@ -209,6 +211,10 @@
 		A5EBDFD61CA16E32009AEB4D /* UIViewController+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Animations.m"; sourceTree = "<group>"; };
 		A5EBDFD81CA18187009AEB4D /* TestTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTapGestureRecognizer.h; sourceTree = "<group>"; };
 		A5EBDFD91CA18187009AEB4D /* TestTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTapGestureRecognizer.m; sourceTree = "<group>"; };
+		A5EBDFDB1CA18F46009AEB4D /* TestPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPanGestureRecognizer.h; sourceTree = "<group>"; };
+		A5EBDFDC1CA18F46009AEB4D /* TestPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPanGestureRecognizer.m; sourceTree = "<group>"; };
+		A5EBDFDE1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+Cancel.h"; sourceTree = "<group>"; };
+		A5EBDFDF1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+Cancel.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +361,8 @@
 				A5B9C3F11C9DCAAA00C976D4 /* MessageTimeFormatter.m */,
 				A5EBDFD51CA16E32009AEB4D /* UIViewController+Animations.h */,
 				A5EBDFD61CA16E32009AEB4D /* UIViewController+Animations.m */,
+				A5EBDFDE1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.h */,
+				A5EBDFDF1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -416,7 +424,7 @@
 				A5B9C3801C960D0D00C976D4 /* InboxVCTests.m */,
 				A5B9C3B51C99EEA300C976D4 /* SignInVCTests.m */,
 				A5B9C3D41C9B384600C976D4 /* InboxTableViewDataSourceTests.m */,
-				A5B9C3F61CA03FF300C976D4 /* DrawerViewControllerTests.m */,
+				A5B9C3F61CA03FF300C976D4 /* DrawerVCTests.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -452,6 +460,8 @@
 				A5B9C3DE1C9B4E3A00C976D4 /* DummyCell.xib */,
 				A5EBDFD81CA18187009AEB4D /* TestTapGestureRecognizer.h */,
 				A5EBDFD91CA18187009AEB4D /* TestTapGestureRecognizer.m */,
+				A5EBDFDB1CA18F46009AEB4D /* TestPanGestureRecognizer.h */,
+				A5EBDFDC1CA18F46009AEB4D /* TestPanGestureRecognizer.m */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -644,6 +654,7 @@
 				A5B9C36F1C94B97300C976D4 /* APICommunicator.m in Sources */,
 				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
 				A5B9C3FA1CA040D100C976D4 /* DrawerVC.m in Sources */,
+				A5EBDFE01CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m in Sources */,
 				A5B9C3D31C9B383200C976D4 /* InboxTableViewDataSource.m in Sources */,
 				A5B9C3F21C9DCAAA00C976D4 /* MessageTimeFormatter.m in Sources */,
 			);
@@ -661,9 +672,10 @@
 				A5B9C3EF1C9DC5FB00C976D4 /* NSDateHelpersTests.m in Sources */,
 				A5B9C3EA1C9BD95400C976D4 /* NSString+RemoveSubstringTests.m in Sources */,
 				A5B9C3D71C9B4C3C00C976D4 /* UITableViewCell+HelpersTests.m in Sources */,
-				A5B9C3F71CA03FF300C976D4 /* DrawerViewControllerTests.m in Sources */,
+				A5B9C3F71CA03FF300C976D4 /* DrawerVCTests.m in Sources */,
 				A5B9C3D51C9B384600C976D4 /* InboxTableViewDataSourceTests.m in Sources */,
 				A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */,
+				A5EBDFDD1CA18F46009AEB4D /* TestPanGestureRecognizer.m in Sources */,
 				A5B9C39C1C961FD400C976D4 /* TestCoreDataStack.m in Sources */,
 				A5B9C3A21C973F0600C976D4 /* AppStateTests.m in Sources */,
 				A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */,
