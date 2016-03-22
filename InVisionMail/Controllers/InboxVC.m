@@ -8,6 +8,7 @@
 
 #import "InboxVC.h"
 #import "InboxTableViewDataSource.h"
+#import "DrawerVC.h"
 
 @interface InboxVC () <UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
@@ -21,13 +22,28 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    self.dataSource = [[InboxTableViewDataSource alloc] initWithTableView:self.tableView context:self.context];
-    self.tableView.delegate = self;
+    
+    [self setupNavigationItems];
+    [self setupTableViewAndDatasource];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.communicator getMyMessagesToContext:self.context];
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Setup
+
+- (void) setupNavigationItems {
+    [self.navigationItem.leftBarButtonItem setTarget:self];
+    [self.navigationItem.leftBarButtonItem setAction:@selector(hamburgerButtonPressed)];
+}
+
+- (void) setupTableViewAndDatasource {
+    self.dataSource = [[InboxTableViewDataSource alloc] initWithTableView:self.tableView context:self.context];
+    self.tableView.delegate = self;
 }
 
 
@@ -49,6 +65,15 @@
     }
     return _context;
 }
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Navigation
+
+- (void) hamburgerButtonPressed {
+    [[self drawerVC] showMenu];
+}
+
 
 
 // ------------  ------------  ------------  ------------  ------------  ------------

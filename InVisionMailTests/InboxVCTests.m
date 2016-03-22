@@ -6,6 +6,9 @@
 //  Copyright © 2016 Vojta Stavik. All rights reserved.
 //
 
+// We can ignore warning about potential leaking selectors for unit tests
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import <Kiwi/Kiwi.h>
@@ -13,6 +16,7 @@
 #import "APICommunicator.h"
 #import "TestCoreDataStack.h"
 #import "InboxTableViewDataSource.h"
+#import "DrawerVC.h"
 
 // Expose private properties and functions needed for testing
 @interface InboxVC (Private)
@@ -50,6 +54,26 @@ describe(@"InboxVC", ^{
     it(@"should ask APICommunicator to update inbox messages when view appears", ^{
         [[inboxVC.communicator should] receive:@selector(getMyMessagesToContext:)];
         [inboxVC beginAppearanceTransition:YES animated:NO];
+    });
+    
+    describe(@"Left bar button item", ^{
+        __block UIBarButtonItem* hamburger;
+        
+        beforeEach(^{
+            hamburger = inboxVC.navigationItem.leftBarButtonItem;
+        });
+        
+        it(@"should have the Hamburger icon", ^{
+            [[hamburger.image should] equal:[UIImage imageNamed:@"hamburger-icon"]];
+        });
+        
+        it(@"should open drawer when pressed", ^{
+            DrawerVC* drawer = [KWMock mockForClass:[DrawerVC class]];
+            [inboxVC stub:@selector(drawerVC) andReturn:drawer];
+            
+            [[drawer should] receive:@selector(showMenu)];
+            [hamburger.target performSelector:hamburger.action withObject:hamburger];
+        });
     });
     
     describe(@"tableView", ^{

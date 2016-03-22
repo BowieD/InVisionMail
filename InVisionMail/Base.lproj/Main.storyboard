@@ -5,6 +5,58 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
+        <!--DrawerVC-->
+        <scene sceneID="Wmf-Wp-GEV">
+            <objects>
+                <viewController storyboardIdentifier="DrawerViewController" id="i01-Y7-Xi9" customClass="DrawerVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WhM-sH-p8d"/>
+                        <viewControllerLayoutGuide type="bottom" id="vKJ-wp-Raz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y6t-wG-HdG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qrL-23-vOM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="kNB-c5-xSM" kind="embed" identifier="DrawerEmbededMenuSegue" id="MW0-6F-rw0"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4MI-il-20r">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="7l5-Vj-1Pi"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="0i2-Ja-fSI" kind="embed" identifier="DrawerEmbededMainSegue" id="aKg-QC-aBC"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4MI-il-20r" firstAttribute="leading" secondItem="Y6t-wG-HdG" secondAttribute="leading" id="khg-1U-b0A"/>
+                            <constraint firstAttribute="trailing" secondItem="4MI-il-20r" secondAttribute="trailing" id="mdD-C8-Zs7"/>
+                            <constraint firstItem="4MI-il-20r" firstAttribute="top" secondItem="Y6t-wG-HdG" secondAttribute="top" id="oaW-fV-w1I"/>
+                            <constraint firstItem="vKJ-wp-Raz" firstAttribute="top" secondItem="4MI-il-20r" secondAttribute="bottom" id="xwe-v6-PSl"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mdD-C8-Zs7"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mainContainerLeftConstraint" destination="khg-1U-b0A" id="uSI-2w-Ioc"/>
+                        <outlet property="mainContainerView" destination="4MI-il-20r" id="hhm-Q7-20R"/>
+                        <outlet property="mainVCWidthConstraint" destination="7l5-Vj-1Pi" id="2aU-jJ-vZi"/>
+                        <outlet property="menuContainerView" destination="qrL-23-vOM" id="1S9-kU-3Tf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4k-FS-xAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1080" y="-621"/>
+        </scene>
         <!--Sign InVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -35,12 +87,12 @@
                     <navigationItem key="navigationItem" id="2tf-9E-ZZ2"/>
                     <connections>
                         <outlet property="signInButton" destination="MUL-pk-ybp" id="9GG-9U-G2g"/>
-                        <segue destination="KAo-aR-njN" kind="show" identifier="ShowInboxSegue" id="rsQ-OU-GBZ"/>
+                        <segue destination="i01-Y7-Xi9" kind="presentation" identifier="ShowInboxSegue" id="eQW-UQ-SVh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="247"/>
+            <point key="canvasLocation" x="1080" y="-1501"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="lCk-jn-yeU">
@@ -77,13 +129,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="6X7-HB-Dcd">
+                        <barButtonItem key="leftBarButtonItem" image="hamburger-icon" style="plain" id="gUb-No-L79">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kEf-7v-5LN" id="B1p-lT-bVE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgO-Md-jmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1861" y="247"/>
+            <point key="canvasLocation" x="2538" y="-621"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XaU-zO-lum">
@@ -101,7 +158,46 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7FF-Wi-7AA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="247"/>
+            <point key="canvasLocation" x="413" y="-1501"/>
+        </scene>
+        <!--MenuVC-->
+        <scene sceneID="Puh-wd-k4w">
+            <objects>
+                <viewController id="kNB-c5-xSM" customClass="MenuVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ovc-Lm-a25"/>
+                        <viewControllerLayoutGuide type="bottom" id="7lH-E5-oWr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lDw-vh-s1j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CJq-di-f0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="-621"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j3A-Z1-qx4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0i2-Ja-fSI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ras-Hu-5eT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KAo-aR-njN" kind="relationship" relationship="rootViewController" id="N6I-22-aTP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oQf-qv-duP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816" y="-621"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hamburger-icon" width="33" height="27"/>
+    </resources>
 </document>

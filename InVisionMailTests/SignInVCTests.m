@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <Kiwi/Kiwi.h>
 #import "SignInVC.h"
-#import "InboxVC.h"
+#import "DrawerVC.h"
 
 SPEC_BEGIN(SignInVCTests)
 
@@ -27,7 +27,7 @@ describe(@"SignIn controller", ^{
 //        [[signInVC.navigationController shouldNot] beNil];
 //    });
     
-    it(@"shoud show InboxVC when SignIn is successfull", ^{
+    it(@"shoud show DrawerVC when SignIn is successfull", ^{
         __block UIViewController* destinationVC = nil;
         [signInVC stub:@selector(prepareForSegue:sender:) withBlock:^id(NSArray *params) {
             UIStoryboardSegue* segue = (UIStoryboardSegue*)params[0];
@@ -42,7 +42,7 @@ describe(@"SignIn controller", ^{
         
         [signInVC signIn:nil didSignInForUser:mockUser withError:nil];
         
-        [[expectFutureValue(theValue([destinationVC isKindOfClass:[InboxVC class]])) shouldEventually] beTrue];
+        [[expectFutureValue(theValue([destinationVC isKindOfClass:[DrawerVC class]])) shouldEventually] beTrue];
     });
 });
 
