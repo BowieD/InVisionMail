@@ -86,6 +86,10 @@
 		A5EBDFF61CA1EBE8009AEB4D /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */; };
 		A5EBDFF81CA1EC0F009AEB4D /* MenuCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFF71CA1EC0F009AEB4D /* MenuCellTests.m */; };
 		A5EBDFFA1CA2A326009AEB4D /* InfoPlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFF91CA2A326009AEB4D /* InfoPlistTests.m */; };
+		A5EBE0041CA2E3F5009AEB4D /* MainSplitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0031CA2E3F5009AEB4D /* MainSplitVC.m */; };
+		A5EBE0071CA2E41B009AEB4D /* MainSplitVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0061CA2E41B009AEB4D /* MainSplitVCTests.m */; };
+		A5EBE00A1CA2E946009AEB4D /* MessageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0091CA2E946009AEB4D /* MessageDetailVC.m */; };
+		A5EBE0111CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0101CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +243,13 @@
 		A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		A5EBDFF71CA1EC0F009AEB4D /* MenuCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCellTests.m; sourceTree = "<group>"; };
 		A5EBDFF91CA2A326009AEB4D /* InfoPlistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoPlistTests.m; sourceTree = "<group>"; };
+		A5EBE0021CA2E3F5009AEB4D /* MainSplitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSplitVC.h; sourceTree = "<group>"; };
+		A5EBE0031CA2E3F5009AEB4D /* MainSplitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSplitVC.m; sourceTree = "<group>"; };
+		A5EBE0061CA2E41B009AEB4D /* MainSplitVCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSplitVCTests.m; sourceTree = "<group>"; };
+		A5EBE0081CA2E946009AEB4D /* MessageDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailVC.h; sourceTree = "<group>"; };
+		A5EBE0091CA2E946009AEB4D /* MessageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailVC.m; sourceTree = "<group>"; };
+		A5EBE00F1CA2EB88009AEB4D /* MessageDetailTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailTableViewDataSource.h; sourceTree = "<group>"; };
+		A5EBE0101CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailTableViewDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +378,8 @@
 				A5EBDFE71CA1BCD7009AEB4D /* Menu */,
 				A5B9C3D01C9B380600C976D4 /* Inbox */,
 				A5B9C3F51CA03EA300C976D4 /* SignIn */,
+				A5EBE0051CA2E401009AEB4D /* MainSplitVC */,
+				A5EBE00B1CA2E94B009AEB4D /* Message detail */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -457,6 +470,7 @@
 				A5B9C3F61CA03FF300C976D4 /* DrawerVCTests.m */,
 				A5EBDFE81CA1BFB1009AEB4D /* MenuVCTests.m */,
 				A5EBDFEA1CA1C215009AEB4D /* MenuTableViewDataSourceTests.m */,
+				A5EBE0061CA2E41B009AEB4D /* MainSplitVCTests.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -575,6 +589,26 @@
 				A5EBDFF01CA1EB5E009AEB4D /* MenuTableViewDatasource.m */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		A5EBE0051CA2E401009AEB4D /* MainSplitVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5EBE0021CA2E3F5009AEB4D /* MainSplitVC.h */,
+				A5EBE0031CA2E3F5009AEB4D /* MainSplitVC.m */,
+			);
+			name = MainSplitVC;
+			sourceTree = "<group>";
+		};
+		A5EBE00B1CA2E94B009AEB4D /* Message detail */ = {
+			isa = PBXGroup;
+			children = (
+				A5EBE0081CA2E946009AEB4D /* MessageDetailVC.h */,
+				A5EBE0091CA2E946009AEB4D /* MessageDetailVC.m */,
+				A5EBE00F1CA2EB88009AEB4D /* MessageDetailTableViewDataSource.h */,
+				A5EBE0101CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m */,
+			);
+			name = "Message detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,10 +741,13 @@
 				A5B9C37E1C96033100C976D4 /* InVisionMail.xcdatamodeld in Sources */,
 				A5850BEF1C94689C00527CD8 /* main.m in Sources */,
 				A5B9C3A61C9742A900C976D4 /* AppState.m in Sources */,
+				A5EBE00A1CA2E946009AEB4D /* MessageDetailVC.m in Sources */,
 				A5EBDFF11CA1EB5E009AEB4D /* MenuTableViewDatasource.m in Sources */,
+				A5EBE0111CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m in Sources */,
 				A5B9C3841C960E0400C976D4 /* InboxVC.m in Sources */,
 				A5B9C36F1C94B97300C976D4 /* APICommunicator.m in Sources */,
 				A5EBDFF41CA1EBDF009AEB4D /* MenuCell.m in Sources */,
+				A5EBE0041CA2E3F5009AEB4D /* MainSplitVC.m in Sources */,
 				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
 				A5B9C3FA1CA040D100C976D4 /* DrawerVC.m in Sources */,
 				A5EBDFE01CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m in Sources */,
@@ -729,6 +766,7 @@
 				A5B9C3781C95FEEF00C976D4 /* CoreDataStackTests.m in Sources */,
 				A5EBDFDA1CA18187009AEB4D /* TestTapGestureRecognizer.m in Sources */,
 				A5B9C3EF1C9DC5FB00C976D4 /* NSDateHelpersTests.m in Sources */,
+				A5EBE0071CA2E41B009AEB4D /* MainSplitVCTests.m in Sources */,
 				A5B9C3EA1C9BD95400C976D4 /* NSString+RemoveSubstringTests.m in Sources */,
 				A5B9C3D71C9B4C3C00C976D4 /* UITableViewCell+HelpersTests.m in Sources */,
 				A5B9C3F71CA03FF300C976D4 /* DrawerVCTests.m in Sources */,

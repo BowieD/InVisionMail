@@ -86,6 +86,10 @@ describe(@"DrawerViewController", ^{
             [controller endAppearanceTransition];
         });
         
+        it(@"view should mask to bounds", ^{
+            [[theValue(controller.view.layer.masksToBounds) should] beTrue];
+        });
+        
         it(@"should have mainContainerView above menuContainerView in the view hierarchy", ^{
             NSInteger mainContainerIndex = [controller.view.subviews indexOfObject:controller.mainContainerView];
             NSInteger menuContainerIndex = [controller.view.subviews indexOfObject:controller.menuContainerView];
@@ -310,6 +314,9 @@ describe(@"DrawerViewController", ^{
                                 it(@"should be smooth", ^{
                                     // We want the animation speed to match the last known velocity of the gesture (as close as possible)
                                     __block NSTimeInterval realDuration = CGFLOAT_MAX;
+                                    
+                                    UIView* view = controller.view;
+                                    [view stub:@selector(frame) andReturn:theValue(CGRectMake(0, 0, 200, 500))];
                                     
                                     CGFloat finalPosition = controller.view.frame.size.width - controller.mainControllerOverlap;
                                     CGFloat distance = ABS(controller.mainContainerLeftConstraint.constant - finalPosition);

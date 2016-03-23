@@ -39,6 +39,8 @@
     
     self.mainControllerOverlap = 80;
     [self setupGestureRecognizers];
+    
+    self.view.layer.masksToBounds = YES;
 }
 
 

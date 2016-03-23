@@ -10,6 +10,7 @@
 #import <Kiwi/Kiwi.h>
 #import "SignInVC.h"
 #import "DrawerVC.h"
+#import "MainSplitVC.h"
 
 SPEC_BEGIN(SignInVCTests)
 
@@ -22,12 +23,7 @@ describe(@"SignIn controller", ^{
         UIView* view __unused = signInVC.view; // load view
     });
     
-//    it(@"should be embeded in NavigationController", ^{
-//        UINavigationController* v = signInVC.navigationController;
-//        [[signInVC.navigationController shouldNot] beNil];
-//    });
-    
-    it(@"shoud show DrawerVC when SignIn is successfull", ^{
+    it(@"shoud show MainSplitVC when SignIn is successfull", ^{
         __block UIViewController* destinationVC = nil;
         [signInVC stub:@selector(prepareForSegue:sender:) withBlock:^id(NSArray *params) {
             UIStoryboardSegue* segue = (UIStoryboardSegue*)params[0];
@@ -42,7 +38,7 @@ describe(@"SignIn controller", ^{
         
         [signInVC signIn:nil didSignInForUser:mockUser withError:nil];
         
-        [[expectFutureValue(theValue([destinationVC isKindOfClass:[DrawerVC class]])) shouldEventually] beTrue];
+        [[expectFutureValue(theValue([destinationVC isKindOfClass:[MainSplitVC class]])) shouldEventually] beTrue];
     });
 });
 
