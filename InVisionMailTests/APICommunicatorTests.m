@@ -12,6 +12,7 @@
 #import "TestCoreDataStack.h"
 #import "Message.h"
 #import "NSManagedObject+Helpers.h"
+#import "Label.h"
 
 SPEC_BEGIN(APICommunicatorTests)
 
@@ -48,7 +49,7 @@ describe(@"API Communicator", ^{
     
     
     // ------------  ------------  ------------  ------------  ------------  ------------
-    // Calls 
+    // Get My Messages call
     
     describe(@"Get my messages call", ^{
         it(@"should be authorized", ^{
@@ -118,6 +119,11 @@ describe(@"API Communicator", ^{
         });
     });
 
+    
+    
+    // ------------  ------------  ------------  ------------  ------------  ------------
+    // Get Message Detail call
+    
     describe(@"Get message detail call", ^{
         it(@"should be authorized", ^{
             [networkCommunicator stub:@selector(GET:parameters:progress:success:failure:) withBlock:^id(NSArray *params) {
@@ -145,6 +151,10 @@ describe(@"API Communicator", ^{
             [communicator getMessageDetail: @"EpisodeIV" toContext:coreDataStack.mainContext];
         });
     });
+
+    
+    // ------------  ------------  ------------  ------------  ------------  ------------
+    // Get Message Metadata call
     
     describe(@"Get message metadata call", ^{
         it(@"should be authorized", ^{
@@ -220,7 +230,67 @@ describe(@"API Communicator", ^{
         });
     });
 
+    
+    // ------------  ------------  ------------  ------------  ------------  ------------
+    // Get All Labels call
+    
+    describe(@"Get all labels call", ^{
+        it(@"should be authorized", ^{
+            [networkCommunicator stub:@selector(GET:parameters:progress:success:failure:) withBlock:^id(NSArray *params) {
+                NSDictionary* callParams = (NSDictionary*) params[1];
+                NSString* accessTokenValue = (NSString *)[callParams valueForKey:@"access_token"];
+                
+                [[accessTokenValue should] equal:@"May the Force be with you"];
+                
+                return nil; // needed because of compiler
+            }];
+            
+            [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
+            
+            [communicator getMyLabelsToContext: coreDataStack.mainContext];
+        });
+        
+        it(@"shoud call me/labels/ endpoint", ^{
+            [networkCommunicator stub:@selector(GET:parameters:progress:success:failure:) withBlock:^id(NSArray *params) {
+                NSString* path = (NSString *)params[0];
+                [[path should] equal:@"me/labels/"];
+                return nil; // needed because of compiler
+            }];
+            [[networkCommunicator should] receive:@selector(GET:parameters:progress:success:failure:)];
+            
+            [communicator getMyLabelsToContext: coreDataStack.mainContext];
+        });
+        
+        it(@"should add the received labels with 'labelListVisibility':'labelShow' to the context", ^{
+            // Prepare fake response
+            [networkCommunicator stub:@selector(GET:parameters:progress:success:failure:) withBlock:^id(NSArray *params) {
+                void (^success)(NSURLSessionDataTask*, id) = params[3];
+                NSDictionary* dummyData = @{
+                                            @"labels":
+                                                @[
+                                                    @{ @"id": @"Luke",
+                                                       @"name": @"Luke Skywalker"
+                                                    },
+                                                    @{ @"id": @"Leia",
+                                                       @"name": @"Leia Organa",
+                                                   }
+                                                ]
+                                            };
+                
+                // We simulate server response with 2 Labels with IDs "Luke" and "Leia"
+                success(nil, dummyData);
+                return nil; // needed because of compiler
+            }];
+            
+            [communicator getMyLabelsToContext:coreDataStack.mainContext];
+            
+            [[expectFutureValue([Label withCustomId:@"Luke" fromContext:coreDataStack.mainContext].title)
+              shouldEventually] equal:@"Luke Skywalker"];
 
+            [[expectFutureValue([Label withCustomId:@"Leia" fromContext:coreDataStack.mainContext].title)
+              shouldEventually] equal:@"Leia Organa"];
+        });
+    });
 });
 
 SPEC_END

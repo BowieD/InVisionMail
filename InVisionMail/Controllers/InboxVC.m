@@ -10,12 +10,20 @@
 #import "InboxTableViewDataSource.h"
 #import "DrawerVC.h"
 
+
 @interface InboxVC () <UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
-@property (nonatomic, strong) InboxTableViewDataSource* dataSource;
+@property (nonatomic, strong) TableViewDataSource* dataSource;
 @end
 
 @implementation InboxVC
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Preferences
+
+static CGFloat rowHeight = 100;
+
+
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Life cycle
@@ -25,6 +33,7 @@
     
     [self setupNavigationItems];
     [self setupTableViewAndDatasource];
+    [self setupAppearance];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -44,10 +53,13 @@
 }
 
 - (void) setupTableViewAndDatasource {
-    self.dataSource = [[InboxTableViewDataSource alloc] initWithTableView:self.tableView context:self.context];
+    self.dataSource = [TableViewDataSource inboxTableViewDataSource:self.tableView context:self.context];
     self.tableView.delegate = self;
 }
 
+- (void) setupAppearance {
+
+}
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Dependencies
@@ -82,7 +94,7 @@
 #pragma mark - TableView delegate
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    return rowHeight;
 }
 
 

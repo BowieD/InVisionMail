@@ -12,6 +12,7 @@
 #import "Message.h"
 #import "NSManagedObject+Helpers.h"
 #import "CoreDataStack.h"
+#import "Label.h"
 
 @interface APICommunicator ()
 @property (nonatomic, strong, readwrite) NSObject<NetworkCommunicator>* _Nonnull networkCommunicator;
@@ -69,13 +70,14 @@
 #pragma mark - Gmail calls
 - (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context {
     return [self authorizedGETRequest:MY_MESSAGES
-                           parameters:@{LABELS_KEY: INBOX_LABEL_VALUE}
+                           parameters:@{LABELS_IDS_KEY: INBOX_LABEL_VALUE}
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                   
         if (NO == [responseObject isKindOfClass:[NSDictionary class]]) {
             // TODO: error log
             return;
         }
+                                  
         NSDictionary* responseDictionary = (NSDictionary*)responseObject;
         NSArray* messagesArray = (NSArray*)[responseDictionary objectForKey:MESSAGES_KEY];
         
@@ -118,16 +120,41 @@
         
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary* jsonData = (NSDictionary*)responseObject;
-            
-//            NSLog(jsonData.description);
-            
             [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:context completionBlock:^(NSManagedObject * _Nullable element) {
 //                NSLog(@"New message saved to the context: %@", element.description);
             }];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(error);
+        NSLog(error.localizedDescription);
+    }];
+}
+
+- (nullable NSURLSessionDataTask*) getMyLabelsToContext:(NSManagedObjectContext *)context {
+    return [self authorizedGETRequest:MY_LABELS
+                           parameters:nil
+                              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (NO == [responseObject isKindOfClass:[NSDictionary class]]) {
+            // TODO: error log
+            return;
+        }
+        
+        NSDictionary* responseDictionary = (NSDictionary*)responseObject;
+        NSArray* labelsArray = (NSArray*)[responseDictionary objectForKey:LABELS_KEY];
+                                  
+        NSLog(@"%@", responseDictionary.debugDescription);
+                                  
+        for (NSDictionary* label in labelsArray) {
+            NSString* labelId = [label objectForKey:ID_KEY];
+            
+            [Label loadFromJSON:label customId:labelId context:context completionBlock:^(NSManagedObject * _Nullable element) {
+                NSLog(@"Label added: %@", element.description);
+            }];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(error.localizedDescription);
     }];
 }
 

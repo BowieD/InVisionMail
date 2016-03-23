@@ -221,11 +221,11 @@
 
 
 
-#pragma mark - DrawerAccess cathegory
+#pragma mark - DrawerAccess category
 
 @implementation UIViewController (DrawerAccess)
 
-- ( DrawerVC* _Nullable ) drawerVC {
+- (DrawerVC* _Nullable) drawerVC {
     if ([self.parentViewController isKindOfClass:[DrawerVC class]]) {
         return (DrawerVC*)self.parentViewController;
     }

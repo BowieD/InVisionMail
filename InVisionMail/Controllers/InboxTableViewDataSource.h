@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "TableViewDatasource.h"
 
-@interface InboxTableViewDataSource : NSObject
+@interface TableViewDataSource (InboxTableViewDataSource)
 
-- (instancetype) initWithTableView: (UITableView*)tableView context: (NSManagedObjectContext*)context;
++ (instancetype) inboxTableViewDataSource: (UITableView*)tableView context: (NSManagedObjectContext*)context;
 
 @end

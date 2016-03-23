@@ -21,7 +21,7 @@
 // Expose private properties and functions needed for testing
 @interface InboxVC (Private)
 @property (nonatomic, weak) UITableView* tableView;
-@property (nonatomic, strong) InboxTableViewDataSource* dataSource;
+@property (nonatomic, strong) TableViewDataSource* dataSource;
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -33,7 +33,8 @@ describe(@"InboxVC", ^{
     
     beforeEach(^{
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-        inboxVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"InboxVC"];
+        UINavigationController* navCon = [mainStoryboard instantiateViewControllerWithIdentifier:@"InboxVCNavigationController"];
+        inboxVC = [navCon.viewControllers firstObject];
         
         // Set dependencies
         testCoreDataStack = [TestCoreDataStack new];
@@ -55,7 +56,8 @@ describe(@"InboxVC", ^{
         [[inboxVC.communicator should] receive:@selector(getMyMessagesToContext:)];
         [inboxVC beginAppearanceTransition:YES animated:NO];
     });
-    
+
+
     describe(@"Left bar button item", ^{
         __block UIBarButtonItem* hamburger;
         

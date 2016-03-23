@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+    <entity name="Label" representedClassName="Label" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="customId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="historyId" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,5 +18,6 @@
     </entity>
     <elements>
         <element name="Message" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Label" positionX="-63" positionY="45" width="128" height="105"/>
     </elements>
 </model>

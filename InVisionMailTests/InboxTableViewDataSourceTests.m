@@ -16,9 +16,10 @@
 #import "UITableViewCell+Helpers.h"
 
 // Expose private functions needed for testing
-@interface InboxTableViewDataSource (Private)
+@interface TableViewDataSource (Private)
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 @end
 
 
@@ -26,14 +27,22 @@ SPEC_BEGIN(InboxTableViewDataSourceTests)
 
 describe(@"InboxTableView", ^{
     
-    __block InboxTableViewDataSource* dataSource;
+    __block TableViewDataSource* dataSource;
     __block TestCoreDataStack* coreDataStack;
     __block UITableView* tableView;
     
     beforeEach(^{
         tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         coreDataStack = [TestCoreDataStack new];
-        dataSource = [[InboxTableViewDataSource alloc] initWithTableView:tableView context:coreDataStack.mainContext];
+        dataSource = [TableViewDataSource inboxTableViewDataSource:tableView context:coreDataStack.mainContext];
+    });
+    
+    it(@"should insert new message when table is empty", ^{
+        [coreDataStack.mainContext save:nil]; // finish pending updates
+        [Message findOrCreateElementWithId:@"Episode IV" context:coreDataStack.mainContext];
+
+        [[expectFutureValue(theValue(tableView.numberOfSections)) shouldEventually] equal:theValue(1)];
+        [[expectFutureValue(theValue([tableView numberOfRowsInSection:0])) shouldEventually] equal:theValue(1)];
     });
     
     context(@"when having 3 messages in the context", ^{
@@ -116,6 +125,10 @@ describe(@"InboxTableView", ^{
             [[expectFutureValue(fromIndexPath) shouldEventually] equal:[NSIndexPath indexPathForRow:2 inSection:0]];
             [[expectFutureValue(toIndexPath) shouldEventually] equal:[NSIndexPath indexPathForRow:1 inSection:0]];
             [[expectFutureValue(cell.timestampLabel.text) shouldEventually] equal:@"1/1/81"];
+        });
+        
+        it(@"should return 'nil' for section header view", ^{
+            [[[dataSource tableView:tableView titleForHeaderInSection:0] should] beNil];
         });
     });
 });

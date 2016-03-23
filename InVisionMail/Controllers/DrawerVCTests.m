@@ -139,7 +139,6 @@ describe(@"DrawerViewController", ^{
                 [[theValue(controller.mainContainerLeftConstraint.constant) should] equal:theValue(maxPosition)];
             });
             
-
             
             // ------------  ------------  ------------  ------------  ------------  ------------
             // When menu is hidden

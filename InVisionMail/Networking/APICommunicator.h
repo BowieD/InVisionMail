@@ -46,4 +46,11 @@
 - (nullable NSURLSessionDataTask*) getMessageDetail: (NSString * _Nonnull) messageId
                                           toContext: (NSManagedObjectContext* _Nonnull)context;
 
+
+/**
+ Get list of available message LABELS.
+ */
+- (nullable NSURLSessionDataTask*) getMyLabelsToContext: (NSManagedObjectContext* _Nonnull)context;
+
+
 @end

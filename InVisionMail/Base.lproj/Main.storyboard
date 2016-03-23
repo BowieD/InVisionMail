@@ -8,7 +8,7 @@
         <!--DrawerVC-->
         <scene sceneID="Wmf-Wp-GEV">
             <objects>
-                <viewController storyboardIdentifier="DrawerViewController" id="i01-Y7-Xi9" customClass="DrawerVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawerViewController" extendedLayoutIncludesOpaqueBars="YES" id="i01-Y7-Xi9" customClass="DrawerVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WhM-sH-p8d"/>
                         <viewControllerLayoutGuide type="bottom" id="vKJ-wp-Raz"/>
@@ -97,7 +97,7 @@
         <!--Inbox-->
         <scene sceneID="lCk-jn-yeU">
             <objects>
-                <viewController storyboardIdentifier="InboxVC" title="Inbox" id="KAo-aR-njN" customClass="InboxVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InboxVC" title="Inbox" extendedLayoutIncludesOpaqueBars="YES" id="KAo-aR-njN" customClass="InboxVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kny-fW-Ugc"/>
                         <viewControllerLayoutGuide type="bottom" id="H2h-lW-jJf"/>
@@ -163,7 +163,7 @@
         <!--MenuVC-->
         <scene sceneID="Puh-wd-k4w">
             <objects>
-                <viewController id="kNB-c5-xSM" customClass="MenuVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuVC" automaticallyAdjustsScrollViewInsets="NO" id="kNB-c5-xSM" customClass="MenuVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ovc-Lm-a25"/>
                         <viewControllerLayoutGuide type="bottom" id="7lH-E5-oWr"/>
@@ -171,8 +171,23 @@
                     <view key="view" contentMode="scaleToFill" id="lDw-vh-s1j">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ezP-7S-dzS">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ezP-7S-dzS" firstAttribute="leading" secondItem="lDw-vh-s1j" secondAttribute="leading" id="14Q-EU-Odh"/>
+                            <constraint firstItem="7lH-E5-oWr" firstAttribute="top" secondItem="ezP-7S-dzS" secondAttribute="bottom" id="2SQ-9e-fLc"/>
+                            <constraint firstAttribute="trailing" secondItem="ezP-7S-dzS" secondAttribute="trailing" id="NY9-DK-n3k"/>
+                            <constraint firstItem="ezP-7S-dzS" firstAttribute="top" secondItem="ovc-Lm-a25" secondAttribute="bottom" constant="44" id="wCY-wE-7gv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="ezP-7S-dzS" id="Mtc-rg-Cs6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJq-di-f0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -181,7 +196,7 @@
         <!--Navigation Controller-->
         <scene sceneID="j3A-Z1-qx4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0i2-Ja-fSI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InboxVCNavigationController" extendedLayoutIncludesOpaqueBars="YES" id="0i2-Ja-fSI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ras-Hu-5eT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -198,6 +213,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hamburger-icon" width="33" height="27"/>
+        <image name="hamburger-icon" width="29" height="20"/>
     </resources>
 </document>

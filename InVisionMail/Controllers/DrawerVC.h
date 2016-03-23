@@ -19,6 +19,7 @@
 - (void) showMenu;
 - (void) hideMenu;
 
+
 // Dependencies
 
 // We have to provide custom subclass of recognizers for testing. The original implementation
@@ -28,7 +29,8 @@
 
 @end
 
-// We create cathegory for easy access to DrawerVC from child VCs
+
+// We create category for easy access to DrawerVC from child VCs
 @interface UIViewController (DrawerAccess)
 
 - ( DrawerVC* _Nullable ) drawerVC;

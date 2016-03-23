@@ -76,6 +76,16 @@
 		A5EBDFDA1CA18187009AEB4D /* TestTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFD91CA18187009AEB4D /* TestTapGestureRecognizer.m */; };
 		A5EBDFDD1CA18F46009AEB4D /* TestPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFDC1CA18F46009AEB4D /* TestPanGestureRecognizer.m */; };
 		A5EBDFE01CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFDF1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m */; };
+		A5EBDFE21CA1B40B009AEB4D /* LabelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFE11CA1B40B009AEB4D /* LabelTests.m */; };
+		A5EBDFE51CA1B48C009AEB4D /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFE41CA1B48C009AEB4D /* Label.m */; };
+		A5EBDFE91CA1BFB1009AEB4D /* MenuVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFE81CA1BFB1009AEB4D /* MenuVCTests.m */; };
+		A5EBDFEB1CA1C215009AEB4D /* MenuTableViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFEA1CA1C215009AEB4D /* MenuTableViewDataSourceTests.m */; };
+		A5EBDFEE1CA1C9A2009AEB4D /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFED1CA1C9A2009AEB4D /* TableViewDataSource.m */; };
+		A5EBDFF11CA1EB5E009AEB4D /* MenuTableViewDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFF01CA1EB5E009AEB4D /* MenuTableViewDatasource.m */; };
+		A5EBDFF41CA1EBDF009AEB4D /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFF31CA1EBDF009AEB4D /* MenuCell.m */; };
+		A5EBDFF61CA1EBE8009AEB4D /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */; };
+		A5EBDFF81CA1EC0F009AEB4D /* MenuCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFF71CA1EC0F009AEB4D /* MenuCellTests.m */; };
+		A5EBDFFA1CA2A326009AEB4D /* InfoPlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFF91CA2A326009AEB4D /* InfoPlistTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +225,20 @@
 		A5EBDFDC1CA18F46009AEB4D /* TestPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPanGestureRecognizer.m; sourceTree = "<group>"; };
 		A5EBDFDE1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+Cancel.h"; sourceTree = "<group>"; };
 		A5EBDFDF1CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+Cancel.m"; sourceTree = "<group>"; };
+		A5EBDFE11CA1B40B009AEB4D /* LabelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelTests.m; sourceTree = "<group>"; };
+		A5EBDFE31CA1B48C009AEB4D /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
+		A5EBDFE41CA1B48C009AEB4D /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
+		A5EBDFE81CA1BFB1009AEB4D /* MenuVCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVCTests.m; sourceTree = "<group>"; };
+		A5EBDFEA1CA1C215009AEB4D /* MenuTableViewDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewDataSourceTests.m; sourceTree = "<group>"; };
+		A5EBDFEC1CA1C9A2009AEB4D /* TableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewDataSource.h; sourceTree = "<group>"; };
+		A5EBDFED1CA1C9A2009AEB4D /* TableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewDataSource.m; sourceTree = "<group>"; };
+		A5EBDFEF1CA1EB5E009AEB4D /* MenuTableViewDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewDatasource.h; sourceTree = "<group>"; };
+		A5EBDFF01CA1EB5E009AEB4D /* MenuTableViewDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewDatasource.m; sourceTree = "<group>"; };
+		A5EBDFF21CA1EBDF009AEB4D /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		A5EBDFF31CA1EBDF009AEB4D /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		A5EBDFF71CA1EC0F009AEB4D /* MenuCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCellTests.m; sourceTree = "<group>"; };
+		A5EBDFF91CA2A326009AEB4D /* InfoPlistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoPlistTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +337,7 @@
 				A5850C091C94689C00527CD8 /* Info.plist */,
 				A5850C2E1C9471BF00527CD8 /* InVisionMailTests-Bridging-Header.h */,
 				A590EBA81C9585C700CB28AF /* Kiwi.framework */,
+				A5EBDFF91CA2A326009AEB4D /* InfoPlistTests.m */,
 			);
 			path = InVisionMailTests;
 			sourceTree = "<group>";
@@ -336,12 +361,12 @@
 			isa = PBXGroup;
 			children = (
 				A5B9C3C11C99F6F400C976D4 /* Segues.h */,
+				A5EBDFEC1CA1C9A2009AEB4D /* TableViewDataSource.h */,
+				A5EBDFED1CA1C9A2009AEB4D /* TableViewDataSource.m */,
+				A5EBDFE61CA1BCD0009AEB4D /* Drawer */,
+				A5EBDFE71CA1BCD7009AEB4D /* Menu */,
 				A5B9C3D01C9B380600C976D4 /* Inbox */,
 				A5B9C3F51CA03EA300C976D4 /* SignIn */,
-				A5B9C3F81CA040D100C976D4 /* DrawerVC.h */,
-				A5B9C3F91CA040D100C976D4 /* DrawerVC.m */,
-				A5B9C3FB1CA0482000C976D4 /* MenuVC.h */,
-				A5B9C3FC1CA0482000C976D4 /* MenuVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +399,8 @@
 				A5B9C3911C9617C900C976D4 /* JSONLoadable.h */,
 				A5B9C3881C96164400C976D4 /* Message.h */,
 				A5B9C3891C96164400C976D4 /* Message.m */,
+				A5EBDFE31CA1B48C009AEB4D /* Label.h */,
+				A5EBDFE41CA1B48C009AEB4D /* Label.m */,
 				A5B9C3E31C9B53AD00C976D4 /* ViewModels (pseudo) */,
 			);
 			path = Model;
@@ -406,6 +433,9 @@
 				A5B9C3C61C9A06EC00C976D4 /* MessageListCell.h */,
 				A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */,
 				A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */,
+				A5EBDFF21CA1EBDF009AEB4D /* MenuCell.h */,
+				A5EBDFF31CA1EBDF009AEB4D /* MenuCell.m */,
+				A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +455,8 @@
 				A5B9C3B51C99EEA300C976D4 /* SignInVCTests.m */,
 				A5B9C3D41C9B384600C976D4 /* InboxTableViewDataSourceTests.m */,
 				A5B9C3F61CA03FF300C976D4 /* DrawerVCTests.m */,
+				A5EBDFE81CA1BFB1009AEB4D /* MenuVCTests.m */,
+				A5EBDFEA1CA1C215009AEB4D /* MenuTableViewDataSourceTests.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -434,6 +466,7 @@
 			children = (
 				A5B9C3861C96125700C976D4 /* MessageTests.m */,
 				A5B9C3E41C9BD6B200C976D4 /* Message+MessageListCellDataSourceTests.m */,
+				A5EBDFE11CA1B40B009AEB4D /* LabelTests.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -490,6 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */,
+				A5EBDFF71CA1EC0F009AEB4D /* MenuCellTests.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -521,6 +555,26 @@
 				A5850BF41C94689C00527CD8 /* SignInVC.m */,
 			);
 			name = SignIn;
+			sourceTree = "<group>";
+		};
+		A5EBDFE61CA1BCD0009AEB4D /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3F81CA040D100C976D4 /* DrawerVC.h */,
+				A5B9C3F91CA040D100C976D4 /* DrawerVC.m */,
+			);
+			name = Drawer;
+			sourceTree = "<group>";
+		};
+		A5EBDFE71CA1BCD7009AEB4D /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3FB1CA0482000C976D4 /* MenuVC.h */,
+				A5B9C3FC1CA0482000C976D4 /* MenuVC.m */,
+				A5EBDFEF1CA1EB5E009AEB4D /* MenuTableViewDatasource.h */,
+				A5EBDFF01CA1EB5E009AEB4D /* MenuTableViewDatasource.m */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -608,6 +662,7 @@
 			files = (
 				A5B9C3631C94967D00C976D4 /* GoogleSignIn.bundle in Resources */,
 				A5850BFD1C94689C00527CD8 /* LaunchScreen.storyboard in Resources */,
+				A5EBDFF61CA1EBE8009AEB4D /* MenuCell.xib in Resources */,
 				A590EBA71C95847600CB28AF /* cartfile in Resources */,
 				A5B9C36C1C94976100C976D4 /* GoogleService-Info.plist in Resources */,
 				A5B9C3CA1C9A06FC00C976D4 /* MessageListCell.xib in Resources */,
@@ -645,13 +700,17 @@
 				A5B9C38A1C96164400C976D4 /* Message.m in Sources */,
 				A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */,
 				A5850BF51C94689C00527CD8 /* SignInVC.m in Sources */,
+				A5EBDFEE1CA1C9A2009AEB4D /* TableViewDataSource.m in Sources */,
 				A5850BF21C94689C00527CD8 /* AppDelegate.m in Sources */,
+				A5EBDFE51CA1B48C009AEB4D /* Label.m in Sources */,
 				A5B9C3951C961B5E00C976D4 /* NSManagedObject+Helpers.m in Sources */,
 				A5B9C37E1C96033100C976D4 /* InVisionMail.xcdatamodeld in Sources */,
 				A5850BEF1C94689C00527CD8 /* main.m in Sources */,
 				A5B9C3A61C9742A900C976D4 /* AppState.m in Sources */,
+				A5EBDFF11CA1EB5E009AEB4D /* MenuTableViewDatasource.m in Sources */,
 				A5B9C3841C960E0400C976D4 /* InboxVC.m in Sources */,
 				A5B9C36F1C94B97300C976D4 /* APICommunicator.m in Sources */,
+				A5EBDFF41CA1EBDF009AEB4D /* MenuCell.m in Sources */,
 				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
 				A5B9C3FA1CA040D100C976D4 /* DrawerVC.m in Sources */,
 				A5EBDFE01CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m in Sources */,
@@ -674,15 +733,20 @@
 				A5B9C3D71C9B4C3C00C976D4 /* UITableViewCell+HelpersTests.m in Sources */,
 				A5B9C3F71CA03FF300C976D4 /* DrawerVCTests.m in Sources */,
 				A5B9C3D51C9B384600C976D4 /* InboxTableViewDataSourceTests.m in Sources */,
+				A5EBDFFA1CA2A326009AEB4D /* InfoPlistTests.m in Sources */,
+				A5EBDFF81CA1EC0F009AEB4D /* MenuCellTests.m in Sources */,
 				A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */,
 				A5EBDFDD1CA18F46009AEB4D /* TestPanGestureRecognizer.m in Sources */,
 				A5B9C39C1C961FD400C976D4 /* TestCoreDataStack.m in Sources */,
 				A5B9C3A21C973F0600C976D4 /* AppStateTests.m in Sources */,
 				A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */,
+				A5EBDFE91CA1BFB1009AEB4D /* MenuVCTests.m in Sources */,
 				A5B9C3E51C9BD6B200C976D4 /* Message+MessageListCellDataSourceTests.m in Sources */,
 				A5B9C3811C960D0D00C976D4 /* InboxVCTests.m in Sources */,
 				A5B9C3F41C9DCB9C00C976D4 /* MessageTimeFormatterTests.m in Sources */,
 				A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */,
+				A5EBDFEB1CA1C215009AEB4D /* MenuTableViewDataSourceTests.m in Sources */,
+				A5EBDFE21CA1B40B009AEB4D /* LabelTests.m in Sources */,
 				A5B9C3CC1C9A079100C976D4 /* MessageListCellTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
