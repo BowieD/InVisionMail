@@ -10,6 +10,10 @@
 
 @interface MessageDetailVC : UIViewController
 
-@property (nonatomic, strong) NSString* messageId;
+@property (nonnull, nonatomic, strong) NSString* messageId;
+
+// Dependencies
+@property (nullable, nonatomic, strong) NSManagedObjectContext* context;
+
 
 @end
