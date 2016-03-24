@@ -7,31 +7,36 @@
 //
 
 #import "MessageDetailVC.h"
+#import "SubjectHeaderView.h"
 
 @interface MessageDetailVC ()
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) SubjectHeaderView* subjectHeader;
 @end
 
 @implementation MessageDetailVC
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setupTableView];
+
+    // test
+    self.subjectHeader.titleLabel.text = self.messageId;
+    
+    self.navigationItem.leftBarButtonItem = [self.splitViewController displayModeButtonItem];
+    self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Setup
+
+- (void) setupTableView {
+    self.subjectHeader = (SubjectHeaderView*)[[[NSBundle mainBundle] loadNibNamed:@"SubjectHeaderView" owner:self options:nil] firstObject];
+    self.tableView.tableHeaderView = self.subjectHeader;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

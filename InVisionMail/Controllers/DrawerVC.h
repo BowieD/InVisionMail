@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrawerVC : UIViewController
+@interface DrawerVC : UIViewController <UISplitViewControllerDelegate>
 
-@property (nullable, nonatomic, weak) UIViewController* mainVC;
-@property (nullable, nonatomic, weak) UIViewController* menuVC;
+@property (nullable, nonatomic, weak) UINavigationController* mainVC;
+@property (nullable, nonatomic, weak) UINavigationController* menuVC;
 
 @property (nonatomic) CGFloat mainControllerOverlap;
 @property (nonatomic, readonly, getter=isMenuOpened) BOOL menuOpened;

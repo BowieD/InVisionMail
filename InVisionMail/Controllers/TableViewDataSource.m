@@ -21,7 +21,7 @@
 
 @property (nonatomic, weak) UITableView* tableView;
 @property (nonatomic, strong) NSManagedObjectContext* context;
-@property (nonatomic, strong) NSFetchedResultsController* frc;
+@property (nonatomic, strong, readwrite) NSFetchedResultsController* frc;
 @property (nonatomic, strong) NSFetchRequest* fetchRequest;
 @property (nonatomic, strong) NSString* sectionNameKeyPath;
 

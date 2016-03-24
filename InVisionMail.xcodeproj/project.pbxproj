@@ -90,6 +90,11 @@
 		A5EBE0071CA2E41B009AEB4D /* MainSplitVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0061CA2E41B009AEB4D /* MainSplitVCTests.m */; };
 		A5EBE00A1CA2E946009AEB4D /* MessageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0091CA2E946009AEB4D /* MessageDetailVC.m */; };
 		A5EBE0111CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0101CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m */; };
+		A5EBE0131CA2EC99009AEB4D /* MessageDetailTableViewDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0121CA2EC99009AEB4D /* MessageDetailTableViewDataSourceTests.m */; };
+		A5EBE0151CA2EDC5009AEB4D /* MessageDetailVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0141CA2EDC5009AEB4D /* MessageDetailVCTests.m */; };
+		A5EBE0171CA2EF84009AEB4D /* SubjectHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EBE0161CA2EF84009AEB4D /* SubjectHeaderView.xib */; };
+		A5EBE01A1CA2EFDE009AEB4D /* SubjectHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE0191CA2EFDE009AEB4D /* SubjectHeaderView.m */; };
+		A5EBE01C1CA2EFFE009AEB4D /* SubjectHeaderViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBE01B1CA2EFFE009AEB4D /* SubjectHeaderViewTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +255,12 @@
 		A5EBE0091CA2E946009AEB4D /* MessageDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailVC.m; sourceTree = "<group>"; };
 		A5EBE00F1CA2EB88009AEB4D /* MessageDetailTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailTableViewDataSource.h; sourceTree = "<group>"; };
 		A5EBE0101CA2EB88009AEB4D /* MessageDetailTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailTableViewDataSource.m; sourceTree = "<group>"; };
+		A5EBE0121CA2EC99009AEB4D /* MessageDetailTableViewDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailTableViewDataSourceTests.m; sourceTree = "<group>"; };
+		A5EBE0141CA2EDC5009AEB4D /* MessageDetailVCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailVCTests.m; sourceTree = "<group>"; };
+		A5EBE0161CA2EF84009AEB4D /* SubjectHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubjectHeaderView.xib; sourceTree = "<group>"; };
+		A5EBE0181CA2EFDE009AEB4D /* SubjectHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectHeaderView.h; sourceTree = "<group>"; };
+		A5EBE0191CA2EFDE009AEB4D /* SubjectHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectHeaderView.m; sourceTree = "<group>"; };
+		A5EBE01B1CA2EFFE009AEB4D /* SubjectHeaderViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectHeaderViewTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,8 +348,8 @@
 		A5850C061C94689C00527CD8 /* InVisionMailTests */ = {
 			isa = PBXGroup;
 			children = (
-				A5B9C3C51C9A05C300C976D4 /* View */,
 				A5B9C3A11C973F0600C976D4 /* AppStateTests.m */,
+				A5B9C3C51C9A05C300C976D4 /* View */,
 				A5B9C3991C961F9100C976D4 /* Mocks */,
 				A5B9C3961C961C0C00C976D4 /* Helpers */,
 				A5B9C3851C96124100C976D4 /* Model */,
@@ -449,6 +460,9 @@
 				A5EBDFF21CA1EBDF009AEB4D /* MenuCell.h */,
 				A5EBDFF31CA1EBDF009AEB4D /* MenuCell.m */,
 				A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */,
+				A5EBE0161CA2EF84009AEB4D /* SubjectHeaderView.xib */,
+				A5EBE0181CA2EFDE009AEB4D /* SubjectHeaderView.h */,
+				A5EBE0191CA2EFDE009AEB4D /* SubjectHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -471,6 +485,8 @@
 				A5EBDFE81CA1BFB1009AEB4D /* MenuVCTests.m */,
 				A5EBDFEA1CA1C215009AEB4D /* MenuTableViewDataSourceTests.m */,
 				A5EBE0061CA2E41B009AEB4D /* MainSplitVCTests.m */,
+				A5EBE0121CA2EC99009AEB4D /* MessageDetailTableViewDataSourceTests.m */,
+				A5EBE0141CA2EDC5009AEB4D /* MessageDetailVCTests.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -538,6 +554,7 @@
 			children = (
 				A5B9C3CB1C9A079100C976D4 /* MessageListCellTests.m */,
 				A5EBDFF71CA1EC0F009AEB4D /* MenuCellTests.m */,
+				A5EBE01B1CA2EFFE009AEB4D /* SubjectHeaderViewTests.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -701,6 +718,7 @@
 				A5B9C36C1C94976100C976D4 /* GoogleService-Info.plist in Resources */,
 				A5B9C3CA1C9A06FC00C976D4 /* MessageListCell.xib in Resources */,
 				A5850BFA1C94689C00527CD8 /* Assets.xcassets in Resources */,
+				A5EBE0171CA2EF84009AEB4D /* SubjectHeaderView.xib in Resources */,
 				A5850BF81C94689C00527CD8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,6 +742,7 @@
 			files = (
 				A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */,
 				A5B9C3FD1CA0482000C976D4 /* MenuVC.m in Sources */,
+				A5EBE01A1CA2EFDE009AEB4D /* SubjectHeaderView.m in Sources */,
 				A5B9C3E81C9BD92D00C976D4 /* NSString+RemoveSubstring.m in Sources */,
 				A5B9C3E21C9B538800C976D4 /* Message+MessageListCellDataSource.m in Sources */,
 				A5B9C3ED1C9DC58200C976D4 /* NSDate+Helpers.m in Sources */,
@@ -767,7 +786,9 @@
 				A5EBDFDA1CA18187009AEB4D /* TestTapGestureRecognizer.m in Sources */,
 				A5B9C3EF1C9DC5FB00C976D4 /* NSDateHelpersTests.m in Sources */,
 				A5EBE0071CA2E41B009AEB4D /* MainSplitVCTests.m in Sources */,
+				A5EBE0131CA2EC99009AEB4D /* MessageDetailTableViewDataSourceTests.m in Sources */,
 				A5B9C3EA1C9BD95400C976D4 /* NSString+RemoveSubstringTests.m in Sources */,
+				A5EBE0151CA2EDC5009AEB4D /* MessageDetailVCTests.m in Sources */,
 				A5B9C3D71C9B4C3C00C976D4 /* UITableViewCell+HelpersTests.m in Sources */,
 				A5B9C3F71CA03FF300C976D4 /* DrawerVCTests.m in Sources */,
 				A5B9C3D51C9B384600C976D4 /* InboxTableViewDataSourceTests.m in Sources */,
@@ -780,6 +801,7 @@
 				A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */,
 				A5EBDFE91CA1BFB1009AEB4D /* MenuVCTests.m in Sources */,
 				A5B9C3E51C9BD6B200C976D4 /* Message+MessageListCellDataSourceTests.m in Sources */,
+				A5EBE01C1CA2EFFE009AEB4D /* SubjectHeaderViewTests.m in Sources */,
 				A5B9C3811C960D0D00C976D4 /* InboxVCTests.m in Sources */,
 				A5B9C3F41C9DCB9C00C976D4 /* MessageTimeFormatterTests.m in Sources */,
 				A5B9C3B21C9759AD00C976D4 /* APICommunicatorTests.m in Sources */,

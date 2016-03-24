@@ -17,12 +17,17 @@
 #import "TestCoreDataStack.h"
 #import "InboxTableViewDataSource.h"
 #import "DrawerVC.h"
+#import "Message.h"
+#import "NSManagedObject+Helpers.h"
+#import "MessageDetailVC.h"
+#import "Segues.h"
 
 // Expose private properties and functions needed for testing
 @interface InboxVC (Private)
 @property (nonatomic, weak) UITableView* tableView;
 @property (nonatomic, strong) TableViewDataSource* dataSource;
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 SPEC_BEGIN(InboxVCTests)
@@ -88,6 +93,39 @@ describe(@"InboxVC", ^{
             CGFloat height = [inboxVC tableView:inboxVC.tableView heightForRowAtIndexPath:[NSIndexPath new]];
             [[theValue(height) should] equal:theValue(100)];
         });
+    });
+    
+    it(@"shoud show message detail when message is selected", ^{
+        // Create dummy message
+        [Message findOrCreateElementWithId:@"Episode IV" context:testCoreDataStack.mainContext];
+        [testCoreDataStack.mainContext save:nil];
+
+        __block UIViewController* destinationVC = nil;
+        [inboxVC stub:@selector(prepareForSegue:sender:) withBlock:^id(NSArray *params) {
+
+            UIStoryboardSegue* segue = (UIStoryboardSegue*)params[0];
+            UINavigationController* nav = segue.destinationViewController;
+            destinationVC = nav.viewControllers.firstObject;
+            return nil; // because of compiler
+        }];
+        
+        [inboxVC tableView:inboxVC.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        
+        [[expectFutureValue(theValue([destinationVC isKindOfClass:[MessageDetailVC class]])) shouldEventually] beTrue];
+    });
+    
+    it(@"should set selected message id to MessageDetailVC", ^{
+        // Create dummy message
+        [Message findOrCreateElementWithId:@"Episode IV" context:testCoreDataStack.mainContext];
+        [testCoreDataStack.mainContext save:nil];
+        [inboxVC.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        
+        UIStoryboardSegue* segue = [[UIStoryboardSegue alloc] initWithIdentifier:SHOW_MESSAGE_DETAIL source:inboxVC destination:[[UINavigationController alloc] initWithRootViewController:[MessageDetailVC new]]];
+        
+        [inboxVC prepareForSegue:segue sender:nil];
+        
+        MessageDetailVC* detailVC = ((UINavigationController *)segue.destinationViewController).viewControllers.firstObject;
+        [[detailVC.messageId should] equal: @"Episode IV"];
     });
 });
 

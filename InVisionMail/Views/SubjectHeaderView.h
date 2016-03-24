@@ -1,5 +1,5 @@
 //
-//  MessageDetailVC.h
+//  SubjectHeaderView.h
 //  InVisionMail
 //
 //  Created by Vojta Stavik on 23/03/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageDetailVC : UIViewController
-
-@property (nonatomic, strong) NSString* messageId;
-
+@interface SubjectHeaderView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end

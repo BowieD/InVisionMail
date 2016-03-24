@@ -14,6 +14,8 @@
 #import "UIViewController+Animations.h"
 #import "TestTapGestureRecognizer.h"
 #import "TestPanGestureRecognizer.h"
+#import "MessageDetailVC.h"
+
 
 // Expose private properties and functions needed for testing
 @interface DrawerVC (Private)
@@ -73,6 +75,82 @@ describe(@"DrawerViewController", ^{
 
     
     // ------------  ------------  ------------  ------------  ------------  ------------
+    // Split View Controller handling
+    
+    // We have to handle this manually, because MasterVC in the Split view controller
+    // is not UINavigationController but Drawer.
+    
+    context(@"when inside Split View Controller", ^{
+        
+        __block UISplitViewController* splitVC;
+        
+        beforeEach(^{
+            splitVC = [UISplitViewController new];
+            [controller stub:@selector(splitViewController) andReturn:splitVC];
+            
+            UIView* view __unused = controller.view; // load view
+        });
+        
+        it(@"should be split vc delegate", ^{
+            NSObject* delegate = (NSObject*)splitVC.delegate;
+            [[delegate should] beIdenticalTo:controller];
+        });
+        
+        it(@"should push the detail VC from MainVC when Split controller is collapsed", ^{
+            [splitVC stub:@selector(isCollapsed) andReturn:theValue(YES)];
+            
+            MessageDetailVC* vc = [MessageDetailVC new];
+            UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            
+            [[controller.mainVC should] receive:@selector(pushViewController:animated:) withArguments:vc, theValue(YES)];
+            
+            [controller showDetailViewController:nav sender:controller];
+        });
+        
+        it(@"should forward the showDetailViewController call to splitVC when splitVC is collapsed", ^{
+            [splitVC stub:@selector(isCollapsed) andReturn:theValue(NO)];
+            
+            MessageDetailVC* vc = [MessageDetailVC new];
+            UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            
+            [[controller.splitViewController should] receive:@selector(showDetailViewController:sender:)];
+            
+            [controller showDetailViewController:nav sender:controller];
+        });
+        
+        it(@"should return NavCon with previously pushed detail VC as separated detail controller", ^{
+            // Detail VC
+            MessageDetailVC* vc = [MessageDetailVC new];
+            UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            [controller showDetailViewController:nav sender:controller];
+            
+            UINavigationController* receivedNavCon = (UINavigationController*)[controller splitViewController:splitVC separateSecondaryViewControllerFromPrimaryViewController:controller];
+            [[receivedNavCon.viewControllers.firstObject should] beIdenticalTo:vc];
+        });
+        
+        it(@"should return MainVC only with rootVC for primaryViewControllerForExpandingSplitViewController", ^{
+            DrawerVC* drawer = (DrawerVC*)[controller primaryViewControllerForExpandingSplitViewController:splitVC];
+            
+            [[drawer should] beIdenticalTo:controller];
+            [[theValue(drawer.mainVC.viewControllers.count) should] equal:theValue(1)];
+        });
+        
+        it(@"should return MainVC with pushed detailVC for primaryViewControllerForCollapsingSplitViewController", ^{
+            // Detail VC
+            MessageDetailVC* vc = [MessageDetailVC new];
+            UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            [controller showDetailViewController:nav sender:controller];
+
+            DrawerVC* drawer = (DrawerVC*)[controller primaryViewControllerForCollapsingSplitViewController:splitVC];
+            
+            [[drawer should] beIdenticalTo:controller];
+            [[drawer.mainVC.viewControllers[1] should] beIdenticalTo:vc];
+        });
+    });
+
+    
+    
+    // ------------  ------------  ------------  ------------  ------------  ------------
     //
     
     context(@"when view is loaded", ^{
@@ -120,6 +198,10 @@ describe(@"DrawerViewController", ^{
         it(@"should have mainControllerOverlap 80", ^{
             [[theValue(controller.mainControllerOverlap) should] equal:theValue(80)];
         });
+        
+        
+        
+        // ------------  ------------  ------------  ------------  ------------  ------------
         
         context(@"after VC is presented", ^{
             beforeEach(^{

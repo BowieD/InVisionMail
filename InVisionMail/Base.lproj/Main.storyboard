@@ -101,7 +101,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GBw-G1-8Br">
             <objects>
-                <navigationController id="dHz-57-wTo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MessageDetailNavController" id="dHz-57-wTo" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qew-Hk-fUi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -117,7 +117,7 @@
         <!--Message DetailVC-->
         <scene sceneID="IVL-dh-NSp">
             <objects>
-                <viewController id="cTq-mR-eGv" customClass="MessageDetailVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageDetailVC" id="cTq-mR-eGv" customClass="MessageDetailVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fwF-vV-fp7"/>
                         <viewControllerLayoutGuide type="bottom" id="22O-Xd-652"/>
@@ -125,9 +125,24 @@
                     <view key="view" contentMode="scaleToFill" id="fgk-dw-bMn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QWe-qg-IkC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="22O-Xd-652" firstAttribute="top" secondItem="QWe-qg-IkC" secondAttribute="bottom" id="8ol-7S-Ruq"/>
+                            <constraint firstAttribute="trailing" secondItem="QWe-qg-IkC" secondAttribute="trailing" id="XZp-HV-nMY"/>
+                            <constraint firstItem="QWe-qg-IkC" firstAttribute="top" secondItem="fgk-dw-bMn" secondAttribute="top" id="aV6-C1-ljn"/>
+                            <constraint firstItem="QWe-qg-IkC" firstAttribute="leading" secondItem="fgk-dw-bMn" secondAttribute="leading" id="dn8-qO-KuT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="msI-VG-tym"/>
+                    <connections>
+                        <outlet property="tableView" destination="QWe-qg-IkC" id="gYs-gx-40i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F04-gb-Ksq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,6 +190,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kEf-7v-5LN" id="B1p-lT-bVE"/>
+                        <segue destination="dHz-57-wTo" kind="showDetail" identifier="ShowMessageDetail" id="yGA-hc-MdB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgO-Md-jmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,8 +253,8 @@
             <objects>
                 <splitViewController storyboardIdentifier="MainSplitVC" id="524-fv-OMZ" customClass="MainSplitVC" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="dHz-57-wTo" kind="relationship" relationship="detailViewController" id="7RU-Hy-GdV"/>
-                        <segue destination="i01-Y7-Xi9" kind="relationship" relationship="masterViewController" id="K7a-Z8-6O8"/>
+                        <segue destination="i01-Y7-Xi9" kind="relationship" relationship="masterViewController" id="14R-b3-QGL"/>
+                        <segue destination="dHz-57-wTo" kind="relationship" relationship="detailViewController" id="C1Z-5y-32r"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPK-Wb-G64" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,4 +283,7 @@
     <resources>
         <image name="hamburger-icon" width="29" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="C1Z-5y-32r"/>
+    </inferredMetricsTieBreakers>
 </document>

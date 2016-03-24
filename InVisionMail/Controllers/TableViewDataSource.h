@@ -18,4 +18,6 @@
                      tableViewCell: (Class)cellClass
                             entity: (Class)entityClass;
 
+@property (nonatomic, strong, readonly) NSFetchedResultsController* frc;
+
 @end

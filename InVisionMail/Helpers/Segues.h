@@ -11,3 +11,4 @@
 static NSString* const SHOW_INBOX = @"ShowInboxSegue";
 static NSString* const DRAWER_EMBEDED_MENU = @"DrawerEmbededMenuSegue";
 static NSString* const DRAWER_EMBEDED_MAIN = @"DrawerEmbededMainSegue";
+static NSString* const SHOW_MESSAGE_DETAIL = @"ShowMessageDetail";

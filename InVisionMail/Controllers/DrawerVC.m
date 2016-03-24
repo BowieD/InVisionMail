@@ -11,7 +11,7 @@
 #import "UIViewController+Animations.h"
 #import "UIGestureRecognizer+Cancel.h"
 
-@interface DrawerVC ()
+@interface DrawerVC () <UISplitViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mainContainerView;
 @property (weak, nonatomic) IBOutlet UIView *menuContainerView;
@@ -23,6 +23,8 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
+
+@property (nonatomic, strong) UIViewController* detail;
 
 @end
 
@@ -37,15 +39,20 @@
     
     self.menuOpened = NO;
     
-    self.mainControllerOverlap = 80;
     [self setupGestureRecognizers];
-    
-    self.view.layer.masksToBounds = YES;
+    [self setupAppearance];
+
+    self.splitViewController.delegate = self;
 }
 
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Setup
+
+- (void) setupAppearance {
+    self.mainControllerOverlap = 80;
+    self.view.layer.masksToBounds = YES;
+}
 
 - (void) setupGestureRecognizers {
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
@@ -217,6 +224,56 @@
         [self updateMainVCPosition:finalPosition];
         [self.view layoutIfNeeded];
     }];
+}
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - UISplitViewController delegate + tweaks
+
+// We use DrawerVC as the Master view controller for Split view controller. Bacuse this class
+// is not a subclass of UINavigationController, we have to manually handle the way, how the detail
+// VC is presented
+
+- (void) showDetailViewController:(UIViewController *)vc sender:(id)sender {
+    UIViewController* detailVC = vc;
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        // we can't push a navigation controller, just the root VC
+        detailVC = ((UINavigationController*)detailVC).viewControllers.firstObject;
+    }
+
+    if (detailVC != nil) {
+        self.detail = detailVC;
+    }
+
+    if (self.splitViewController.isCollapsed) {
+        // If SplitVC is collapsed (iPhone), we push the detailVC from MainVC
+        [self.mainVC pushViewController:detailVC animated:YES];
+
+    } else {
+        // SplitVC is not collapsed (iPad), we let splitViewControlled decide what to do
+        [self.splitViewController showDetailViewController:vc sender:sender];
+    }
+}
+
+- (UIViewController*) splitViewController:(UISplitViewController *)splitViewController separateSecondaryViewControllerFromPrimaryViewController:(UIViewController *)primaryViewController {
+    
+    return [[UINavigationController alloc] initWithRootViewController:self.detail];
+}
+
+- (UIViewController*) primaryViewControllerForCollapsingSplitViewController:(UISplitViewController *)splitViewController {
+
+    [self.mainVC popToRootViewControllerAnimated:NO];
+    
+    if (self.detail != nil) {
+        [self.mainVC pushViewController:self.detail animated:NO];
+    }
+
+    return self;
+}
+
+- (UIViewController*) primaryViewControllerForExpandingSplitViewController:(UISplitViewController *)splitViewController {
+
+    [self.mainVC popToRootViewControllerAnimated:NO];
+    return self;
 }
 
 @end

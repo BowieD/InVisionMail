@@ -9,7 +9,9 @@
 #import "InboxVC.h"
 #import "InboxTableViewDataSource.h"
 #import "DrawerVC.h"
-
+#import "Segues.h"
+#import "Message.h"
+#import "MessageDetailVC.h"
 
 @interface InboxVC () <UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
@@ -50,6 +52,9 @@ static CGFloat rowHeight = 100;
     
     [self.navigationItem.leftBarButtonItem setTarget:self];
     [self.navigationItem.leftBarButtonItem setAction:@selector(hamburgerButtonPressed)];
+    
+//    self.navigationItem.leftBarButtonItem = [self.splitViewController displayModeButtonItem];
+//    self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 
 - (void) setupTableViewAndDatasource {
@@ -88,6 +93,20 @@ static CGFloat rowHeight = 100;
     [[self drawerVC] showMenu];
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:SHOW_MESSAGE_DETAIL]) {
+        NSIndexPath* selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        if (selectedIndexPath != nil) {
+            Message* message = [self.dataSource.frc objectAtIndexPath:selectedIndexPath];
+            MessageDetailVC* detailVC = ((UINavigationController*)segue.destinationViewController).viewControllers.firstObject;
+            detailVC.messageId = message.customId;
+            
+            NSLog(@"Prepare for segue for Message: %@", message.customId);
+        } else {
+//        TODO: Log error
+        }
+    }
+}
 
 
 // ------------  ------------  ------------  ------------  ------------  ------------
@@ -97,6 +116,9 @@ static CGFloat rowHeight = 100;
     return rowHeight;
 }
 
-
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Message* message = [self.dataSource.frc objectAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:SHOW_MESSAGE_DETAIL sender:message.customId];
+}
 
 @end
