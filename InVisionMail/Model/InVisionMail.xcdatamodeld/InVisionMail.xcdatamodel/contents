@@ -7,6 +7,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="customId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="historyId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sender" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,7 +18,7 @@
         <attribute name="unread" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Message" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="Label" positionX="-63" positionY="45" width="128" height="105"/>
+        <element name="Message" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>
 </model>

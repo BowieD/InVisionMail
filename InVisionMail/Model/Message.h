@@ -19,6 +19,7 @@
 @property (nullable, nonatomic, copy) NSString *snippet;
 @property (nullable, nonatomic, copy) NSString *subject;
 @property (nullable, nonatomic, copy) NSString *sender;
+@property (nullable, nonatomic, copy) NSString *body;
 @property (nonatomic) BOOL unread;
 
 @end

@@ -41,8 +41,26 @@ describe(@"Message", ^{
                            @"name": @"From",
                            @"value": @"C-3PO"
                            }
-                      ]
-                   }
+                      ],
+                   
+                   @"parts":
+                       @[
+                           @{
+                               @"body":
+                                   @{
+                                       // Base64URL encoded 'Great, kid. Don’t get cocky.'
+                                       @"data": @"R3JlYXQsIGtpZC4gRG9u4oCZdCBnZXQgY29ja3ku"
+                                       },
+                               @"headers":
+                                   @[
+                                       @{
+                                           @"name": @"Content-Type",
+                                           @"value": @"text/plain; charset=\"utf-8\"; format=\"fixed\""
+                                       }
+                                   ]
+                           }
+                       ]
+                   },
            };
         
         [message loadData:json];
@@ -53,6 +71,7 @@ describe(@"Message", ^{
         [[message.snippet should] equal:@"Don't you call me a mindless philosopher you overweight glob of grease!"];
         [[message.subject should] equal:@"He’s holding a thermal detonator!"];
         [[message.sender should] equal:@"C-3PO"];
+        [[message.body should] equal:@"Great, kid. Don’t get cocky."];
         [[theValue(message.unread) should] beTrue];
     });
 });
