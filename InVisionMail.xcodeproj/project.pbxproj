@@ -72,6 +72,9 @@
 		A5B9C3F71CA03FF300C976D4 /* DrawerVCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F61CA03FF300C976D4 /* DrawerVCTests.m */; };
 		A5B9C3FA1CA040D100C976D4 /* DrawerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3F91CA040D100C976D4 /* DrawerVC.m */; };
 		A5B9C3FD1CA0482000C976D4 /* MenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B9C3FC1CA0482000C976D4 /* MenuVC.m */; };
+		A5D278AA1CA5ABFB00205451 /* RoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D278A91CA5ABFB00205451 /* RoundedImageView.m */; };
+		A5D278AD1CA5ACA900205451 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D278AC1CA5ACA900205451 /* RoundedView.m */; };
+		A5D278B01CA5B28900205451 /* TimestampLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D278AF1CA5B28900205451 /* TimestampLabel.m */; };
 		A5EBDFD71CA16E32009AEB4D /* UIViewController+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFD61CA16E32009AEB4D /* UIViewController+Animations.m */; };
 		A5EBDFDA1CA18187009AEB4D /* TestTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFD91CA18187009AEB4D /* TestTapGestureRecognizer.m */; };
 		A5EBDFDD1CA18F46009AEB4D /* TestPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBDFDC1CA18F46009AEB4D /* TestPanGestureRecognizer.m */; };
@@ -102,6 +105,7 @@
 		A5F2BC351CA538490021EC03 /* NSString+Base64URLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC341CA538490021EC03 /* NSString+Base64URLTests.m */; };
 		A5F2BC381CA5838D0021EC03 /* Message+MessageDetailPreviewCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC371CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.m */; };
 		A5F2BC3A1CA583E90021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC391CA583E80021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m */; };
+		A5F2BC3F1CA5A3A00021EC03 /* UIFont+AppFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC3E1CA5A3A00021EC03 /* UIFont+AppFonts.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +237,12 @@
 		A5B9C3F91CA040D100C976D4 /* DrawerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerVC.m; sourceTree = "<group>"; };
 		A5B9C3FB1CA0482000C976D4 /* MenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuVC.h; sourceTree = "<group>"; };
 		A5B9C3FC1CA0482000C976D4 /* MenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuVC.m; sourceTree = "<group>"; };
+		A5D278A81CA5ABFB00205451 /* RoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedImageView.h; sourceTree = "<group>"; };
+		A5D278A91CA5ABFB00205451 /* RoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedImageView.m; sourceTree = "<group>"; };
+		A5D278AB1CA5ACA900205451 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedView.h; sourceTree = "<group>"; };
+		A5D278AC1CA5ACA900205451 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedView.m; sourceTree = "<group>"; };
+		A5D278AE1CA5B28900205451 /* TimestampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampLabel.h; sourceTree = "<group>"; };
+		A5D278AF1CA5B28900205451 /* TimestampLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampLabel.m; sourceTree = "<group>"; };
 		A5EBDFD51CA16E32009AEB4D /* UIViewController+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Animations.h"; sourceTree = "<group>"; };
 		A5EBDFD61CA16E32009AEB4D /* UIViewController+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Animations.m"; sourceTree = "<group>"; };
 		A5EBDFD81CA18187009AEB4D /* TestTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTapGestureRecognizer.h; sourceTree = "<group>"; };
@@ -279,6 +289,8 @@
 		A5F2BC361CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+MessageDetailPreviewCellDataSource.h"; sourceTree = "<group>"; };
 		A5F2BC371CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+MessageDetailPreviewCellDataSource.m"; sourceTree = "<group>"; };
 		A5F2BC391CA583E80021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+MessageDetailPreviewCellDataSourceTests.m"; sourceTree = "<group>"; };
+		A5F2BC3D1CA5A3A00021EC03 /* UIFont+AppFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AppFonts.h"; sourceTree = "<group>"; };
+		A5F2BC3E1CA5A3A00021EC03 /* UIFont+AppFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AppFonts.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				A5850BF91C94689C00527CD8 /* Assets.xcassets */,
+				A5F2BC3C1CA5A3930021EC03 /* Appearance */,
 				A5B9C3A31C97429700C976D4 /* AppState */,
 				A5B9C3701C95FD7800C976D4 /* Controllers */,
 				A5B9C3711C95FD7800C976D4 /* Helpers */,
@@ -657,6 +670,21 @@
 			name = "Message detail";
 			sourceTree = "<group>";
 		};
+		A5F2BC3C1CA5A3930021EC03 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				A5F2BC3D1CA5A3A00021EC03 /* UIFont+AppFonts.h */,
+				A5F2BC3E1CA5A3A00021EC03 /* UIFont+AppFonts.m */,
+				A5D278A81CA5ABFB00205451 /* RoundedImageView.h */,
+				A5D278A91CA5ABFB00205451 /* RoundedImageView.m */,
+				A5D278AB1CA5ACA900205451 /* RoundedView.h */,
+				A5D278AC1CA5ACA900205451 /* RoundedView.m */,
+				A5D278AE1CA5B28900205451 /* TimestampLabel.h */,
+				A5D278AF1CA5B28900205451 /* TimestampLabel.m */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -709,6 +737,7 @@
 				TargetAttributes = {
 					A5850BE91C94689C00527CD8 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = X53G3KMVA6;
 					};
 					A5850C021C94689C00527CD8 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -777,11 +806,14 @@
 				A5B9C3E21C9B538800C976D4 /* Message+MessageListCellDataSource.m in Sources */,
 				A5B9C3ED1C9DC58200C976D4 /* NSDate+Helpers.m in Sources */,
 				A5B9C3C81C9A06EC00C976D4 /* MessageListCell.m in Sources */,
+				A5F2BC3F1CA5A3A00021EC03 /* UIFont+AppFonts.m in Sources */,
+				A5D278AA1CA5ABFB00205451 /* RoundedImageView.m in Sources */,
 				A5F2BC381CA5838D0021EC03 /* Message+MessageDetailPreviewCellDataSource.m in Sources */,
 				A5EBDFD71CA16E32009AEB4D /* UIViewController+Animations.m in Sources */,
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
 				A5B9C3DA1C9B4C5700C976D4 /* UITableViewCell+Helpers.m in Sources */,
 				A5B9C38A1C96164400C976D4 /* Message.m in Sources */,
+				A5D278B01CA5B28900205451 /* TimestampLabel.m in Sources */,
 				A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */,
 				A5850BF51C94689C00527CD8 /* SignInVC.m in Sources */,
 				A5F2BC331CA535C80021EC03 /* NSString+Base64URL.m in Sources */,
@@ -800,6 +832,7 @@
 				A5B9C36F1C94B97300C976D4 /* APICommunicator.m in Sources */,
 				A5EBDFF41CA1EBDF009AEB4D /* MenuCell.m in Sources */,
 				A5EBE0041CA2E3F5009AEB4D /* MainSplitVC.m in Sources */,
+				A5D278AD1CA5ACA900205451 /* RoundedView.m in Sources */,
 				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
 				A5B9C3FA1CA040D100C976D4 /* DrawerVC.m in Sources */,
 				A5EBDFE01CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m in Sources */,
@@ -976,6 +1009,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -997,6 +1031,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

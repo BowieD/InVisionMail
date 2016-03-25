@@ -23,7 +23,7 @@
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Preferences
 
-static CGFloat rowHeight = 100;
+static CGFloat rowHeight = 80;
 
 
 
@@ -52,14 +52,12 @@ static CGFloat rowHeight = 100;
     
     [self.navigationItem.leftBarButtonItem setTarget:self];
     [self.navigationItem.leftBarButtonItem setAction:@selector(hamburgerButtonPressed)];
-    
-//    self.navigationItem.leftBarButtonItem = [self.splitViewController displayModeButtonItem];
-//    self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 
 - (void) setupTableViewAndDatasource {
     self.dataSource = [TableViewDataSource inboxTableViewDataSource:self.tableView context:self.context];
     self.tableView.delegate = self;
+    self.tableView.rowHeight = rowHeight;
 }
 
 - (void) setupAppearance {
@@ -111,10 +109,6 @@ static CGFloat rowHeight = 100;
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - TableView delegate
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return rowHeight;
-}
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Message* message = [self.dataSource.frc objectAtIndexPath:indexPath];

@@ -116,6 +116,25 @@ describe(@"MessageDetailVC", ^{
             [tableView shouldNotBeNil];
         });
         
+        it(@"should be hidden when no messageId se set", ^{
+            // We have to create new test instance for this test
+            UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            viewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"MessageDetailVC"];
+            
+            // Set dependencies
+            coreDataStack = [TestCoreDataStack new];
+            viewController.context = coreDataStack.mainContext;
+            viewController.communicator = [APICommunicator mock];
+
+            UIView* view __unused = viewController.view; // load view
+            
+            [[theValue(viewController.tableView.hidden) should] beTrue];
+        });
+        
+        it(@"should be visible when messageId is set", ^{
+            [[theValue(viewController.tableView.hidden) shouldNot] beTrue];
+        });
+        
         it(@"should have viewController as delegate", ^{
             [[viewController should] beIdenticalTo:tableView.delegate];
         });
@@ -179,9 +198,6 @@ describe(@"MessageDetailVC", ^{
             [[viewController.message should] beIdenticalTo:message];
         });
     });
-    
-
-    
 });
 
 SPEC_END

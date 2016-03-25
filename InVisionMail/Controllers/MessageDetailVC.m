@@ -15,7 +15,7 @@
 #import "MessageDetailPreviewCell.h"
 #import "MessageDetailTableViewDataSource.h"
 
-@interface MessageDetailVC () <UITableViewDataSource, UITableViewDelegate>
+@interface MessageDetailVC () <UITableViewDelegate>
 
 // This property is used just for getting 'threadId' and 'subject' for the thread
 @property (nonatomic, strong) Message* message;
@@ -59,6 +59,7 @@
     
     if (self.messageId == nil) {
         // we show just blank screen
+        self.tableView.hidden = YES;
         return;
     }
     
@@ -68,6 +69,8 @@
     
     self.dataSource = [TableViewDataSource messageDetailTableViewDataSource:self.tableView threadId:self.message.threadId context:self.context];
     self.tableView.delegate = self;
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 
@@ -145,13 +148,15 @@
     // the only thing we have to do here, is to refresh cell heights.
     [tableView beginUpdates];
     [tableView endUpdates];
+    
+    [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CGFloat height;
     
-    if (indexPath == tableView.indexPathForSelectedRow) {
+    if ([indexPath isEqual:tableView.indexPathForSelectedRow]) {
         // Show full message, ask cell for the correct height
         height = [MessageDetailPreviewCell desiredHeightForWidth:tableView.frame.size.width
                                                        andData:[self.dataSource.frc objectAtIndexPath:indexPath]];
@@ -159,6 +164,8 @@
         // Show just preview
         height = [MessageDetailPreviewCell previewHeight];
     }
+    
+    NSLog(@"Height: %f", height);
     
     return height;
 }

@@ -88,10 +88,8 @@ describe(@"InboxVC", ^{
             [[inboxVC.dataSource should] beIdenticalTo:inboxVC.tableView.dataSource];
         });
         
-        it(@"should have row hight 100", ^{
-            [[inboxVC should] beIdenticalTo:inboxVC.tableView.delegate];
-            CGFloat height = [inboxVC tableView:inboxVC.tableView heightForRowAtIndexPath:[NSIndexPath new]];
-            [[theValue(height) should] equal:theValue(100)];
+        it(@"should have row hight 40", ^{
+            [[theValue(inboxVC.tableView.rowHeight) should] equal:theValue(40)];
         });
     });
     

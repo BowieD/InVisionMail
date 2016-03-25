@@ -10,9 +10,15 @@
 #import "UITableViewCell+Helpers.h"
 
 @interface MessageDetailPreviewCell ()
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textLeadingConstraint;
 
+@property (nonatomic, strong) NSArray* tempConstraints;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+
 @end
+
+
 
 @implementation MessageDetailPreviewCell
 
@@ -24,6 +30,9 @@
     
     [self.snippetTextView setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.nameTextView setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    [self updateConstraintsForNonSelectedState];
+    self.replyButton.alpha = 0;
 }
 
 - (void) prepareForReuse {
@@ -58,13 +67,22 @@
 }
 
 - (void) setSelected:(BOOL)selected animated:(BOOL)animated {
+    if (selected == self.isSelected) {
+        // state not changed, do nothing
+        return;
+    }
+    
     [super setSelected:selected animated:animated];
     
     [UIView animateWithDuration:0.33 animations:^{
         if (selected) {
-            self.textLeadingConstraint.constant = 8;
+            self.textLeadingConstraint.constant = 16;
+            self.replyButton.alpha = 1;
+            [self updateConstraintsForSelectedState];
         } else {
-            self.textLeadingConstraint.constant = 30 + 2*8;
+            self.textLeadingConstraint.constant = 38 + 16 + 8;
+            self.replyButton.alpha = 0;
+            [self updateConstraintsForNonSelectedState];
         }
         
         [self layoutIfNeeded];
@@ -72,10 +90,39 @@
 }
 
 // ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Layout
+
+- (void) updateConstraintsForSelectedState {
+    [self.contentView removeConstraints:self.tempConstraints];
+    
+    NSLayoutConstraint* c1 = [NSLayoutConstraint constraintWithItem:_timestampLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_nameTextView attribute:NSLayoutAttributeLeading multiplier:1 constant:5];
+    
+    NSLayoutConstraint* c2 = [NSLayoutConstraint constraintWithItem:_timestampLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_nameTextView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    self.tempConstraints = @[c1, c2];
+    
+    [self.contentView addConstraints:self.tempConstraints];
+}
+
+- (void) updateConstraintsForNonSelectedState {
+    [self.contentView removeConstraints:self.tempConstraints];
+    
+    NSLayoutConstraint* c1 = [NSLayoutConstraint constraintWithItem:_timestampLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1 constant:8];
+    
+    NSLayoutConstraint* c2 = [NSLayoutConstraint constraintWithItem:_timestampLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1 constant:-16];
+    
+    self.tempConstraints = @[c1, c2];
+    
+    [self.contentView addConstraints:self.tempConstraints];
+}
+
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Desired heights
 
 + (CGFloat) previewHeight {
-    return 55;
+    return 65;
 }
 
 + (CGFloat) desiredHeightForWidth: (CGFloat)width andData: (id<MessageDetailPreviewCellDataSource>)dataSource {
@@ -90,7 +137,7 @@
     UIFont *usedFont = cell.snippetTextView.font;
     NSDictionary *attributes = @{NSFontAttributeName : usedFont};
     
-    NSString* text = [dataSource body] == nil ? [dataSource snippet] : [dataSource body];
+    NSString* text = [dataSource body];
     
     if (text == nil) {
         text = @"";
@@ -100,7 +147,7 @@
     
     cell.snippetTextView.attributedText = attrString;
     
-    width -= 2*8; // horizonal borders
+    width -= 2*16; // horizonal borders
     
     CGFloat bodyHeight = [cell.snippetTextView sizeThatFits: CGSizeMake(width, CGFLOAT_MAX)].height;
     
