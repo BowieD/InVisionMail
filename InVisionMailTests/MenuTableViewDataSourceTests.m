@@ -146,12 +146,17 @@ describe(@"InboxTableView", ^{
         it(@"should update correct cell when message is updated", ^{
             [coreDataStack.mainContext save:nil]; // Finish all pending updates
             
+            MenuCell* cell = (MenuCell*)[dataSource tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            
+            [[cell.titleLabel.text should] equal:@"A New Hope"];
+            [tableView stub:@selector(cellForRowAtIndexPath:) andReturn:cell];
+
             Label* lIV = [Label withCustomId:@"1 - Episode IV" fromContext:coreDataStack.mainContext];
             lIV.title = @"Star Wars: A New Hope";
             
             [[tableView shouldEventually] receive:@selector(beginUpdates)];
-            [[tableView shouldEventually] receive:@selector(reloadRowsAtIndexPaths:withRowAnimation:)];
             [[tableView shouldEventually] receive:@selector(endUpdates)];
+            [[expectFutureValue(cell.titleLabel.text)shouldEventually] equal:@"Star Wars: A New Hope"];
         });
         
         it(@"shoul move cell when message order is changed", ^{

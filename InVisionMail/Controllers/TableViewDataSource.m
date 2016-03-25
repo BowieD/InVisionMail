@@ -133,7 +133,10 @@
     }
     
     if (type == NSFetchedResultsChangeUpdate && newIndexPath == nil) {
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        id<CellLoadable> cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [cell loadData:anObject];
+//
+//        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
     if (type == NSFetchedResultsChangeMove && indexPath != nil && newIndexPath != nil) {

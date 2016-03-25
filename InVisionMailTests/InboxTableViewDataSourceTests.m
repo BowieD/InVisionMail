@@ -92,12 +92,20 @@ describe(@"InboxTableView", ^{
         it(@"should update correct cell when message is updated", ^{
             [coreDataStack.mainContext save:nil]; // Finish all pending updates
             
+            MessageListCell* cellVI = (MessageListCell*)[dataSource tableView:tableView
+                                                        cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+
+            [tableView stub:@selector(cellForRowAtIndexPath:) andReturn:cellVI];
+            
+            [[cellVI.subjectLabel.text should] beNil];
+            
             Message* mIV = [Message withCustomId:@"Episode IV" fromContext:coreDataStack.mainContext];
             mIV.subject = @"Luke Skywalker joins forces with a Jedi Knight.";
 
             [[tableView shouldEventually] receive:@selector(beginUpdates)];
-            [[tableView shouldEventually] receive:@selector(reloadRowsAtIndexPaths:withRowAnimation:)];
             [[tableView shouldEventually] receive:@selector(endUpdates)];
+            
+            [[expectFutureValue(cellVI.subjectLabel.text) shouldEventually] equal:@"Luke Skywalker joins forces with a Jedi Knight."];
         });
         
         it(@"shoul move cell when message order is changed", ^{

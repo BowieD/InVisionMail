@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Message+MessageListCellDataSource.h"
 
-@protocol MessageDetailPreviewCellDataSource <NSObject>
-- (NSString*) name;
-- (NSString*) snippet;
-- (NSString*) timestampString;
+@protocol MessageDetailPreviewCellDataSource <MessageListCellDataSource>
 - (UIImage*)  avatarImage;
+- (NSString*) body;
 @end
 
 @interface MessageDetailPreviewCell : UITableViewCell
@@ -23,5 +22,8 @@
 @property (nonatomic, weak) IBOutlet UIImageView *avatarImageView;
 
 - (void) loadData: (id<MessageDetailPreviewCellDataSource>) dataSource;
+
++ (CGFloat) previewHeight;
++ (CGFloat) desiredHeightForWidth: (CGFloat)width andData: (id<MessageDetailPreviewCellDataSource>) dataSource;
 
 @end

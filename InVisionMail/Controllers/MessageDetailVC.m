@@ -11,12 +11,23 @@
 #import "Message.h"
 #import "CoreDataStack.h"
 #import "NSManagedObject+Helpers.h"
+#import "UITableViewCell+Helpers.h"
+#import "MessageDetailPreviewCell.h"
+#import "MessageDetailTableViewDataSource.h"
 
-@interface MessageDetailVC ()
+@interface MessageDetailVC () <UITableViewDataSource, UITableViewDelegate>
+
+// This property is used just for getting 'threadId' and 'subject' for the thread
 @property (nonatomic, strong) Message* message;
+
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) SubjectHeaderView* subjectHeader;
+
+@property (nonatomic, strong) TableViewDataSource* dataSource;
+
 @end
+
+
 
 @implementation MessageDetailVC
 // ------------  ------------  ------------  ------------  ------------  ------------
@@ -29,6 +40,12 @@
     [self setupNavigationItems];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self selectMessageWithId: self.messageId];
+}
+
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Setup
@@ -39,9 +56,28 @@
 }
 
 - (void) setupTableView {
+    
+    if (self.messageId == nil) {
+        // we show just blank screen
+        return;
+    }
+    
     self.subjectHeader = (SubjectHeaderView*)[[[NSBundle mainBundle] loadNibNamed:@"SubjectHeaderView" owner:self options:nil] firstObject];
     self.subjectHeader.titleLabel.text = self.message.subject;
     self.tableView.tableHeaderView = self.subjectHeader;
+    
+    self.dataSource = [TableViewDataSource messageDetailTableViewDataSource:self.tableView threadId:self.message.threadId context:self.context];
+    self.tableView.delegate = self;
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - API
+
+- (void) getMessageDetailIfNeeded: (Message*) message {
+    if (message != nil && message.body == nil) {
+        [self.communicator getMessageDetail:message.customId toContext:self.context];
+    }
 }
 
 
@@ -49,9 +85,7 @@
 #pragma mark - Setters & Getters
 
 - (Message*) message {
-    NSAssert(self.messageId != nil, @"MessageId mustn't be nil");
-    
-    if (_message == nil) {
+    if (_message == nil && _messageId != nil) {
         _message = [Message withCustomId:self.messageId fromContext:self.context];
     }
     
@@ -72,5 +106,61 @@
     return _context;
 }
 
+- (APICommunicator *) communicator {
+    if (_communicator == nil) {
+        // Dependency not set, use default context
+        _communicator = [APICommunicator sharedCommunicator];
+    }
+    return _communicator;
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Helpers
+
+- (void) selectMessageWithId: (NSString*) messageId {
+    for (Message* message in self.dataSource.frc.fetchedObjects) {
+        if ([message.customId isEqualToString:messageId]) {
+            NSIndexPath* path = [self.dataSource.frc indexPathForObject:message];
+            [self.tableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionTop];
+            [self tableView:self.tableView didSelectRowAtIndexPath:path];
+            break;
+        }
+    }
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - TableView
+
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // load data from API if needed
+    [self getMessageDetailIfNeeded: [self.dataSource.frc objectAtIndexPath:indexPath]];
+    
+    // Because the different appearance of closed/open cell is done just by autolayout,
+    // the only thing we have to do here, is to refresh cell heights.
+    [tableView beginUpdates];
+    [tableView endUpdates];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat height;
+    
+    if (indexPath == tableView.indexPathForSelectedRow) {
+        // Show full message, ask cell for the correct height
+        height = [MessageDetailPreviewCell desiredHeightForWidth:tableView.frame.size.width
+                                                       andData:[self.dataSource.frc objectAtIndexPath:indexPath]];
+    } else {
+        // Show just preview
+        height = [MessageDetailPreviewCell previewHeight];
+    }
+    
+    return height;
+}
 
 @end

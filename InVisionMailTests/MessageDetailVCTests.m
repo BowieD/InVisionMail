@@ -13,12 +13,21 @@
 #import "Message.h"
 #import "NSManagedObject+Helpers.h"
 #import "SubjectHeaderView.h"
+#import "APICommunicator.h"
+#import "MessageDetailPreviewCell.h"
+#import "TableViewDataSource.h"
 
 // Expose private properties and functions needed for testing
 @interface MessageDetailVC (Private)
+
 @property (nonatomic, strong) Message* message;
+
 @property (nonatomic, weak) UITableView* tableView;
 @property (nonatomic, strong) SubjectHeaderView* subjectHeader;
+@property (nonatomic, strong) TableViewDataSource* dataSource;
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 
@@ -37,7 +46,7 @@ describe(@"MessageDetailVC", ^{
         // Set dependencies
         coreDataStack = [TestCoreDataStack new];
         viewController.context = coreDataStack.mainContext;
-//        inboxVC.communicator = [APICommunicator mock];
+        viewController.communicator = [APICommunicator mock];
 
         // Message
         message = [Message findOrCreateElementWithId:@"Episode IV" context:coreDataStack.mainContext];
@@ -68,6 +77,31 @@ describe(@"MessageDetailVC", ^{
         });
     });
     
+    // ------------  ------------  ------------  ------------  ------------  ------------
+    // API
+
+    it(@"should select intial message", ^{
+        [[viewController.communicator should] receive:@selector(getMessageDetail:toContext:) withArguments:@"Episode IV", coreDataStack.mainContext];
+
+        [viewController beginAppearanceTransition:YES animated:NO];
+        [[viewController.tableView.indexPathForSelectedRow should] equal:[NSIndexPath indexPathForRow:0 inSection:0]];
+    });
+    
+    it(@"should ask APICommunicator to get message detail of selected message if body is empty", ^{
+        message.body = nil;
+        
+        [[viewController.communicator should] receive:@selector(getMessageDetail:toContext:) withArguments:@"Episode IV", coreDataStack.mainContext];
+
+        NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
+        [viewController.tableView selectRowAtIndexPath:path
+                                              animated:NO scrollPosition:0];
+        [viewController tableView:viewController.tableView didSelectRowAtIndexPath:path];
+    });
+    
+    
+    // ------------  ------------  ------------  ------------  ------------  ------------
+    // TableView
+    
     describe(@"table view", ^{
         __block UITableView* tableView;
         
@@ -78,7 +112,11 @@ describe(@"MessageDetailVC", ^{
         it(@"should be initialized", ^{
             [tableView shouldNotBeNil];
         });
-
+        
+        it(@"should have viewController as delegate", ^{
+            [[viewController should] beIdenticalTo:tableView.delegate];
+        });
+        
         describe(@"subject header", ^{
             __block SubjectHeaderView* header;
             
@@ -96,7 +134,41 @@ describe(@"MessageDetailVC", ^{
             });
         });
         
+        describe(@"delegate", ^{
+            beforeEach(^{
+                [tableView stub:@selector(indexPathForSelectedRow) andReturn:[NSIndexPath indexPathForRow:0 inSection:0]];
+            });
+            
+            it(@"should return height previewHeight for unselected cell - row:1 section:0", ^{
+                CGFloat height = [tableView.delegate tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+                
+                [[theValue(height) should] equal:theValue([MessageDetailPreviewCell previewHeight])];
+            });
 
+            it(@"should return cell's desired height selected cell - row:0 section:0", ^{
+                [MessageDetailPreviewCell stub:@selector(desiredHeightForWidth:andData:) andReturn:theValue(500)];
+                
+                CGFloat height = [tableView.delegate tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                
+                [[theValue(height) should] equal:theValue(500)];
+            });
+            
+            it(@"should send correct width and object to cell prototype while asking for desired height", ^{
+                [[[MessageDetailPreviewCell class] should] receive:@selector(desiredHeightForWidth:andData:) withArguments:theValue(tableView.frame.size.width), message];
+                
+                [tableView.delegate tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            });
+            
+            afterEach(^{
+                [[MessageDetailPreviewCell class] clearStubs];
+            });
+        });
+        
+        describe(@"data source", ^{
+           it(@"should be MessageDetailTableViewDataSource", ^{
+               [[viewController.dataSource should] beIdenticalTo: tableView.dataSource];
+           });
+        });
     });
     
     describe(@"message", ^{
@@ -104,6 +176,8 @@ describe(@"MessageDetailVC", ^{
             [[viewController.message should] beIdenticalTo:message];
         });
     });
+    
+
     
 });
 

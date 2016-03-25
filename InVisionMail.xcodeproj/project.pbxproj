@@ -100,6 +100,8 @@
 		A5F2BC251CA4388E0021EC03 /* MessageDetailPreviewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC241CA4388E0021EC03 /* MessageDetailPreviewCellTests.m */; };
 		A5F2BC331CA535C80021EC03 /* NSString+Base64URL.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC321CA535C80021EC03 /* NSString+Base64URL.m */; };
 		A5F2BC351CA538490021EC03 /* NSString+Base64URLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC341CA538490021EC03 /* NSString+Base64URLTests.m */; };
+		A5F2BC381CA5838D0021EC03 /* Message+MessageDetailPreviewCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC371CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.m */; };
+		A5F2BC3A1CA583E90021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2BC391CA583E80021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +276,9 @@
 		A5F2BC311CA535C80021EC03 /* NSString+Base64URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64URL.h"; sourceTree = "<group>"; };
 		A5F2BC321CA535C80021EC03 /* NSString+Base64URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64URL.m"; sourceTree = "<group>"; };
 		A5F2BC341CA538490021EC03 /* NSString+Base64URLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64URLTests.m"; sourceTree = "<group>"; };
+		A5F2BC361CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Message+MessageDetailPreviewCellDataSource.h"; sourceTree = "<group>"; };
+		A5F2BC371CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+MessageDetailPreviewCellDataSource.m"; sourceTree = "<group>"; };
+		A5F2BC391CA583E80021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Message+MessageDetailPreviewCellDataSourceTests.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,6 +521,7 @@
 				A5B9C3861C96125700C976D4 /* MessageTests.m */,
 				A5B9C3E41C9BD6B200C976D4 /* Message+MessageListCellDataSourceTests.m */,
 				A5EBDFE11CA1B40B009AEB4D /* LabelTests.m */,
+				A5F2BC391CA583E80021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -596,6 +602,8 @@
 			children = (
 				A5B9C3E01C9B538800C976D4 /* Message+MessageListCellDataSource.h */,
 				A5B9C3E11C9B538800C976D4 /* Message+MessageListCellDataSource.m */,
+				A5F2BC361CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.h */,
+				A5F2BC371CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.m */,
 			);
 			name = "ViewModels (pseudo)";
 			sourceTree = "<group>";
@@ -769,6 +777,7 @@
 				A5B9C3E21C9B538800C976D4 /* Message+MessageListCellDataSource.m in Sources */,
 				A5B9C3ED1C9DC58200C976D4 /* NSDate+Helpers.m in Sources */,
 				A5B9C3C81C9A06EC00C976D4 /* MessageListCell.m in Sources */,
+				A5F2BC381CA5838D0021EC03 /* Message+MessageDetailPreviewCellDataSource.m in Sources */,
 				A5EBDFD71CA16E32009AEB4D /* UIViewController+Animations.m in Sources */,
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
 				A5B9C3DA1C9B4C5700C976D4 /* UITableViewCell+Helpers.m in Sources */,
@@ -823,6 +832,7 @@
 				A5B9C3B01C9756B000C976D4 /* NetworkCommunicatorTests.m in Sources */,
 				A5EBDFDD1CA18F46009AEB4D /* TestPanGestureRecognizer.m in Sources */,
 				A5B9C39C1C961FD400C976D4 /* TestCoreDataStack.m in Sources */,
+				A5F2BC3A1CA583E90021EC03 /* Message+MessageDetailPreviewCellDataSourceTests.m in Sources */,
 				A5B9C3A21C973F0600C976D4 /* AppStateTests.m in Sources */,
 				A5B9C3981C961C2D00C976D4 /* CoreDataHelpersTests.m in Sources */,
 				A5EBDFE91CA1BFB1009AEB4D /* MenuVCTests.m in Sources */,

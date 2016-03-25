@@ -117,11 +117,11 @@
 
 - (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId withParameters: (NSDictionary*)parameters toContext: (NSManagedObjectContext* _Nonnull)context {
     return [self authorizedGETRequest:[MY_MESSAGES stringByAppendingString:messageId] parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary* jsonData = (NSDictionary*)responseObject;
             [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:context completionBlock:^(NSManagedObject * _Nullable element) {
-//                NSLog(@"New message saved to the context: %@", element.description);
+                NSLog(@"New message saved to the context: %@", element.description);
             }];
         }
         

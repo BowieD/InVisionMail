@@ -89,14 +89,20 @@ describe(@"MessageDetailTableViewDataSource", ^{
 
         it(@"should update correct cell when message is updated", ^{
             [coreDataStack.mainContext save:nil]; // Finish all pending updates
-
+            
+            MessageDetailPreviewCell* cell = (MessageDetailPreviewCell*)[dataSource tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+            
+            [[cell.snippetTextView.text should] equal:@"A New Hope"];
+            
+            [tableView stub:@selector(cellForRowAtIndexPath:) andReturn:cell];
+            
             Message* mIV = [Message withCustomId:@"Episode IV" fromContext:coreDataStack.mainContext];
             mIV.snippet = @"Star Wars: A New Hope";
-
+            
             [[tableView shouldEventually] receive:@selector(beginUpdates)];
-            [[tableView shouldEventually] receive:@selector(reloadRowsAtIndexPaths:withRowAnimation:)
-                                    withArguments:@[[NSIndexPath indexPathForRow:1 inSection:0]], theValue(UITableViewRowAnimationAutomatic)];
             [[tableView shouldEventually] receive:@selector(endUpdates)];
+            
+            [[expectFutureValue(cell.snippetTextView.text)shouldEventually] equal:@"Star Wars: A New Hope"];
         });
     });
 });

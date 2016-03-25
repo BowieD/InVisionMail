@@ -35,6 +35,15 @@ describe(@"MessageDetailPreviewCell", ^{
         it(@"should exist", ^{
             [[nameTextView shouldNot] beNil];
         });
+        
+        it(@"should have disable scrolling and editing", ^{
+            [[theValue(nameTextView.scrollEnabled) should] beFalse];
+            [[theValue(nameTextView.editable) should] beFalse];
+        });
+        
+        it(@"should have zero insets", ^{
+            [[theValue(nameTextView.textContainerInset) should] equal:theValue(UIEdgeInsetsMake(0, 0, 0, 0))];
+        });
     });
 
     describe(@"snippet text view", ^{
@@ -46,6 +55,15 @@ describe(@"MessageDetailPreviewCell", ^{
         
         it(@"should exist", ^{
             [[snippetTextView shouldNot] beNil];
+        });
+        
+        it(@"should have disable scrolling and editing", ^{
+            [[theValue(snippetTextView.scrollEnabled) should] beFalse];
+            [[theValue(snippetTextView.editable) should] beFalse];
+        });
+        
+        it(@"should have zero insets", ^{
+            [[theValue(snippetTextView.textContainerInset) should] equal:theValue(UIEdgeInsetsMake(0, 0, 0, 0))];
         });
     });
 
@@ -81,6 +99,7 @@ describe(@"MessageDetailPreviewCell", ^{
         [dataSource stub:@selector(avatarImage) andReturn:image];
         [dataSource stub:@selector(name) andReturn:@"The Emperor"];
         [dataSource stub:@selector(subject) andReturn:@"Return of the Jedi"];
+        [dataSource stub:@selector(body) andReturn:nil];
         [dataSource stub:@selector(snippet) andReturn:@"Now, young Skywalker… you will die."];
         [dataSource stub:@selector(timestampString) andReturn:@"Yesterday"];
 
@@ -100,7 +119,35 @@ describe(@"MessageDetailPreviewCell", ^{
         [[cell.timestampLabel.text should] equal:@""];
         [[cell.avatarImageView.image should] beNil];
     });
-
+    
+    it(@"should have previewHeight 55", ^{
+        [[theValue([MessageDetailPreviewCell previewHeight]) should] equal:theValue(55)];
+    });
+    
+    it(@"should compute desired height correctly", ^{
+        NSObject<MessageDetailPreviewCellDataSource>* dataSource = [KWMock mockForProtocol:@protocol(MessageDetailPreviewCellDataSource)];
+        
+        NSString* body = @"Luke, you can destroy the Emperor. \n He has foreseen this. \n It is your destiny. \n Join me, and together we can rule the galaxy as father and son.";
+        UIImage* image = [UIImage new];
+        
+        [dataSource stub:@selector(avatarImage) andReturn:image];
+        [dataSource stub:@selector(name) andReturn:@"The Emperor"];
+        [dataSource stub:@selector(subject) andReturn:@"Return of the Jedi"];
+        [dataSource stub:@selector(body) andReturn:body];
+        [dataSource stub:@selector(snippet) andReturn:@"Now, young Skywalker… you will die."];
+        [dataSource stub:@selector(timestampString) andReturn:@"Yesterday"];
+        
+        UIFont *usedFont = cell.snippetTextView.font;
+        NSDictionary *attributes = @{NSFontAttributeName : usedFont};
+        
+        CGFloat bodyHeight = [body boundingRectWithSize:CGSizeMake(500 - 2*16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size.height;
+        CGFloat headerHeight = [MessageDetailPreviewCell previewHeight];
+        CGFloat cellHeight = bodyHeight + headerHeight + 8; // 8 are borders
+        
+        CGFloat computedValue = [MessageDetailPreviewCell desiredHeightForWidth:500 andData:dataSource];
+        
+        [[theValue(cellHeight) should] equal:theValue(computedValue)];
+    });
 
 });
 

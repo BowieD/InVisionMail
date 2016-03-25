@@ -11,4 +11,8 @@
 
 @interface Message (MessageListCellDataSource) <MessageListCellDataSource>
 
+- (NSString*) name;
+- (NSString*) timestampString;
+- (NSString*) timestampStringWithTodaysDate: (NSDate*)date;
+
 @end

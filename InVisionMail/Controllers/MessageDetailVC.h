@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APICommunicator.h"
 
 @interface MessageDetailVC : UIViewController
 
 @property (nonnull, nonatomic, strong) NSString* messageId;
 
 // Dependencies
+@property (nullable, nonatomic, strong) APICommunicator* communicator;
 @property (nullable, nonatomic, strong) NSManagedObjectContext* context;
 
 
