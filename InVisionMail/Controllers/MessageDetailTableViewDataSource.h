@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TableViewDataSource.h"
 
-@interface MessageDetailTableViewDataSource : NSObject
+@interface TableViewDataSource (MessageDetailTableViewDataSource)
+
++ (instancetype) messageDetailTableViewDataSource:(UITableView *)tableView
+                                         threadId: (NSString*) threadId
+                                          context:(NSManagedObjectContext *)context;
 
 @end
