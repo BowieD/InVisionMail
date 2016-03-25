@@ -51,6 +51,9 @@ describe(@"MessageDetailVC", ^{
         // Message
         message = [Message findOrCreateElementWithId:@"Episode IV" context:coreDataStack.mainContext];
         message.subject = @"Luke Skywalker joins forces with a Jedi Knight.";
+        message.snippet = @"Luke, you can destroy the Emperor. He has foreseen this.";
+        [coreDataStack.mainContext save:nil]; // Apply pending changes
+        
         viewController.messageId = @"Episode IV";
         
         UIView* view __unused = viewController.view; // load view

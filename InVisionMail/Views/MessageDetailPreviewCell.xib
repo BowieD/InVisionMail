@@ -85,7 +85,7 @@
                 <outlet property="avatarImageView" destination="3ut-EE-99X" id="3AD-fF-mDZ"/>
                 <outlet property="nameTextView" destination="voR-J0-8dg" id="V2M-qm-H9N"/>
                 <outlet property="snippetTextView" destination="fhg-5J-70x" id="2fX-5f-QlC"/>
-                <outlet property="textLeading" destination="e3d-Gw-WEG" id="r4m-43-cGB"/>
+                <outlet property="textLeadingConstraint" destination="e3d-Gw-WEG" id="Kgs-Mm-ThQ"/>
                 <outlet property="timestampLabel" destination="3Z4-47-Idf" id="wHH-19-cty"/>
             </connections>
             <point key="canvasLocation" x="581" y="364"/>

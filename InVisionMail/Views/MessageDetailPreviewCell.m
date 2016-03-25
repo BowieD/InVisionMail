@@ -10,7 +10,7 @@
 #import "UITableViewCell+Helpers.h"
 
 @interface MessageDetailPreviewCell ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textLeading;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textLeadingConstraint;
 
 @end
 
@@ -41,8 +41,13 @@
 - (void) loadData:(id<MessageDetailPreviewCellDataSource>)dataSource {
     self.nameTextView.text = [dataSource name];
     
-    // If we don't have body yet, we will use snippet
-    self.snippetTextView.text = [dataSource body] == nil ? [dataSource snippet] : [dataSource body];
+    if ([self isSelected]) {
+        self.snippetTextView.text = [dataSource body];
+    } else {
+        // If we don't have body yet, we will use snippet
+        self.snippetTextView.text = [dataSource body] == nil ? [dataSource snippet] : [dataSource body];
+    }
+    
     
     self.timestampLabel.text = [dataSource timestampString];
 
@@ -57,9 +62,9 @@
     
     [UIView animateWithDuration:0.33 animations:^{
         if (selected) {
-            self.textLeading.constant = 8;
+            self.textLeadingConstraint.constant = 8;
         } else {
-            self.textLeading.constant = 30 + 2*8;
+            self.textLeadingConstraint.constant = 30 + 2*8;
         }
         
         [self layoutIfNeeded];
@@ -85,11 +90,19 @@
     UIFont *usedFont = cell.snippetTextView.font;
     NSDictionary *attributes = @{NSFontAttributeName : usedFont};
     
-    width -= 23; // horizonal borders + text view insets (magic number based on testing)
+    NSString* text = [dataSource body] == nil ? [dataSource snippet] : [dataSource body];
     
-    CGFloat bodyHeight = [[dataSource body] boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
-                                                         options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
-                                                      attributes:attributes context:nil].size.height;
+    if (text == nil) {
+        text = @"";
+    }
+    
+    NSAttributedString* attrString = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    
+    cell.snippetTextView.attributedText = attrString;
+    
+    width -= 2*8; // horizonal borders
+    
+    CGFloat bodyHeight = [cell.snippetTextView sizeThatFits: CGSizeMake(width, CGFLOAT_MAX)].height;
     
     CGFloat headerHeight = [MessageDetailPreviewCell previewHeight];
     CGFloat borders = 2 * 8; // vertical borders

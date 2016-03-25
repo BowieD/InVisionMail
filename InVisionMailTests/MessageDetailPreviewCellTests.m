@@ -140,9 +140,16 @@ describe(@"MessageDetailPreviewCell", ^{
         UIFont *usedFont = cell.snippetTextView.font;
         NSDictionary *attributes = @{NSFontAttributeName : usedFont};
         
-        CGFloat bodyHeight = [body boundingRectWithSize:CGSizeMake(500 - 2*16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size.height;
+        NSAttributedString* attrString = [[NSAttributedString alloc] initWithString:body attributes:attributes];
+        
+        cell.snippetTextView.attributedText = attrString;
+        
+        CGFloat width = 500 - 2*8; // horizonal borders
+        CGFloat bodyHeight = [cell.snippetTextView sizeThatFits: CGSizeMake(width, CGFLOAT_MAX)].height;
+        bodyHeight += 2*8;
+        
         CGFloat headerHeight = [MessageDetailPreviewCell previewHeight];
-        CGFloat cellHeight = bodyHeight + headerHeight + 8; // 8 are borders
+        CGFloat cellHeight = bodyHeight + headerHeight;
         
         CGFloat computedValue = [MessageDetailPreviewCell desiredHeightForWidth:500 andData:dataSource];
         
