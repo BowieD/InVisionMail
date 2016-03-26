@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -23,13 +23,18 @@
                         </constraints>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="voR-J0-8dg">
-                        <rect key="frame" x="64" y="8" width="376" height="22"/>
+                        <rect key="frame" x="64" y="8" width="376" height="33"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="EUk-ht-mDV"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EUk-ht-mDV"/>
+                            </mask>
+                        </variation>
                     </textView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="999" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhg-5J-70x">
                         <rect key="frame" x="64" y="50" width="434" height="167"/>
@@ -50,12 +55,15 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z4-47-Idf" customClass="TimestampLabel">
-                        <rect key="frame" x="64" y="30" width="42" height="21"/>
+                        <rect key="frame" x="64" y="30" width="29" height="14"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RpF-pf-1R7">
+                        <rect key="frame" x="271" y="124" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="fhg-5J-70x" secondAttribute="trailing" constant="16" id="4pj-9h-M9t"/>
@@ -73,8 +81,10 @@
                     <constraint firstAttribute="bottom" secondItem="fhg-5J-70x" secondAttribute="bottom" constant="8" id="iM6-Mo-SQe"/>
                     <constraint firstItem="6CO-O4-UW8" firstAttribute="leading" relation="lessThanOrEqual" secondItem="voR-J0-8dg" secondAttribute="trailing" constant="32" id="ou6-Wz-GnK"/>
                     <constraint firstItem="fhg-5J-70x" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3ut-EE-99X" secondAttribute="bottom" constant="8" id="ppt-nj-Bwr"/>
+                    <constraint firstItem="RpF-pf-1R7" firstAttribute="centerY" secondItem="fhg-5J-70x" secondAttribute="centerY" id="qCI-mA-9iO"/>
                     <constraint firstAttribute="trailing" secondItem="6CO-O4-UW8" secondAttribute="trailing" constant="16" id="s8i-JK-F2X"/>
                     <constraint firstItem="3Z4-47-Idf" firstAttribute="leading" secondItem="voR-J0-8dg" secondAttribute="leading" priority="100" placeholder="YES" id="u1b-c6-N8V"/>
+                    <constraint firstItem="RpF-pf-1R7" firstAttribute="centerX" secondItem="fhg-5J-70x" secondAttribute="centerX" id="viZ-co-L2g"/>
                     <constraint firstItem="fhg-5J-70x" firstAttribute="top" relation="greaterThanOrEqual" secondItem="voR-J0-8dg" secondAttribute="bottom" constant="8" id="xEr-6F-br7"/>
                     <constraint firstItem="fhg-5J-70x" firstAttribute="top" secondItem="voR-J0-8dg" secondAttribute="bottom" priority="100" constant="8" id="xLC-E2-Ikj"/>
                 </constraints>
@@ -88,6 +98,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="activityIndicator" destination="RpF-pf-1R7" id="feY-Y2-cgT"/>
                 <outlet property="avatarImageView" destination="3ut-EE-99X" id="3AD-fF-mDZ"/>
                 <outlet property="nameTextView" destination="voR-J0-8dg" id="V2M-qm-H9N"/>
                 <outlet property="replyButton" destination="6CO-O4-UW8" id="zfp-yE-tKv"/>

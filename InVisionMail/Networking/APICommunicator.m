@@ -69,6 +69,11 @@
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Gmail calls
 - (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context {
+    return [self getMyMessagesToContext:context completion:nil];
+}
+
+- (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context completion: (nullable void (^)(NSError* _Nullable error))completion {
+    
     return [self authorizedGETRequest:MY_MESSAGES
                            parameters:@{LABELS_IDS_KEY: INBOX_LABEL_VALUE}
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -98,12 +103,18 @@
                 // exists in the context.
                 [Message loadFromJSON:nil customId:messageID context:context completionBlock:nil];
 
-                NSLog(@"Getting meta data for message: %@", messageID);
+//                NSLog(@"Getting meta data for message: %@", messageID);
                 [self getMessageMetadata:messageID toContext:context];
+            }
+            
+            if (completion) {
+                completion(nil);
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(error.localizedDescription);
+        if (completion) {
+            completion(error);
+        }
     }];
 }
 
@@ -121,7 +132,7 @@
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary* jsonData = (NSDictionary*)responseObject;
             [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:context completionBlock:^(NSManagedObject * _Nullable element) {
-                NSLog(@"New message saved to the context: %@", element.description);
+//                NSLog(@"New message saved to the context: %@", element.description);
             }];
         }
         
@@ -149,7 +160,7 @@
             NSString* labelId = [label objectForKey:ID_KEY];
             
             [Label loadFromJSON:label customId:labelId context:context completionBlock:^(NSManagedObject * _Nullable element) {
-                NSLog(@"Label added: %@", element.description);
+//                NSLog(@"Label added: %@", element.description);
             }];
         }
         

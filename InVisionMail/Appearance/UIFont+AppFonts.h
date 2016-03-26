@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+// All fonts used in the app
+
 @interface UIFont (AppFonts)
 
 + (UIFont*) mainTitleFont_Regular;

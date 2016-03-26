@@ -22,6 +22,11 @@
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 @end
 
+@interface MessageListCell (Private)
+@property (nonatomic, weak) UILabel* timestampLabel;
+@property (nonatomic, weak) UILabel* subjectLabel;
+@end
+
 
 SPEC_BEGIN(InboxTableViewDataSourceTests)
 

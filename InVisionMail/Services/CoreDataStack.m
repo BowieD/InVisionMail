@@ -46,20 +46,20 @@
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         NSError *error = nil;
-        // We will use InMemoryStore during the heavy development
-        NSPersistentStore *store = [self.mainContext.persistentStoreCoordinator
-                                                    addPersistentStoreWithType:NSInMemoryStoreType
-                                                    configuration:nil
-                                                    URL:storeURL
-                                                    options:nil
-                                                    error:&error];
-
+//        // We will use InMemoryStore during the heavy development
 //        NSPersistentStore *store = [self.mainContext.persistentStoreCoordinator
-//                                                    addPersistentStoreWithType:NSSQLiteStoreType
+//                                                    addPersistentStoreWithType:NSInMemoryStoreType
 //                                                    configuration:nil
 //                                                    URL:storeURL
 //                                                    options:nil
 //                                                    error:&error];
+
+        NSPersistentStore *store = [self.mainContext.persistentStoreCoordinator
+                                                    addPersistentStoreWithType:NSSQLiteStoreType
+                                                    configuration:nil
+                                                    URL:storeURL
+                                                    options:nil
+                                                    error:&error];
 
         NSAssert(store != nil, @"Error initializing PSC: %@\n%@", [error localizedDescription], [error userInfo]);
     });

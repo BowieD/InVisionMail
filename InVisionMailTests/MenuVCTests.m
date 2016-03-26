@@ -53,9 +53,7 @@ describe(@"MenuVC", ^{
         });
         
         it(@"should have row hight 44", ^{
-            [[menuVC should] beIdenticalTo:menuVC.tableView.delegate];
-            CGFloat height = [menuVC tableView:menuVC.tableView heightForRowAtIndexPath:[NSIndexPath new]];
-            [[theValue(height) should] equal:theValue(44)];
+            [[theValue(menuVC.tableView.rowHeight) should] equal:theValue(44)];
         });
     });
     

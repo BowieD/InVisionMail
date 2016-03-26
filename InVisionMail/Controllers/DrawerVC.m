@@ -11,7 +11,7 @@
 #import "UIViewController+Animations.h"
 #import "UIGestureRecognizer+Cancel.h"
 
-@interface DrawerVC () <UISplitViewControllerDelegate>
+@interface DrawerVC () <UISplitViewControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *mainContainerView;
 @property (weak, nonatomic) IBOutlet UIView *menuContainerView;
@@ -80,6 +80,7 @@
 - (UITapGestureRecognizer*) tapGestureRecognizer {
     if (_tapGestureRecognizer == nil) {
         _tapGestureRecognizer = [[self.TapGestureRecognizerClass alloc] initWithTarget:self action:@selector(handleTap:)];
+        _tapGestureRecognizer.delegate = self;
     }
     return _tapGestureRecognizer;
 }
@@ -87,6 +88,7 @@
 - (UIPanGestureRecognizer*) panGestureRecognizer {
     if (_panGestureRecognizer == nil) {
         _panGestureRecognizer = [[self.PanGestureRecognizerClass alloc] initWithTarget:self action:@selector(handlePan:)];
+        _panGestureRecognizer.delegate = self;
     }
     return _panGestureRecognizer;
 }
@@ -274,6 +276,18 @@
 
     [self.mainVC popToRootViewControllerAnimated:NO];
     return self;
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Gesture recognizer delegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isDescendantOfView:self.menuVC.view]) {
+        // We don't want to cancle menuVC touches
+        return NO;
+    }
+    return YES;
 }
 
 @end

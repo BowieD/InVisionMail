@@ -36,6 +36,15 @@
         } else {
             self.title = (NSString *)name;
         }
+        
+        if ([[self.title uppercaseString] isEqualToString:@"INBOX"]) {
+            // A small hack to have Inbox label at the first place.
+            // In the real world project, the order of the label would
+            // be handle on the server side.
+            self.order = 1;
+        } else {
+            self.order = INT16_MAX;
+        }
     }
     
 }

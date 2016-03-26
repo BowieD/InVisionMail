@@ -8,12 +8,57 @@
 
 #import "MessageListCell.h"
 #import "UIFont+AppFonts.h"
+#import "UIColor+AppColors.h"
+
+@interface MessageListCell ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
+@property (weak, nonatomic) IBOutlet UILabel *snippetLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *attachmentIcon;
+@property (weak, nonatomic) IBOutlet UIView *unreadMark;
+@end
+
 
 @implementation MessageListCell
 
-- (UIFont*) nameLabelFont {
-    return [UIFont preferredFontForTextStyle:@"Headline"];
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Life cycle
+
+- (void) awakeFromNib {
+    [super awakeFromNib];
+    
+    [self setupAppearance];
 }
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Setup
+
+- (void) setupAppearance {
+    self.unreadMark.backgroundColor = [UIColor invision_greenColor];
+    
+    self.nameLabel.textColor = [UIColor invision_textColor];
+    self.subjectLabel.textColor = [UIColor invision_textColor];
+    self.snippetLabel.textColor = [UIColor invision_textColor];
+    self.snippetLabel.font = [UIFont regularTextFont_Regular];
+    
+    self.attachmentIcon.hidden = YES;
+}
+
+- (void) applyUnreadAppearance: (BOOL) unread {
+    if (unread) {
+        self.nameLabel.font = [UIFont mainTitleFont_Bold];
+        self.subjectLabel.font = [UIFont regularTextFont_Bold];
+    } else {
+        self.nameLabel.font = [UIFont mainTitleFont_Regular];
+        self.subjectLabel.font = [UIFont regularTextFont_Regular];
+    }
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Data
 
 - (void) prepareForReuse {
     [super prepareForReuse];
@@ -35,16 +80,5 @@
     [self applyUnreadAppearance:dataSource.unread];
 }
 
-- (void) applyUnreadAppearance: (BOOL) unread {
-    if (unread) {
-        self.nameLabel.font = [UIFont mainTitleFont_Bold];
-        self.subjectLabel.font = [UIFont regularTextFont_Bold];
-    } else {
-        self.nameLabel.font = [UIFont mainTitleFont_Regular];
-        self.subjectLabel.font = [UIFont regularTextFont_Regular];
-    }
-    
-    self.snippetLabel.font = [UIFont regularTextFont_Regular];
-}
 
 @end

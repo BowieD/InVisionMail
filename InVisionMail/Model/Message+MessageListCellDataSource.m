@@ -26,7 +26,11 @@
 }
 
 - (NSString*) timestampString {
-    return [self timestampStringWithTodaysDate:[NSDate date]];
+    if (self.timestamp == 0) {
+        return nil;
+    } else {
+        return [self timestampStringWithTodaysDate:[NSDate date]];
+    }
 }
 
 - (NSString*) timestampStringWithTodaysDate: (NSDate*)date {

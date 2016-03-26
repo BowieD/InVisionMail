@@ -30,6 +30,13 @@
 
 
 @implementation MessageDetailVC
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Preferences
+
+static CGFloat subjectHeaderHeight = 44;
+
+
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Life cycle
 
@@ -56,20 +63,26 @@
 }
 
 - (void) setupTableView {
-    
+
     if (self.messageId == nil) {
-        // we show just blank screen
+        // We don't have message id (i.e. first start on iPad),
+        // show just blank screen
         self.tableView.hidden = YES;
         return;
     }
     
+    // Subject header
     self.subjectHeader = (SubjectHeaderView*)[[[NSBundle mainBundle] loadNibNamed:@"SubjectHeaderView" owner:self options:nil] firstObject];
     self.subjectHeader.titleLabel.text = self.message.subject;
+    CGRect headerFrame = CGRectMake(0, 0, self.tableView.bounds.size.width, subjectHeaderHeight);
+    self.subjectHeader.frame = headerFrame;
     self.tableView.tableHeaderView = self.subjectHeader;
     
+    // Datasource
     self.dataSource = [TableViewDataSource messageDetailTableViewDataSource:self.tableView threadId:self.message.threadId context:self.context];
     self.tableView.delegate = self;
     
+    // Separator
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 

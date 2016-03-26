@@ -12,9 +12,12 @@
 #import "Segues.h"
 #import "Message.h"
 #import "MessageDetailVC.h"
+#import "UIColor+AppColors.h"
+#import "StatusInfoView.h"
 
 @interface InboxVC () <UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
+@property (weak, nonatomic) IBOutlet StatusInfoView *statusInfoView;
 @property (nonatomic, strong) TableViewDataSource* dataSource;
 @end
 
@@ -40,7 +43,9 @@ static CGFloat rowHeight = 80;
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.communicator getMyMessagesToContext:self.context];
+    
+    BOOL silently = self.dataSource.frc.fetchedObjects.count != 0;
+    [self getNewMessages:silently];
 }
 
 
@@ -50,9 +55,15 @@ static CGFloat rowHeight = 80;
 - (void) setupNavigationItems {
     self.navigationItem.title = @"Inbox";
     
+    // Hamburger button
     [self.navigationItem.leftBarButtonItem setTarget:self];
     [self.navigationItem.leftBarButtonItem setAction:@selector(hamburgerButtonPressed)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor invision_darkGrayColor];
+
+    // New message button
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor invision_greenColor];
 }
+
 
 - (void) setupTableViewAndDatasource {
     self.dataSource = [TableViewDataSource inboxTableViewDataSource:self.tableView context:self.context];
@@ -61,8 +72,28 @@ static CGFloat rowHeight = 80;
 }
 
 - (void) setupAppearance {
-
+    
 }
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Networking
+
+- (void) getNewMessages: (BOOL) silently {
+    
+    if (silently == NO) {
+        [self.statusInfoView loading];
+    }
+    
+    [self.communicator getMyMessagesToContext:self.context completion:^(NSError * _Nullable error) {
+        if (error) {
+            [self.statusInfoView error:error];
+        } else {
+            [self.statusInfoView success];
+        }
+    }];
+}
+
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Dependencies
@@ -100,8 +131,6 @@ static CGFloat rowHeight = 80;
             detailVC.messageId = message.customId;
             
             NSLog(@"Prepare for segue for Message: %@", message.customId);
-        } else {
-//        TODO: Log error
         }
     }
 }

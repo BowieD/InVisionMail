@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface SubjectHeaderView : UIView
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @end

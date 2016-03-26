@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pK0-Iu-q0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pK0-Iu-q0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--DrawerVC-->
@@ -80,17 +81,38 @@
                                     <constraint firstAttribute="height" constant="50" id="6dM-FE-3S8"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Dpc-dv-3f7">
+                                <rect key="frame" x="290" y="170" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="statusLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxP-DH-qNB">
+                                <rect key="frame" x="256" y="222" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.11545667966258814" green="0.51014397905759168" blue="0.36366151362911653" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="MUL-pk-ybp" firstAttribute="top" secondItem="Dpc-dv-3f7" secondAttribute="bottom" constant="32" id="5gk-O0-xad"/>
+                            <constraint firstItem="MUL-pk-ybp" firstAttribute="top" secondItem="WxP-DH-qNB" secondAttribute="bottom" constant="32" id="Cpa-j8-u0Q"/>
+                            <constraint firstItem="WxP-DH-qNB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cwg-6F-QSI"/>
                             <constraint firstItem="MUL-pk-ybp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="keB-ck-yIE"/>
                             <constraint firstAttribute="trailing" secondItem="MUL-pk-ybp" secondAttribute="trailing" constant="16" id="oz9-1e-0Xh"/>
+                            <constraint firstItem="WxP-DH-qNB" firstAttribute="top" secondItem="Dpc-dv-3f7" secondAttribute="bottom" constant="32" id="u3P-OY-XOB"/>
+                            <constraint firstItem="Dpc-dv-3f7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vkC-BD-5Pc"/>
                             <constraint firstItem="MUL-pk-ybp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wqT-ad-xTr"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5gk-O0-xad"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="2tf-9E-ZZ2"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Dpc-dv-3f7" id="H6I-6C-dFg"/>
                         <outlet property="signInButton" destination="MUL-pk-ybp" id="9GG-9U-G2g"/>
+                        <outlet property="statusLabel" destination="WxP-DH-qNB" id="TVo-oX-ZXm"/>
                         <segue destination="524-fv-OMZ" kind="presentation" identifier="ShowInboxSegue" id="ZMR-wO-ehC"/>
                     </connections>
                 </viewController>
@@ -139,7 +161,13 @@
                             <constraint firstItem="QWe-qg-IkC" firstAttribute="leading" secondItem="fgk-dw-bMn" secondAttribute="leading" id="dn8-qO-KuT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="msI-VG-tym"/>
+                    <navigationItem key="navigationItem" id="msI-VG-tym">
+                        <rightBarButtonItems>
+                            <barButtonItem image="next-button-icon" id="uis-H3-4Ci"/>
+                            <barButtonItem systemItem="trash" id="LYi-R9-D42"/>
+                            <barButtonItem image="download-button-icon" id="tPJ-KQ-0f0"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QWe-qg-IkC" id="gYs-gx-40i"/>
                     </connections>
@@ -164,31 +192,67 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLS-1u-0aj" customClass="StatusInfoView">
+                                <rect key="frame" x="160" y="250" width="280" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="I0R-NX-YjN"/>
+                                    <constraint firstAttribute="height" constant="140" id="LFB-wi-NMd"/>
+                                    <constraint firstAttribute="height" constant="100" id="bcf-hk-GAC"/>
+                                    <constraint firstAttribute="width" priority="900" constant="280" id="v9m-Ww-TJZ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="I0R-NX-YjN"/>
+                                        <exclude reference="LFB-wi-NMd"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aLS-1u-0aj" secondAttribute="trailing" constant="50" id="4uy-f8-O19"/>
                             <constraint firstAttribute="trailing" secondItem="kEf-7v-5LN" secondAttribute="trailing" id="56r-ZG-CZt"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hTv-Q9-KYI" secondAttribute="leading" constant="32" id="8bs-0U-LLM"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="ABB-Wt-1mY"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="BOL-gf-WKJ"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="centerX" secondItem="hTv-Q9-KYI" secondAttribute="centerX" id="Fmm-9B-2yp"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="JhF-lu-j7n"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hTv-Q9-KYI" secondAttribute="leading" priority="900" constant="32" id="Zlh-Zh-5Bm"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="leading" secondItem="hTv-Q9-KYI" secondAttribute="leading" id="bpb-NB-xyu"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="hTv-Q9-KYI" secondAttribute="top" id="cAU-Dw-nFa"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aLS-1u-0aj" secondAttribute="trailing" constant="32" id="cXg-PY-LcD"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="centerY" secondItem="hTv-Q9-KYI" secondAttribute="centerY" id="fVt-Uj-byG"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aLS-1u-0aj" secondAttribute="trailing" priority="900" constant="32" id="fjg-uS-eXT"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="centerX" secondItem="hTv-Q9-KYI" secondAttribute="centerX" id="flY-X3-hlj"/>
                             <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="kEf-7v-5LN" secondAttribute="bottom" id="gio-pN-Plo"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="centerY" secondItem="hTv-Q9-KYI" secondAttribute="centerY" id="ivq-Ue-Plk"/>
                             <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="kEf-7v-5LN" secondAttribute="bottom" id="qPJ-41-VMc"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="leading" secondItem="hTv-Q9-KYI" secondAttribute="leading" constant="50" id="rGv-9n-3gh"/>
+                            <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="aLS-1u-0aj" secondAttribute="bottom" id="sOb-Lw-cXY"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="BOL-gf-WKJ"/>
                                 <exclude reference="JhF-lu-j7n"/>
+                                <exclude reference="4uy-f8-O19"/>
+                                <exclude reference="ABB-Wt-1mY"/>
+                                <exclude reference="Zlh-Zh-5Bm"/>
+                                <exclude reference="fjg-uS-eXT"/>
+                                <exclude reference="flY-X3-hlj"/>
+                                <exclude reference="ivq-Ue-Plk"/>
+                                <exclude reference="rGv-9n-3gh"/>
                                 <exclude reference="qPJ-41-VMc"/>
+                                <exclude reference="sOb-Lw-cXY"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6X7-HB-Dcd">
-                        <barButtonItem key="leftBarButtonItem" image="hamburger-icon" style="plain" id="gUb-No-L79">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="hamburger-icon" id="gUb-No-L79"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="d8z-ZF-FEC"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="statusInfoView" destination="aLS-1u-0aj" id="QaP-t0-JHQ"/>
                         <outlet property="tableView" destination="kEf-7v-5LN" id="B1p-lT-bVE"/>
                         <segue destination="dHz-57-wTo" kind="showDetail" identifier="ShowMessageDetail" id="yGA-hc-MdB"/>
                     </connections>
@@ -281,9 +345,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="download-button-icon" width="25" height="30"/>
         <image name="hamburger-icon" width="29" height="20"/>
+        <image name="next-button-icon" width="34" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C1Z-5y-32r"/>
+        <segue reference="yGA-hc-MdB"/>
     </inferredMetricsTieBreakers>
 </document>

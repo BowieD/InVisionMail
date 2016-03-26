@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "CoreDataStack.h"
+#import "UIColor+AppColors.h"
+#import "UIFont+AppFonts.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +24,8 @@
     NSString* googleClientID = [googleServicePlist valueForKey:@"CLIENT_ID"];
     [GIDSignIn sharedInstance].clientID = googleClientID;
 
+    [self setupBasicAppearance];
+    
     return YES;
 }
 
@@ -31,9 +35,13 @@
                                        annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
 }
 
-- (void) applicationDidEnterBackground:(UIApplication *)application {
-    [[CoreDataStack sharedInstance].mainContext save:nil];
-    // TODO: error handling
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Setup
+
+- (void) setupBasicAppearance {
+    [[UINavigationBar appearance] setTintColor:[UIColor invision_darkGrayColor]];
 }
+
+
 
 @end

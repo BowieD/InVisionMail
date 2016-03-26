@@ -32,7 +32,10 @@
 /**
  Get list of user's INBOX messages. It currently returns only 100 newest messages. If the message is new, getMessageMetadata for it is called automatically.
  */
+- (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context completion: (nullable void (^)(NSError* _Nullable error))completion;
+
 - (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context;
+
 
 /**
  Get metadata for the message. This call doesn't download message's body. You usually don't call this function directly. It's called automatically for all new messages from the getMyMessagesIntoContext call.

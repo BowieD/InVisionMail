@@ -30,6 +30,7 @@ describe(@"Message", ^{
     beforeEach(^{
         coreDataStack = [TestCoreDataStack new];
         message = [Message findOrCreateElementWithId:@"Episode III" context:coreDataStack.mainContext];
+        message.timestamp = 123456;
     });
     
     context(@"when sender is '\"Obi-Wan Kenobi\" <obiwan@kenobi.sw>'", ^{

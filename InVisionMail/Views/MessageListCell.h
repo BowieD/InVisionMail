@@ -20,13 +20,6 @@
 
 @interface MessageListCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subjectLabel;
-@property (weak, nonatomic) IBOutlet UILabel *snippetLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *attachmentIcon;
-@property (weak, nonatomic) IBOutlet UIView *unreadMark;
-
 - (void) loadData: (id<MessageListCellDataSource>) dataSource;
 
 @end

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A54746671CA6992400FED4E8 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A54746661CA6992400FED4E8 /* UIColor+AppColors.m */; };
+		A547466A1CA6A71200FED4E8 /* StatusInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54746691CA6A71200FED4E8 /* StatusInfoView.m */; };
+		A547466C1CA6A8E000FED4E8 /* StatusInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A547466B1CA6A8E000FED4E8 /* StatusInfoView.xib */; };
+		A547466F1CA6D9F800FED4E8 /* LabelWithLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = A547466E1CA6D9F800FED4E8 /* LabelWithLoading.m */; };
+		A54746771CA7012E00FED4E8 /* Label+MenuCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A54746761CA7012E00FED4E8 /* Label+MenuCellDataSource.m */; };
+		A547467B1CA7021000FED4E8 /* MenuSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A547467A1CA7021000FED4E8 /* MenuSectionHeader.m */; };
+		A547467D1CA7021B00FED4E8 /* MenuSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A547467C1CA7021B00FED4E8 /* MenuSectionHeader.xib */; };
 		A5850BEF1C94689C00527CD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5850BEE1C94689C00527CD8 /* main.m */; };
 		A5850BF21C94689C00527CD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5850BF11C94689C00527CD8 /* AppDelegate.m */; };
 		A5850BF51C94689C00527CD8 /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5850BF41C94689C00527CD8 /* SignInVC.m */; };
@@ -152,6 +159,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A54746651CA6992400FED4E8 /* UIColor+AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
+		A54746661CA6992400FED4E8 /* UIColor+AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
+		A54746681CA6A71200FED4E8 /* StatusInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusInfoView.h; sourceTree = "<group>"; };
+		A54746691CA6A71200FED4E8 /* StatusInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusInfoView.m; sourceTree = "<group>"; };
+		A547466B1CA6A8E000FED4E8 /* StatusInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusInfoView.xib; sourceTree = "<group>"; };
+		A547466D1CA6D9F800FED4E8 /* LabelWithLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelWithLoading.h; sourceTree = "<group>"; };
+		A547466E1CA6D9F800FED4E8 /* LabelWithLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelWithLoading.m; sourceTree = "<group>"; };
+		A54746751CA7012E00FED4E8 /* Label+MenuCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Label+MenuCellDataSource.h"; sourceTree = "<group>"; };
+		A54746761CA7012E00FED4E8 /* Label+MenuCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Label+MenuCellDataSource.m"; sourceTree = "<group>"; };
+		A54746791CA7021000FED4E8 /* MenuSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSectionHeader.h; sourceTree = "<group>"; };
+		A547467A1CA7021000FED4E8 /* MenuSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSectionHeader.m; sourceTree = "<group>"; };
+		A547467C1CA7021B00FED4E8 /* MenuSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuSectionHeader.xib; sourceTree = "<group>"; };
 		A5850BEA1C94689C00527CD8 /* InVisionMail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InVisionMail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5850BEE1C94689C00527CD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5850BF01C94689C00527CD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -241,8 +260,8 @@
 		A5D278A91CA5ABFB00205451 /* RoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedImageView.m; sourceTree = "<group>"; };
 		A5D278AB1CA5ACA900205451 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedView.h; sourceTree = "<group>"; };
 		A5D278AC1CA5ACA900205451 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedView.m; sourceTree = "<group>"; };
-		A5D278AE1CA5B28900205451 /* TimestampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampLabel.h; sourceTree = "<group>"; };
-		A5D278AF1CA5B28900205451 /* TimestampLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampLabel.m; sourceTree = "<group>"; };
+		A5D278AE1CA5B28900205451 /* TimestampLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimestampLabel.h; path = ../Views/TimestampLabel.h; sourceTree = "<group>"; };
+		A5D278AF1CA5B28900205451 /* TimestampLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimestampLabel.m; path = ../Views/TimestampLabel.m; sourceTree = "<group>"; };
 		A5EBDFD51CA16E32009AEB4D /* UIViewController+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Animations.h"; sourceTree = "<group>"; };
 		A5EBDFD61CA16E32009AEB4D /* UIViewController+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Animations.m"; sourceTree = "<group>"; };
 		A5EBDFD81CA18187009AEB4D /* TestTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTapGestureRecognizer.h; sourceTree = "<group>"; };
@@ -324,6 +343,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A54746701CA6EE5B00FED4E8 /* SubjectHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				A5EBE0161CA2EF84009AEB4D /* SubjectHeaderView.xib */,
+				A5EBE0181CA2EFDE009AEB4D /* SubjectHeaderView.h */,
+				A5EBE0191CA2EFDE009AEB4D /* SubjectHeaderView.m */,
+			);
+			name = SubjectHeaderView;
+			sourceTree = "<group>";
+		};
+		A54746711CA6EE6600FED4E8 /* MessageListCell */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3C61C9A06EC00C976D4 /* MessageListCell.h */,
+				A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */,
+				A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */,
+			);
+			name = MessageListCell;
+			sourceTree = "<group>";
+		};
+		A54746721CA6EF3700FED4E8 /* TimestampLabel */ = {
+			isa = PBXGroup;
+			children = (
+				A5D278AE1CA5B28900205451 /* TimestampLabel.h */,
+				A5D278AF1CA5B28900205451 /* TimestampLabel.m */,
+			);
+			name = TimestampLabel;
+			path = ../Appearance;
+			sourceTree = "<group>";
+		};
+		A54746731CA6EFB000FED4E8 /* MenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				A5EBDFF21CA1EBDF009AEB4D /* MenuCell.h */,
+				A5EBDFF31CA1EBDF009AEB4D /* MenuCell.m */,
+				A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */,
+			);
+			name = MenuCell;
+			sourceTree = "<group>";
+		};
+		A54746741CA7011F00FED4E8 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9C3E01C9B538800C976D4 /* Message+MessageListCellDataSource.h */,
+				A5B9C3E11C9B538800C976D4 /* Message+MessageListCellDataSource.m */,
+				A5F2BC361CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.h */,
+				A5F2BC371CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.m */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		A54746781CA7013300FED4E8 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				A54746751CA7012E00FED4E8 /* Label+MenuCellDataSource.h */,
+				A54746761CA7012E00FED4E8 /* Label+MenuCellDataSource.m */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
+		A547467E1CA7034E00FED4E8 /* MenuSectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				A54746791CA7021000FED4E8 /* MenuSectionHeader.h */,
+				A547467A1CA7021000FED4E8 /* MenuSectionHeader.m */,
+				A547467C1CA7021B00FED4E8 /* MenuSectionHeader.xib */,
+			);
+			name = MenuSectionHeader;
+			sourceTree = "<group>";
+		};
+		A547467F1CA7308300FED4E8 /* MessageDetailPreviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A5F2BC1F1CA438690021EC03 /* MessageDetailPreviewCell.h */,
+				A5F2BC201CA438690021EC03 /* MessageDetailPreviewCell.m */,
+				A5F2BC211CA438690021EC03 /* MessageDetailPreviewCell.xib */,
+			);
+			name = MessageDetailPreviewCell;
+			sourceTree = "<group>";
+		};
+		A54746801CA7325C00FED4E8 /* StatusInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				A54746681CA6A71200FED4E8 /* StatusInfoView.h */,
+				A54746691CA6A71200FED4E8 /* StatusInfoView.m */,
+				A547466B1CA6A8E000FED4E8 /* StatusInfoView.xib */,
+			);
+			name = StatusInfoView;
+			sourceTree = "<group>";
+		};
 		A5850BE11C94689C00527CD8 = {
 			isa = PBXGroup;
 			children = (
@@ -416,10 +525,10 @@
 				A5B9C3C11C99F6F400C976D4 /* Segues.h */,
 				A5EBDFEC1CA1C9A2009AEB4D /* TableViewDataSource.h */,
 				A5EBDFED1CA1C9A2009AEB4D /* TableViewDataSource.m */,
+				A5B9C3F51CA03EA300C976D4 /* SignIn */,
 				A5EBDFE61CA1BCD0009AEB4D /* Drawer */,
 				A5EBDFE71CA1BCD7009AEB4D /* Menu */,
 				A5B9C3D01C9B380600C976D4 /* Inbox */,
-				A5B9C3F51CA03EA300C976D4 /* SignIn */,
 				A5EBE0051CA2E401009AEB4D /* MainSplitVC */,
 				A5EBE00B1CA2E94B009AEB4D /* Message detail */,
 			);
@@ -488,18 +597,13 @@
 		A5B9C3751C95FD7800C976D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A5B9C3C61C9A06EC00C976D4 /* MessageListCell.h */,
-				A5B9C3C71C9A06EC00C976D4 /* MessageListCell.m */,
-				A5B9C3C91C9A06FC00C976D4 /* MessageListCell.xib */,
-				A5EBDFF21CA1EBDF009AEB4D /* MenuCell.h */,
-				A5EBDFF31CA1EBDF009AEB4D /* MenuCell.m */,
-				A5EBDFF51CA1EBE8009AEB4D /* MenuCell.xib */,
-				A5EBE0161CA2EF84009AEB4D /* SubjectHeaderView.xib */,
-				A5EBE0181CA2EFDE009AEB4D /* SubjectHeaderView.h */,
-				A5EBE0191CA2EFDE009AEB4D /* SubjectHeaderView.m */,
-				A5F2BC1F1CA438690021EC03 /* MessageDetailPreviewCell.h */,
-				A5F2BC201CA438690021EC03 /* MessageDetailPreviewCell.m */,
-				A5F2BC211CA438690021EC03 /* MessageDetailPreviewCell.xib */,
+				A54746721CA6EF3700FED4E8 /* TimestampLabel */,
+				A54746711CA6EE6600FED4E8 /* MessageListCell */,
+				A54746701CA6EE5B00FED4E8 /* SubjectHeaderView */,
+				A54746731CA6EFB000FED4E8 /* MenuCell */,
+				A547467F1CA7308300FED4E8 /* MessageDetailPreviewCell */,
+				A54746801CA7325C00FED4E8 /* StatusInfoView */,
+				A547467E1CA7034E00FED4E8 /* MenuSectionHeader */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -613,10 +717,8 @@
 		A5B9C3E31C9B53AD00C976D4 /* ViewModels (pseudo) */ = {
 			isa = PBXGroup;
 			children = (
-				A5B9C3E01C9B538800C976D4 /* Message+MessageListCellDataSource.h */,
-				A5B9C3E11C9B538800C976D4 /* Message+MessageListCellDataSource.m */,
-				A5F2BC361CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.h */,
-				A5F2BC371CA5838C0021EC03 /* Message+MessageDetailPreviewCellDataSource.m */,
+				A54746741CA7011F00FED4E8 /* Message */,
+				A54746781CA7013300FED4E8 /* Label */,
 			);
 			name = "ViewModels (pseudo)";
 			sourceTree = "<group>";
@@ -675,12 +777,14 @@
 			children = (
 				A5F2BC3D1CA5A3A00021EC03 /* UIFont+AppFonts.h */,
 				A5F2BC3E1CA5A3A00021EC03 /* UIFont+AppFonts.m */,
+				A54746651CA6992400FED4E8 /* UIColor+AppColors.h */,
+				A54746661CA6992400FED4E8 /* UIColor+AppColors.m */,
 				A5D278A81CA5ABFB00205451 /* RoundedImageView.h */,
 				A5D278A91CA5ABFB00205451 /* RoundedImageView.m */,
 				A5D278AB1CA5ACA900205451 /* RoundedView.h */,
 				A5D278AC1CA5ACA900205451 /* RoundedView.m */,
-				A5D278AE1CA5B28900205451 /* TimestampLabel.h */,
-				A5D278AF1CA5B28900205451 /* TimestampLabel.m */,
+				A547466D1CA6D9F800FED4E8 /* LabelWithLoading.h */,
+				A547466E1CA6D9F800FED4E8 /* LabelWithLoading.m */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -770,12 +874,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B9C3631C94967D00C976D4 /* GoogleSignIn.bundle in Resources */,
+				A547467D1CA7021B00FED4E8 /* MenuSectionHeader.xib in Resources */,
 				A5F2BC231CA438690021EC03 /* MessageDetailPreviewCell.xib in Resources */,
 				A5850BFD1C94689C00527CD8 /* LaunchScreen.storyboard in Resources */,
 				A5EBDFF61CA1EBE8009AEB4D /* MenuCell.xib in Resources */,
 				A590EBA71C95847600CB28AF /* cartfile in Resources */,
 				A5B9C36C1C94976100C976D4 /* GoogleService-Info.plist in Resources */,
 				A5B9C3CA1C9A06FC00C976D4 /* MessageListCell.xib in Resources */,
+				A547466C1CA6A8E000FED4E8 /* StatusInfoView.xib in Resources */,
 				A5850BFA1C94689C00527CD8 /* Assets.xcassets in Resources */,
 				A5EBE0171CA2EF84009AEB4D /* SubjectHeaderView.xib in Resources */,
 				A5850BF81C94689C00527CD8 /* Main.storyboard in Resources */,
@@ -801,6 +907,7 @@
 			files = (
 				A5B9C3C41C99F87A00C976D4 /* TestingAppDelegate.m in Sources */,
 				A5B9C3FD1CA0482000C976D4 /* MenuVC.m in Sources */,
+				A54746771CA7012E00FED4E8 /* Label+MenuCellDataSource.m in Sources */,
 				A5EBE01A1CA2EFDE009AEB4D /* SubjectHeaderView.m in Sources */,
 				A5B9C3E81C9BD92D00C976D4 /* NSString+RemoveSubstring.m in Sources */,
 				A5B9C3E21C9B538800C976D4 /* Message+MessageListCellDataSource.m in Sources */,
@@ -813,7 +920,9 @@
 				A5B9C37B1C95FF5400C976D4 /* CoreDataStack.m in Sources */,
 				A5B9C3DA1C9B4C5700C976D4 /* UITableViewCell+Helpers.m in Sources */,
 				A5B9C38A1C96164400C976D4 /* Message.m in Sources */,
+				A547466A1CA6A71200FED4E8 /* StatusInfoView.m in Sources */,
 				A5D278B01CA5B28900205451 /* TimestampLabel.m in Sources */,
+				A547467B1CA7021000FED4E8 /* MenuSectionHeader.m in Sources */,
 				A5B9C3A91C9742E100C976D4 /* AccessTokenProvider.m in Sources */,
 				A5850BF51C94689C00527CD8 /* SignInVC.m in Sources */,
 				A5F2BC331CA535C80021EC03 /* NSString+Base64URL.m in Sources */,
@@ -824,6 +933,7 @@
 				A5B9C3951C961B5E00C976D4 /* NSManagedObject+Helpers.m in Sources */,
 				A5B9C37E1C96033100C976D4 /* InVisionMail.xcdatamodeld in Sources */,
 				A5850BEF1C94689C00527CD8 /* main.m in Sources */,
+				A54746671CA6992400FED4E8 /* UIColor+AppColors.m in Sources */,
 				A5B9C3A61C9742A900C976D4 /* AppState.m in Sources */,
 				A5EBE00A1CA2E946009AEB4D /* MessageDetailVC.m in Sources */,
 				A5EBDFF11CA1EB5E009AEB4D /* MenuTableViewDatasource.m in Sources */,
@@ -836,6 +946,7 @@
 				A5B9C3AC1C974DE800C976D4 /* NetworkCommunicator.m in Sources */,
 				A5B9C3FA1CA040D100C976D4 /* DrawerVC.m in Sources */,
 				A5EBDFE01CA193A0009AEB4D /* UIGestureRecognizer+Cancel.m in Sources */,
+				A547466F1CA6D9F800FED4E8 /* LabelWithLoading.m in Sources */,
 				A5B9C3D31C9B383200C976D4 /* InboxTableViewDataSource.m in Sources */,
 				A5B9C3F21C9DCAAA00C976D4 /* MessageTimeFormatter.m in Sources */,
 			);
@@ -1010,6 +1121,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1020,6 +1132,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vojtastavik.InVisionMail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "InVisionMail/Helpers/InVisionMail-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WARNING_CFLAGS = "";
@@ -1032,6 +1145,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1042,6 +1156,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vojtastavik.InVisionMail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "InVisionMail/Helpers/InVisionMail-Bridging-Header.h";
 				WARNING_CFLAGS = "";
 			};

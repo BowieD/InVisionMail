@@ -58,7 +58,7 @@ describe(@"InboxVC", ^{
     });
     
     it(@"should ask APICommunicator to update inbox messages when view appears", ^{
-        [[inboxVC.communicator should] receive:@selector(getMyMessagesToContext:)];
+        [[inboxVC.communicator should] receive:@selector(getMyMessagesToContext:completion:)];
         [inboxVC beginAppearanceTransition:YES animated:NO];
     });
 
@@ -88,8 +88,8 @@ describe(@"InboxVC", ^{
             [[inboxVC.dataSource should] beIdenticalTo:inboxVC.tableView.dataSource];
         });
         
-        it(@"should have row hight 40", ^{
-            [[theValue(inboxVC.tableView.rowHeight) should] equal:theValue(40)];
+        it(@"should have row hight 80", ^{
+            [[theValue(inboxVC.tableView.rowHeight) should] equal:theValue(80)];
         });
     });
     

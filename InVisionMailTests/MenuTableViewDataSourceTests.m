@@ -22,6 +22,12 @@
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 @end
 
+// Expose private functions needed for testing
+@interface MenuCell (Private)
+@property (nonatomic, weak) UILabel* titleLabel;
+@end
+
+
 
 SPEC_BEGIN(MenuTableViewDataSourceTests)
 
@@ -122,7 +128,7 @@ describe(@"InboxTableView", ^{
             
             MenuCell* cellIV = (MenuCell*)[dataSource tableView:tableView
                                           cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            [[cellIV.titleLabel.text should] equal:@"Return of the Jedi"];
+            [[cellIV.titleLabel.text should] equal:@"Return Of The Jedi"];
             
             MenuCell* cellV  = (MenuCell*)[dataSource tableView:tableView
                                           cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];

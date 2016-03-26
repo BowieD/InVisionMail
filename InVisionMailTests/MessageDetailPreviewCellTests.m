@@ -10,6 +10,14 @@
 #import <Kiwi/Kiwi.h>
 #import "MessageDetailPreviewCell.h"
 
+// Expose private properties and functions needed for testing
+@interface MessageDetailPreviewCell (Private)
+@property (nonatomic, weak) IBOutlet UITextView *nameTextView;
+@property (nonatomic, weak) IBOutlet UITextView *snippetTextView;
+@property (nonatomic, weak) IBOutlet UILabel *timestampLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *avatarImageView;
+@end
+
 SPEC_BEGIN(MessageDetailPreviewCellTests)
 
 describe(@"MessageDetailPreviewCell", ^{
@@ -120,8 +128,8 @@ describe(@"MessageDetailPreviewCell", ^{
         [[cell.avatarImageView.image should] beNil];
     });
     
-    it(@"should have previewHeight 55", ^{
-        [[theValue([MessageDetailPreviewCell previewHeight]) should] equal:theValue(55)];
+    it(@"should have previewHeight 70", ^{
+        [[theValue([MessageDetailPreviewCell previewHeight]) should] equal:theValue(70)];
     });
     
     it(@"should compute desired height correctly", ^{
@@ -144,9 +152,9 @@ describe(@"MessageDetailPreviewCell", ^{
         
         cell.snippetTextView.attributedText = attrString;
         
-        CGFloat width = 500 - 2*8; // horizonal borders
+        CGFloat width = 500 - 2*16; // horizonal borders
         CGFloat bodyHeight = [cell.snippetTextView sizeThatFits: CGSizeMake(width, CGFLOAT_MAX)].height;
-        bodyHeight += 2*8;
+        bodyHeight += 8;
         
         CGFloat headerHeight = [MessageDetailPreviewCell previewHeight];
         CGFloat cellHeight = bodyHeight + headerHeight;

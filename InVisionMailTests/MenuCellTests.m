@@ -10,6 +10,13 @@
 #import <Kiwi/Kiwi.h>
 #import "MenuCell.h"
 
+
+// Expose private functions needed for testing
+@interface MenuCell (Private)
+@property (nonatomic, weak) UILabel* titleLabel;
+@end
+
+
 SPEC_BEGIN(MenuCellTests)
 
 describe(@"MenuCell", ^{

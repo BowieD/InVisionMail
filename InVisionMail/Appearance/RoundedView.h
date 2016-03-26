@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+// UIView with circle mask
+
 IB_DESIGNABLE
 @interface RoundedView : UIView
 

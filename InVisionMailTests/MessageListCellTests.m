@@ -10,6 +10,17 @@
 #import <Kiwi/Kiwi.h>
 #import "MessageListCell.h"
 
+// Expose private functions needed for testing
+@interface MessageListCell (Private)
+@property (nonatomic, weak) UILabel* nameLabel;
+@property (nonatomic, weak) UILabel* subjectLabel;
+@property (nonatomic, weak) UILabel* snippetLabel;
+@property (nonatomic, weak) UILabel* timestampLabel;
+@property (nonatomic, weak) UIView* unreadMark;
+@property (nonatomic, weak) UIImageView* attachmentIcon;
+@end
+
+
 SPEC_BEGIN(MessageListCellTests)
 
 describe(@"MessageListCell", ^{

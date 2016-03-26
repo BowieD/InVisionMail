@@ -9,13 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
+// Generic class combinig TableViewDataSource & FetchedResultsController
+
+@protocol CellLoadable <NSObject>
+- (void) loadData: (NSDictionary*) dataSource;
+@end
+
 @interface TableViewDataSource : NSObject
 
 - (instancetype) initWithTableView: (UITableView *)tableView
                            context: (NSManagedObjectContext *)context
                       fetchRequest: (NSFetchRequest *)request
                 sectionNameKeyPath: (NSString*)sectionNameKeyPath
-                     tableViewCell: (Class)cellClass
+                     tableViewCell: (Class<CellLoadable>)cellClass
                             entity: (Class)entityClass;
 
 @property (nonatomic, strong, readonly) NSFetchedResultsController* frc;

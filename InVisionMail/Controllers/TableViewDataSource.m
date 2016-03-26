@@ -12,11 +12,6 @@
 #import "UITableViewCell+Helpers.h"
 #import "MessageListCell.h"
 
-@protocol CellLoadable <NSObject>
-- (void) loadData: (NSDictionary*) dataSource;
-@end
-
-
 @interface TableViewDataSource () <UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, weak) UITableView* tableView;

@@ -9,14 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @protocol MenuCellDataSource <NSObject>
-
-- (NSString*) title;
-
+- (NSString*) formattedTitle;
 @end
 
-@interface MenuCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@interface MenuCell : UITableViewCell
 
 - (void) loadData: (id<MenuCellDataSource>) dataSource;
 

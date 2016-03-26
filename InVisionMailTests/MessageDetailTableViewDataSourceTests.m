@@ -22,6 +22,10 @@
 - (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 @end
 
+@interface MessageDetailPreviewCell (Private)
+@property (nonatomic, weak) UITextView* snippetTextView;
+@end
+
 
 SPEC_BEGIN(MessageDetailTableViewDataSourceTests)
 

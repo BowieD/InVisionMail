@@ -16,14 +16,16 @@
 
 @interface MessageDetailPreviewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UITextView *nameTextView;
-@property (nonatomic, weak) IBOutlet UITextView *snippetTextView;
-@property (nonatomic, weak) IBOutlet UILabel *timestampLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *avatarImageView;
-
 - (void) loadData: (id<MessageDetailPreviewCellDataSource>) dataSource;
 
+/**
+ Height of the cell in non-selected state (message preview)
+ */
 + (CGFloat) previewHeight;
+
+/**
+ Height of the cell in selected state (full message view)
+ */
 + (CGFloat) desiredHeightForWidth: (CGFloat)width andData: (id<MessageDetailPreviewCellDataSource>) dataSource;
 
 @end

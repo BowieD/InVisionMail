@@ -8,25 +8,38 @@
 
 #import "TimestampLabel.h"
 #import "UIFont+AppFonts.h"
+#import "UIColor+AppColors.h"
 
 @implementation TimestampLabel
 
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Life cycle
+
 - (instancetype) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self applyAppearance];
+        [self setupAppearance];
     }
     return self;
 }
 
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        [self applyAppearance];
+        [self setupAppearance];
     }
     return self;
 }
 
-- (void) applyAppearance {
+- (void) prepareForInterfaceBuilder {
+    [super prepareForInterfaceBuilder];
+    [self setupAppearance];
+}
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Setup
+
+- (void) setupAppearance {
     self.font = [UIFont footnoteFont_Regular];
+    self.textColor = [UIColor invision_textColor];
 }
 
 @end

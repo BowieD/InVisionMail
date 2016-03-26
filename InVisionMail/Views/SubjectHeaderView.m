@@ -7,15 +7,32 @@
 //
 
 #import "SubjectHeaderView.h"
+#import "UIFont+AppFonts.h"
+#import "UIColor+AppColors.h"
 
 @implementation SubjectHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Life cycle
+
+- (void) awakeFromNib {
+    [super awakeFromNib];
+    [self setupAppearance];
 }
-*/
+
+- (void) prepareForInterfaceBuilder {
+    [super prepareForInterfaceBuilder];
+    [self setupAppearance];
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Setup
+
+- (void) setupAppearance {
+    self.titleLabel.font = [UIFont mainTitleFont_Regular];
+    self.backgroundColor = [UIColor invision_lightGrayColor];
+}
+
 
 @end
