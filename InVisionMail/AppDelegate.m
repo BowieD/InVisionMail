@@ -35,6 +35,15 @@
                                        annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:sourceApplication
+                                      annotation:annotation];
+}
+
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Setup
 
