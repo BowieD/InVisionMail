@@ -16,6 +16,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet GIDSignInButton *signInButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoCenterYConstraint;
+
 @end
 
 
@@ -26,14 +31,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupAppearance];
     [self setupSignInButton];
     [self setupActivityIndicator];
     [self setupStatusLabel];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self animateIntro];
+}
+
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Setup
+
+- (void) setupAppearance {
+    self.statusLabel.alpha = 0;
+    self.signInButton.alpha = 0;
+}
 
 - (void) setupSignInButton {
     [GIDSignIn sharedInstance].delegate = self;
@@ -50,12 +67,25 @@
 - (void) setupStatusLabel {
     self.statusLabel.font = [UIFont regularTextFont_Regular];
     self.statusLabel.textColor = [UIColor whiteColor];
-    self.statusLabel.text = nil;
+    self.statusLabel.text = @"Please sign in with your GMail account.";
 }
 
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Actions
+
+- (void) animateIntro {
+    [UIView animateWithDuration:1.33 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.logoCenterYConstraint.constant = - 80;
+        
+        self.captionLabel.alpha = -3; // to make it disappear quicker
+        self.statusLabel.alpha = 1;
+        self.signInButton.alpha = 1;
+        
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+}
 
 - (void) didTapOnSignInButton: (GIDSignInButton*)sender {
     // We handle just the activity indicator here. The actual

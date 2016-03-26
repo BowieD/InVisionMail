@@ -177,9 +177,7 @@ static CGFloat subjectHeaderHeight = 44;
         // Show just preview
         height = [MessageDetailPreviewCell previewHeight];
     }
-    
-    NSLog(@"Height: %f", height);
-    
+
     return height;
 }
 

@@ -79,7 +79,7 @@
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                   
         if (NO == [responseObject isKindOfClass:[NSDictionary class]]) {
-            // TODO: error log
+            NSLog(@"Error in the response data.");
             return;
         }
                                   
@@ -137,7 +137,8 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(error.localizedDescription);
+        // TODO: Show error to user?
+        NSLog(@"Error: %@", error.localizedDescription);
     }];
 }
 
@@ -147,7 +148,7 @@
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if (NO == [responseObject isKindOfClass:[NSDictionary class]]) {
-            // TODO: error log
+            NSLog(@"Error in the response data.");
             return;
         }
         
@@ -165,7 +166,8 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(error.localizedDescription);
+        // TODO: Show error to user?
+        NSLog(@"Error: %@", error.localizedDescription);
     }];
 }
 

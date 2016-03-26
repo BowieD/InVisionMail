@@ -129,8 +129,6 @@ static CGFloat rowHeight = 80;
             Message* message = [self.dataSource.frc objectAtIndexPath:selectedIndexPath];
             MessageDetailVC* detailVC = ((UINavigationController*)segue.destinationViewController).viewControllers.firstObject;
             detailVC.messageId = message.customId;
-            
-            NSLog(@"Prepare for segue for Message: %@", message.customId);
         }
     }
 }

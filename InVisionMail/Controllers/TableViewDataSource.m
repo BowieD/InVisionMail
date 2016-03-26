@@ -61,8 +61,7 @@
     [self.frc performFetch:&error];
     
     if (error != nil) {
-        NSLog(@"%@", error.description);
-        // TODO: handle error
+        NSLog(@"Fetch error: %@", error.description);
     }
 }
 

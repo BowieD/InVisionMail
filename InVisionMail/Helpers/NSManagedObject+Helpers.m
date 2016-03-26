@@ -52,7 +52,7 @@
     
     NSManagedObject* element = [self findOrCreateElementWithId:objectId context:context];
     if (element == nil) {
-        // TODO: error -> can't create this element
+        NSLog(@"Can't create element.");
         completion(nil);
         return;
     }
@@ -67,7 +67,7 @@
             [context save:&error];
             
             if (error != nil) {
-                // TODO: handle error
+                NSLog(@"Error while saving context.");
                 completion(nil);
                 return;
             }

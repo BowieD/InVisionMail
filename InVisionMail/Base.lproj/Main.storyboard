@@ -75,42 +75,66 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUL-pk-ybp" customClass="GIDSignInButton">
-                                <rect key="frame" x="16" y="275" width="568" height="50"/>
+                                <rect key="frame" x="200" y="505" width="200" height="50"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6dM-FE-3S8"/>
+                                    <constraint firstAttribute="width" priority="900" constant="200" id="JOX-I3-17g"/>
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Dpc-dv-3f7">
-                                <rect key="frame" x="290" y="170" width="20" height="20"/>
+                                <rect key="frame" x="290" y="400" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="statusLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxP-DH-qNB">
-                                <rect key="frame" x="256" y="222" width="89" height="21"/>
+                                <rect key="frame" x="256" y="452" width="89" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail by InVision" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phs-mt-D3Q">
+                                <rect key="frame" x="237" y="384" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invision-mail-logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="V87-tf-7vc">
+                                <rect key="frame" x="250" y="249" width="100" height="103"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.11545667966258814" green="0.51014397905759168" blue="0.36366151362911653" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.45098039220000002" green="0.69411764710000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="V87-tf-7vc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" priority="500" id="02d-OY-Ukq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MUL-pk-ybp" secondAttribute="bottom" constant="16" id="5Za-qz-mvT"/>
                             <constraint firstItem="MUL-pk-ybp" firstAttribute="top" secondItem="Dpc-dv-3f7" secondAttribute="bottom" constant="32" id="5gk-O0-xad"/>
                             <constraint firstItem="MUL-pk-ybp" firstAttribute="top" secondItem="WxP-DH-qNB" secondAttribute="bottom" constant="32" id="Cpa-j8-u0Q"/>
+                            <constraint firstItem="MUL-pk-ybp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hji-1L-Ixr"/>
+                            <constraint firstItem="V87-tf-7vc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="Qhd-qu-h7L"/>
+                            <constraint firstItem="V87-tf-7vc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SXr-5J-xw7"/>
+                            <constraint firstItem="Dpc-dv-3f7" firstAttribute="top" secondItem="V87-tf-7vc" secondAttribute="bottom" constant="48" id="Sm7-OA-Zy1"/>
                             <constraint firstItem="WxP-DH-qNB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cwg-6F-QSI"/>
-                            <constraint firstItem="MUL-pk-ybp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="keB-ck-yIE"/>
-                            <constraint firstAttribute="trailing" secondItem="MUL-pk-ybp" secondAttribute="trailing" constant="16" id="oz9-1e-0Xh"/>
+                            <constraint firstItem="phs-mt-D3Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="drS-xn-BMf"/>
+                            <constraint firstItem="MUL-pk-ybp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="keB-ck-yIE"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MUL-pk-ybp" secondAttribute="trailing" constant="16" id="oz9-1e-0Xh"/>
                             <constraint firstItem="WxP-DH-qNB" firstAttribute="top" secondItem="Dpc-dv-3f7" secondAttribute="bottom" constant="32" id="u3P-OY-XOB"/>
+                            <constraint firstItem="phs-mt-D3Q" firstAttribute="top" secondItem="V87-tf-7vc" secondAttribute="bottom" constant="32" id="uCD-vp-Tjx"/>
                             <constraint firstItem="Dpc-dv-3f7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vkC-BD-5Pc"/>
                             <constraint firstItem="MUL-pk-ybp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wqT-ad-xTr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MUL-pk-ybp" secondAttribute="bottom" constant="45" id="zpC-S4-ZQs"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="5gk-O0-xad"/>
+                                <exclude reference="wqT-ad-xTr"/>
+                                <exclude reference="zpC-S4-ZQs"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="2tf-9E-ZZ2"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Dpc-dv-3f7" id="H6I-6C-dFg"/>
+                        <outlet property="captionLabel" destination="phs-mt-D3Q" id="a7y-hl-UdA"/>
+                        <outlet property="logoCenterYConstraint" destination="02d-OY-Ukq" id="Eyd-F6-JE8"/>
+                        <outlet property="logoImageView" destination="V87-tf-7vc" id="0UZ-I9-8Oq"/>
                         <outlet property="signInButton" destination="MUL-pk-ybp" id="9GG-9U-G2g"/>
                         <outlet property="statusLabel" destination="WxP-DH-qNB" id="TVo-oX-ZXm"/>
                         <segue destination="524-fv-OMZ" kind="presentation" identifier="ShowInboxSegue" id="ZMR-wO-ehC"/>
@@ -264,7 +288,7 @@
         <!--Navigation Controller-->
         <scene sceneID="XaU-zO-lum">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pK0-Iu-q0r" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="pK0-Iu-q0r" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1M-Pw-hRJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -347,6 +371,7 @@
     <resources>
         <image name="download-button-icon" width="25" height="30"/>
         <image name="hamburger-icon" width="29" height="20"/>
+        <image name="invision-mail-logo-1" width="100" height="103"/>
         <image name="next-button-icon" width="34" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
