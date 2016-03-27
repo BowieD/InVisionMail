@@ -48,7 +48,7 @@ $ brew install carthage
 ```
 Then you should run:
 ```
-carthage update
+carthage update --platform iOS
 ```
 
 
