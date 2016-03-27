@@ -65,9 +65,6 @@ static NSString* errorString = @"Ups, something went wrong ...";
     
     self.activityIndicator.hidesWhenStopped = YES;
     
-    self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = 5;
-    
     // Default state is hidden
     self.hidden = YES;
 }

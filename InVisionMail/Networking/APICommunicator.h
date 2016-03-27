@@ -47,6 +47,10 @@
  Get all data for the message including the message body.
  */
 - (nullable NSURLSessionDataTask*) getMessageDetail: (NSString * _Nonnull) messageId
+                                          toContext: (NSManagedObjectContext* _Nonnull)context
+                                         completion: (nullable void (^)(NSError* _Nullable error))completion;
+
+- (nullable NSURLSessionDataTask*) getMessageDetail: (NSString * _Nonnull) messageId
                                           toContext: (NSManagedObjectContext* _Nonnull)context;
 
 

@@ -46,7 +46,7 @@ describe(@"MessageDetailVC", ^{
         // Set dependencies
         coreDataStack = [TestCoreDataStack new];
         viewController.context = coreDataStack.mainContext;
-        viewController.communicator = [APICommunicator mock];
+        viewController.communicator = [APICommunicator nullMock];
 
         // Message
         message = [Message findOrCreateElementWithId:@"Episode IV" context:coreDataStack.mainContext];
@@ -84,16 +84,14 @@ describe(@"MessageDetailVC", ^{
     // API
 
     it(@"should select intial message", ^{
-        [[viewController.communicator should] receive:@selector(getMessageDetail:toContext:) withArguments:@"Episode IV", coreDataStack.mainContext];
-
         [viewController beginAppearanceTransition:YES animated:NO];
         [[viewController.tableView.indexPathForSelectedRow should] equal:[NSIndexPath indexPathForRow:0 inSection:0]];
     });
     
     it(@"should ask APICommunicator to get message detail of selected message if body is empty", ^{
         message.body = nil;
-        
-        [[viewController.communicator should] receive:@selector(getMessageDetail:toContext:) withArguments:@"Episode IV", coreDataStack.mainContext];
+
+        [[viewController.communicator should] receive:@selector(getMessageDetail:toContext:completion:)];
 
         NSIndexPath* path = [NSIndexPath indexPathForRow:0 inSection:0];
         [viewController.tableView selectRowAtIndexPath:path

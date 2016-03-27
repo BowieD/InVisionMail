@@ -72,7 +72,8 @@
     return [self getMyMessagesToContext:context completion:nil];
 }
 
-- (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context completion: (nullable void (^)(NSError* _Nullable error))completion {
+- (nullable NSURLSessionDataTask*) getMyMessagesToContext: (NSManagedObjectContext* _Nonnull)context
+                                               completion: (nullable void (^)(NSError* _Nullable error))completion {
     
     return [self authorizedGETRequest:MY_MESSAGES
                            parameters:@{LABELS_IDS_KEY: INBOX_LABEL_VALUE}
@@ -119,26 +120,42 @@
 }
 
 - (nullable NSURLSessionDataTask*) getMessageMetadata:(NSString *)messageId toContext: (NSManagedObjectContext* _Nonnull)context {
-    return [self getMessageDetail:messageId withParameters:@{FORMAT_KEY: METADATA_VALUE} toContext:context];
+    return [self getMessageDetail:messageId withParameters:@{FORMAT_KEY: METADATA_VALUE} toContext:context completion:nil];
 }
 
 - (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId toContext: (NSManagedObjectContext* _Nonnull)context {
-    return [self getMessageDetail:messageId withParameters:nil toContext:context];
+    return [self getMessageDetail:messageId toContext:context completion:nil];
 }
 
-- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId withParameters: (NSDictionary*)parameters toContext: (NSManagedObjectContext* _Nonnull)context {
+- (nullable NSURLSessionDataTask*) getMessageDetail: (NSString * _Nonnull) messageId
+                                          toContext: (NSManagedObjectContext* _Nonnull)context
+                                         completion: (nullable void (^)(NSError* _Nullable error))completion {
+    return [self getMessageDetail:messageId withParameters:nil toContext:context completion:completion];
+}
+
+- (nullable NSURLSessionDataTask*) getMessageDetail:(NSString *)messageId
+                                     withParameters: (NSDictionary*)parameters
+                                          toContext: (NSManagedObjectContext* _Nonnull)context
+                                         completion: (nullable void (^)(NSError* _Nullable error))completion {
+    
     return [self authorizedGETRequest:[MY_MESSAGES stringByAppendingString:messageId] parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary* jsonData = (NSDictionary*)responseObject;
             [Message loadFromJSON:jsonData customId:[jsonData valueForKey:@"id"] context:context completionBlock:^(NSManagedObject * _Nullable element) {
-//                NSLog(@"New message saved to the context: %@", element.description);
+                
+                if (completion) {
+                    completion(nil);
+                }
             }];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // TODO: Show error to user?
         NSLog(@"Error: %@", error.localizedDescription);
+
+        if (completion) {
+            completion(error);
+        }
     }];
 }
 
@@ -166,7 +183,7 @@
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // TODO: Show error to user?
+        // TODO: Show error to user when this is a background fetch?
         NSLog(@"Error: %@", error.localizedDescription);
     }];
 }

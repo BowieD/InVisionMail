@@ -48,6 +48,10 @@ static CGFloat rowHeight = 80;
     [self getNewMessages:silently];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self crearSelection];
+}
 
 // ------------  ------------  ------------  ------------  ------------  ------------
 #pragma mark - Setup
@@ -92,6 +96,17 @@ static CGFloat rowHeight = 80;
             [self.statusInfoView success];
         }
     }];
+}
+
+
+// ------------  ------------  ------------  ------------  ------------  ------------
+#pragma mark - Actions
+
+- (void) crearSelection {
+    NSIndexPath* indexPath = self.tableView.indexPathForSelectedRow;
+    if (indexPath != nil) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 

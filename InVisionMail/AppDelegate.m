@@ -10,6 +10,7 @@
 #import "CoreDataStack.h"
 #import "UIColor+AppColors.h"
 #import "UIFont+AppFonts.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface AppDelegate ()
 
@@ -24,6 +25,8 @@
     NSString* googleClientID = [googleServicePlist valueForKey:@"CLIENT_ID"];
     [GIDSignIn sharedInstance].clientID = googleClientID;
 
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     [self setupBasicAppearance];
     
     return YES;

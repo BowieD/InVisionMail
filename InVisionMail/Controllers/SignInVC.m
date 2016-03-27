@@ -67,7 +67,7 @@
 - (void) setupStatusLabel {
     self.statusLabel.font = [UIFont regularTextFont_Regular];
     self.statusLabel.textColor = [UIColor whiteColor];
-    self.statusLabel.text = @"Please sign in with your GMail account.";
+    self.statusLabel.text = @"Please sign in with your Gmail account.";
 }
 
 

@@ -176,10 +176,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTv-XT-1pp" customClass="StatusInfoView">
+                                <rect key="frame" x="0.0" y="44" width="600" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="2Rz-ps-85e"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="NS1-ll-GkN"/>
+                                    <constraint firstAttribute="height" constant="100" id="Uv5-Es-9Ae"/>
+                                    <constraint firstAttribute="width" priority="900" constant="280" id="ccU-Le-dZY"/>
+                                    <constraint firstAttribute="width" constant="300" id="pGL-08-8sR"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2Rz-ps-85e"/>
+                                        <exclude reference="ccU-Le-dZY"/>
+                                        <exclude reference="pGL-08-8sR"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="22O-Xd-652" firstAttribute="top" secondItem="QWe-qg-IkC" secondAttribute="bottom" id="8ol-7S-Ruq"/>
+                            <constraint firstItem="fTv-XT-1pp" firstAttribute="leading" secondItem="fgk-dw-bMn" secondAttribute="leading" id="9IX-TK-HjF"/>
+                            <constraint firstItem="fTv-XT-1pp" firstAttribute="top" secondItem="fwF-vV-fp7" secondAttribute="bottom" id="Cht-7I-MAj"/>
+                            <constraint firstAttribute="trailing" secondItem="fTv-XT-1pp" secondAttribute="trailing" id="UBn-Dn-zDx"/>
                             <constraint firstAttribute="trailing" secondItem="QWe-qg-IkC" secondAttribute="trailing" id="XZp-HV-nMY"/>
                             <constraint firstItem="QWe-qg-IkC" firstAttribute="top" secondItem="fgk-dw-bMn" secondAttribute="top" id="aV6-C1-ljn"/>
                             <constraint firstItem="QWe-qg-IkC" firstAttribute="leading" secondItem="fgk-dw-bMn" secondAttribute="leading" id="dn8-qO-KuT"/>
@@ -193,6 +214,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="statusInfoView" destination="fTv-XT-1pp" id="beJ-ha-lPW"/>
                         <outlet property="tableView" destination="QWe-qg-IkC" id="gYs-gx-40i"/>
                     </connections>
                 </viewController>
@@ -217,7 +239,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLS-1u-0aj" customClass="StatusInfoView">
-                                <rect key="frame" x="160" y="250" width="280" height="100"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="I0R-NX-YjN"/>
@@ -229,6 +251,7 @@
                                     <mask key="constraints">
                                         <exclude reference="I0R-NX-YjN"/>
                                         <exclude reference="LFB-wi-NMd"/>
+                                        <exclude reference="v9m-Ww-TJZ"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -238,10 +261,12 @@
                             <constraint firstAttribute="trailing" secondItem="aLS-1u-0aj" secondAttribute="trailing" constant="50" id="4uy-f8-O19"/>
                             <constraint firstAttribute="trailing" secondItem="kEf-7v-5LN" secondAttribute="trailing" id="56r-ZG-CZt"/>
                             <constraint firstItem="aLS-1u-0aj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hTv-Q9-KYI" secondAttribute="leading" constant="32" id="8bs-0U-LLM"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="leading" secondItem="hTv-Q9-KYI" secondAttribute="leading" id="9Kl-DA-KWd"/>
                             <constraint firstItem="aLS-1u-0aj" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="ABB-Wt-1mY"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="BOL-gf-WKJ"/>
                             <constraint firstItem="aLS-1u-0aj" firstAttribute="centerX" secondItem="hTv-Q9-KYI" secondAttribute="centerX" id="Fmm-9B-2yp"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="JhF-lu-j7n"/>
+                            <constraint firstItem="aLS-1u-0aj" firstAttribute="top" secondItem="Kny-fW-Ugc" secondAttribute="bottom" id="QWn-Fk-QsU"/>
                             <constraint firstItem="aLS-1u-0aj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hTv-Q9-KYI" secondAttribute="leading" priority="900" constant="32" id="Zlh-Zh-5Bm"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="leading" secondItem="hTv-Q9-KYI" secondAttribute="leading" id="bpb-NB-xyu"/>
                             <constraint firstItem="kEf-7v-5LN" firstAttribute="top" secondItem="hTv-Q9-KYI" secondAttribute="top" id="cAU-Dw-nFa"/>
@@ -254,14 +279,19 @@
                             <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="kEf-7v-5LN" secondAttribute="bottom" id="qPJ-41-VMc"/>
                             <constraint firstItem="aLS-1u-0aj" firstAttribute="leading" secondItem="hTv-Q9-KYI" secondAttribute="leading" constant="50" id="rGv-9n-3gh"/>
                             <constraint firstItem="H2h-lW-jJf" firstAttribute="top" secondItem="aLS-1u-0aj" secondAttribute="bottom" id="sOb-Lw-cXY"/>
+                            <constraint firstAttribute="trailing" secondItem="aLS-1u-0aj" secondAttribute="trailing" id="vus-XM-MRR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="BOL-gf-WKJ"/>
                                 <exclude reference="JhF-lu-j7n"/>
                                 <exclude reference="4uy-f8-O19"/>
+                                <exclude reference="8bs-0U-LLM"/>
                                 <exclude reference="ABB-Wt-1mY"/>
+                                <exclude reference="Fmm-9B-2yp"/>
                                 <exclude reference="Zlh-Zh-5Bm"/>
+                                <exclude reference="cXg-PY-LcD"/>
+                                <exclude reference="fVt-Uj-byG"/>
                                 <exclude reference="fjg-uS-eXT"/>
                                 <exclude reference="flY-X3-hlj"/>
                                 <exclude reference="ivq-Ue-Plk"/>

@@ -14,6 +14,7 @@
 #import "UITableViewCell+Helpers.h"
 #import "MessageDetailPreviewCell.h"
 #import "MessageDetailTableViewDataSource.h"
+#import "StatusInfoView.h"
 
 @interface MessageDetailVC () <UITableViewDelegate>
 
@@ -24,6 +25,9 @@
 @property (nonatomic, strong) SubjectHeaderView* subjectHeader;
 
 @property (nonatomic, strong) TableViewDataSource* dataSource;
+
+@property (weak, nonatomic) IBOutlet StatusInfoView *statusInfoView;
+
 
 @end
 
@@ -92,7 +96,13 @@ static CGFloat subjectHeaderHeight = 44;
 
 - (void) getMessageDetailIfNeeded: (Message*) message {
     if (message != nil && message.body == nil) {
-        [self.communicator getMessageDetail:message.customId toContext:self.context];
+        __weak typeof(self) weakSelf = self;
+        [self.communicator getMessageDetail:message.customId toContext:self.context completion:^(NSError * _Nullable error) {
+            if (error) {
+                // Show error info
+                [weakSelf.statusInfoView error:error];
+            }
+        }];
     }
 }
 
