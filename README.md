@@ -1,5 +1,10 @@
 # InVision Mail
 
+#### Video Walkthrough
+
+[![Video Walkthrough](/walkthrough-screenshot.png)](https://www.youtube.com/watch?v=vOH3ZlKSFKo "Video Walkthrough")
+
+
 #### General project info
 - BundleID: com.vojtastavik.InVisionMail
 - Language: Objective-C
